@@ -1,0 +1,291 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Photo from '../../components/Photo.astro';
+import Icon from '../../components/Icon.astro';
+import Workflow from '../../components/Workflow.astro';
+import Architecture from '../../components/Architecture.astro';
+import { services } from '../../data/services';
+import { guides } from '../../data/service-guides';
+import { articles } from '../../data/articles';
+import { flows } from '../../data/flows';
+export function getStaticPaths() {
+  return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+}
+const { service: s } = Astro.props;
+const kinds: Record<string, string> = {
+  'software-engineering': 'software',
+  'ai-automation': 'ai',
+  'data-engineering': 'data',
+  'cloud-infrastructure': 'cloud',
+  'data-centres': 'facility',
+  'blockchain-engineering': 'web3',
+};
+const kind = kinds[s.slug];
+const guide = guides[s.slug];
+const related = articles.find((a) => a.slug === guide.related)!;
+const dark = kind === 'cloud' || kind === 'web3';
+---
+
+<Layout title={s.name} description={s.intro} dark={dark}>
+  <div class:list={['capability-page', `capability-${kind}`]}>
+    <section class="capability-cover">
+      <div class="wrap">
+        <div class="breadcrumb">
+          <a href="/services/">Capabilities</a>
+          <span>/ {s.name}</span>
+        </div>
+        {kind === 'facility' ? (
+          <>
+            <div class="facility-title">
+              <h1>
+                Capacity is
+                <br />a connected decision.
+              </h1>
+              <div>
+                <p class="lead">{s.intro}</p>
+                <a class="button" href={`/contact/?service=${s.slug}`}>
+                  Discuss data centre engineering <Icon />
+                </a>
+              </div>
+            </div>
+            <figure class="facility-panorama">
+              <Photo
+                name="facility"
+                alt="AI-generated illustration of a data centre server aisle"
+                eager
+                sizes="100vw"
+              />
+              <figcaption>AI-generated infrastructure illustration</figcaption>
+            </figure>
+          </>
+        ) : kind === 'ai' ? (
+          <>
+            <div class="ai-title">
+              <p>{s.name}</p>
+              <h1>
+                Make intelligence
+                <br />
+                part of the workflow.
+              </h1>
+              <p class="lead">{s.intro}</p>
+              <a class="button" href={`/contact/?service=${s.slug}`}>
+                Discuss AI & automation <Icon />
+              </a>
+            </div>
+            <div class="ai-preview">
+              <Photo name="automation" alt={s.alt} eager />
+              <div>
+                <span>Define the job.</span>
+                <span>Test the difficult cases.</span>
+                <strong>Give uncertainty a route.</strong>
+                <small>Illustrative automation photography</small>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div class="capability-cover-grid">
+            <div>
+              <p class="product-label">{s.name}</p>
+              <h1>{s.short}</h1>
+              <p class="lead">{s.intro}</p>
+              <a class:list={['button', dark && 'light']} href={`/contact/?service=${s.slug}`}>
+                Discuss {kind === 'web3' ? 'Web3 engineering' : s.name.toLowerCase()} <Icon />
+              </a>
+            </div>
+            {kind === 'software' ? (
+              <figure class="software-portrait">
+                <Photo name="software" alt={s.alt} eager />
+                <figcaption>
+                  From a user task to a working system.
+                  <small>Illustrative software engineering photography</small>
+                </figcaption>
+              </figure>
+            ) : (
+              <Architecture kind={kind as 'cloud' | 'web3' | 'data'} />
+            )}
+          </div>
+        )}
+      </div>
+    </section>
+    <section class="capability-perspective wrap">
+      <h2>{s.question}</h2>
+      <div>
+        <p>{s.body}</p>
+        <p>{s.detail}</p>
+      </div>
+    </section>
+    {kind === 'software' && (
+      <section class="software-composition wrap">
+        <Architecture kind="software" />
+        <div>
+          <h2>
+            Design the connections,
+            <br />
+            not just the screen.
+          </h2>
+          <p>
+            Workflows, permissions, integrations and operating ownership are part of the
+            application. Make their relationships visible before they become delivery surprises.
+          </p>
+          <a class="text-link" href="/company/how-we-work/">
+            Explore our delivery approach <Icon />
+          </a>
+        </div>
+      </section>
+    )}
+    <section class="capability-scope">
+      <div class="wrap">
+        <h2>
+          {kind === 'web3'
+            ? 'Build the full Web3 product.'
+            : kind === 'facility'
+              ? 'Plan every layer of capacity.'
+              : kind === 'data'
+                ? 'From source to a decision.'
+                : 'Where the work takes shape.'}
+        </h2>
+        <div class="scope-constellation">
+          {s.scope.map((item, i) => (
+            <article>
+              <span class="scope-symbol" aria-hidden="true">
+                {['↗', '＋', '↔', '○'][i]}
+              </span>
+              <h3>{item}</h3>
+              <p>{s.deliverables[i]}</p>
+            </article>
+          ))}
+        </div>
+        {kind === 'web3' && (
+          <div class="web3-deep-links">
+            <a href="/services/blockchain-engineering/web3-development/">
+              Crypto, wallets & decentralised applications <Icon />
+            </a>
+            <a href="/services/blockchain-engineering/exchange-development/">
+              Centralised & decentralised exchange development <Icon />
+            </a>
+          </div>
+        )}
+      </div>
+    </section>
+    <section class="wrap architecture-section">
+      <Workflow
+        id={`flow-${kind}`}
+        title={
+          kind === 'facility'
+            ? 'Connect the workload to the facility'
+            : kind === 'web3'
+              ? 'A transaction is part of a wider system'
+              : 'Follow the dependencies'
+        }
+        steps={flows[kind]}
+      />
+    </section>
+    {kind === 'facility' && (
+      <section class="facility-detail wrap">
+        <figure>
+          <Photo
+            name="cooling"
+            alt="AI-generated illustration of facility power and cooling infrastructure"
+          />
+          <figcaption>AI-generated facility illustration</figcaption>
+        </figure>
+        <div>
+          <h2>
+            Power. Cooling.
+            <br />
+            Room to operate.
+          </h2>
+          <p>
+            Compute capacity is only usable when the facility can support it. Coordinate operating
+            limits, access and maintenance with the specialists responsible for the site.
+          </p>
+          <p>
+            IT design does not itself establish facility certification. Define the role of
+            suppliers, facility engineers and relevant authorities in the engagement.
+          </p>
+        </div>
+      </section>
+    )}
+    {kind === 'cloud' && (
+      <section class="cloud-photo-break">
+        <Photo
+          name="network"
+          alt="Illustrative network equipment inside a server rack"
+          sizes="100vw"
+        />
+        <div class="wrap">
+          <h2>
+            What needs to keep working
+            <br />
+            while you change?
+          </h2>
+          <p>Migration, recovery and operational ownership belong in the same plan.</p>
+          <small>Illustrative infrastructure photography</small>
+        </div>
+      </section>
+    )}
+    <section class="project-scenario wrap">
+      <div class="scenario-title">
+        <span>Illustrative project scenario</span>
+        <h2>{guide.example}</h2>
+      </div>
+      <div class="scenario-body">
+        <p>{guide.scenario}</p>
+        <h3>What to validate</h3>
+        <ul>
+          {guide.checks.map((c) => (
+            <li>{c}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+    <section class="capability-brief">
+      <div class="wrap brief-grid">
+        <h2>
+          Make the brief
+          <br />
+          ready for delivery.
+        </h2>
+        <div>
+          <h3>Bring the right inputs</h3>
+          <p>{s.inputs}</p>
+        </div>
+        <div>
+          <h3>Agree the boundaries</h3>
+          <p>{s.boundary}</p>
+        </div>
+      </div>
+    </section>
+    <section class="wrap section capability-questions">
+      <div>
+        <h2>
+          Questions
+          <br />
+          worth asking.
+        </h2>
+        <a class="text-link" href="/company/engagement-models/">
+          Ways to work together <Icon />
+        </a>
+      </div>
+      <div class="project-faq">
+        {guide.faqs.map(([q, a]) => (
+          <details>
+            <summary>{q}</summary>
+            <p>{a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+    <section class="capability-next wrap">
+      <div>
+        <span>Further reading</span>
+        <h2>
+          <a href={`/insights/${related.slug}/`}>{related.title}</a>
+        </h2>
+      </div>
+      <a class="button" href={`/contact/?service=${s.slug}`}>
+        Discuss your requirement <Icon />
+      </a>
+    </section>
+  </div>
+</Layout>

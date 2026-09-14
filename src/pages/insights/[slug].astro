@@ -1,0 +1,89 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import ContactBand from '../../components/ContactBand.astro';
+import { articles } from '../../data/articles';
+import { exercises } from '../../data/article-exercises';
+export function getStaticPaths() {
+  return articles.map((article) => ({ params: { slug: article.slug }, props: { article } }));
+}
+const { article: a } = Astro.props;
+const exercise = exercises[a.slug];
+---
+
+<Layout title={a.title} description={a.summary}>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <a href="/insights/">Perspectives</a>
+      </div>
+      <div class="article-header">
+        <span class="meta">
+          {a.category} / {a.minutes} min read
+        </span>
+        <h1>{a.title}</h1>
+        <p class="lead">{a.summary}</p>
+        <p class="article-meta">Soft Task perspectives · Technical explainer</p>
+      </div>
+    </div>
+  </section>
+  <div class="section wrap article-body-layout">
+    <aside class="article-toc" aria-label="On this page">
+      <h2>In this perspective</h2>
+      {a.sections.map((s, i) => (
+        <a href={`#section-${i}`}>{s.heading}</a>
+      ))}
+      <a href="#working-brief">Practical working brief</a>
+      <a href="#sources">Further reading</a>
+    </aside>
+    <article class="article-body">
+      {a.sections.map((s, i) => (
+        <section id={`section-${i}`}>
+          <h2>{s.heading}</h2>
+          <p>{s.text}</p>
+          {'points' in s && s.points && (
+            <ul>
+              {s.points.map((p) => (
+                <li>{p}</li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))}
+      <section id="working-brief">
+        <h2>{exercise.title}</h2>
+        <p>{exercise.intro}</p>
+        <dl class="working-brief">
+          {exercise.rows.map(([label, text]) => (
+            <div>
+              <dt>{label}</dt>
+              <dd>{text}</dd>
+            </div>
+          ))}
+        </dl>
+        <a class="text-link" href={`/services/${exercise.service}/`}>
+          Explore {exercise.label.toLowerCase()} <Icon />
+        </a>
+      </section>
+      <section class="sources" id="sources">
+        <h2>Further reading</h2>
+        <p>
+          These primary sources provide additional context. This explainer is general guidance;
+          project decisions require a workload-specific assessment.
+        </p>
+        {a.sources.map((s) => (
+          <a href={s.url} target="_blank" rel="noopener noreferrer">
+            {s.label}
+            <span class="sr-only"> (opens in a new tab)</span>
+          </a>
+        ))}
+      </section>
+      <a class="text-link article-back" href="/insights/">
+        All perspectives <Icon />
+      </a>
+    </article>
+  </div>
+  <ContactBand />
+</Layout>

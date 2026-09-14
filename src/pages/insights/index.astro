@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Photo from '../../components/Photo.astro';
+import Icon from '../../components/Icon.astro';
+import ContactBand from '../../components/ContactBand.astro';
+import { articles } from '../../data/articles';
+---
+
+<Layout
+  title="Perspectives"
+  description="Practical explainers on infrastructure, AI workflows and the technology decisions behind business change."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/">Home</a>
+        <span>/ Perspectives</span>
+      </div>
+      <h1>
+        Look closer.
+        <br />
+        <em>Decide better.</em>
+      </h1>
+      <p class="lead">
+        Practical questions and useful explanations for the people making technology decisions.
+      </p>
+    </div>
+  </section>
+  <section class="section wrap article-cards">
+    {articles.map((a) => (
+      <a class="article-card" href={`/insights/${a.slug}/`}>
+        <Photo name={a.image} alt={`${a.category} illustrative photograph`} />
+        <span class="meta">
+          {a.category} / {a.minutes} min read
+        </span>
+        <h2>{a.title}</h2>
+        <p>{a.summary}</p>
+        <span class="text-link">
+          Read the perspective <Icon />
+        </span>
+      </a>
+    ))}
+  </section>
+  <ContactBand />
+</Layout>

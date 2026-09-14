@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Presence from '../../components/Presence.astro';
+import { presence } from '../../data/presence';
+import Icon from '../../components/Icon.astro';
+---
+
+<Layout
+  title="Our global presence"
+  description="Soft Task is headquartered in Singapore and serves clients in 33+ countries. Find our Singapore, India, UAE and US contact details, with Saudi Arabia planned."
+>
+  <section class="directory-heading wrap">
+    <div class="breadcrumb">
+      <a href="/company/">Company</a>
+      <span>/ Our presence</span>
+    </div>
+    <h1>
+      A local conversation.
+      <br />A global perspective.
+    </h1>
+    <p>
+      Our headquarters, regional websites and contact addresses bring the conversation closer to
+      your business.
+    </p>
+  </section>
+  <Presence />
+  <section class="presence-directory wrap">
+    <nav aria-label="Find a country">
+      <h2>Find your market</h2>
+      {presence.map((p) => (
+        <a href={`#office-${p.id}`}>
+          {p.name}
+          <Icon name="diagonal" />
+        </a>
+      ))}
+    </nav>
+    <div>
+      {presence.map((p) => (
+        <article class="office-record" id={`office-${p.id}`}>
+          <div>
+            <p>{p.role}</p>
+            <h2>{p.name}</h2>
+          </div>
+          <div>
+            <p>{p.note}</p>
+            {p.address && <address>{p.address}</address>}
+            <a class="text-link" href={p.url}>
+              {p.url.startsWith('http') ? 'Visit regional website' : 'Contact the global team'}
+              <Icon name="diagonal" />
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="cross-border wrap">
+    <h2>Working across more than one market?</h2>
+    <p>
+      Tell us the operating countries, business owners and systems involved. Delivery locations,
+      contracting arrangements, data requirements and support coverage are agreed for the
+      engagement.
+    </p>
+    <a class="button" href="/contact/">
+      Discuss a cross-border project <Icon />
+    </a>
+  </section>
+</Layout>

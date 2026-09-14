@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Photo from '../../components/Photo.astro';
+import Icon from '../../components/Icon.astro';
+import {services} from '../../data/services';
+---
+<Layout title="Enterprise technology capabilities">
+  <section class="capabilities-atlas wrap"><div class="breadcrumb"><a href="/">Home</a><span>/ Capabilities</span></div><h1>What needs<br />to work better?</h1><div><p>Start with the business requirement. Explore the engineering disciplines that connect the experience, the information and the systems behind it.</p><a class="text-link" href="/company/engagement-models/">Choose a starting point <Icon /></a></div></section>
+  <section class="capability-directory wrap" aria-label="Technology capabilities">{services.map(s=><article><div class="directory-visual">{s.slug==='blockchain-engineering'?<div class="ledger-mark" aria-hidden="true"><span>Wallet</span><span>Application</span><span>Ledger</span></div>:<Photo name={s.image} alt={s.alt} sizes="(max-width:620px) 100vw, 30vw"/>}</div><div><h2><a href={`/services/${s.slug}/`}>{s.name}</a></h2><p>{s.intro}</p><ul>{s.scope.slice(0,2).map(item=><li>{item}</li>)}</ul>{s.image==='facility'&&<small>AI-generated infrastructure illustration</small>}</div><a href={`/services/${s.slug}/`} class="directory-arrow" aria-label={`Explore ${s.name}`}><Icon name="diagonal" size={30}/></a></article>)}</section>
+  <section class="portfolio-connection wrap"><h2>Some questions need<br />a specialist conversation.</h2><div><p>Digital marketing and growth belong with <a href="/products/tubblor/">Tubblor</a>. AML and KYC workflows have a home in <a href="/products/regulix-one/">Regulix One</a>. Cybersecurity and STRID crypto investigation enquiries sit with <a href="/products/kytheos/">Kytheos</a>.</p><a class="button" href="/products/">Explore our products <Icon /></a></div></section>
+</Layout>

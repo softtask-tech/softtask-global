@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import Screen from '../../components/Screen.astro';
+import Workflow from '../../components/Workflow.astro';
+import { flows } from '../../data/flows';
+---
+
+<Layout
+  title="Regulix One — AML & KYC workflows"
+  description="Explore Regulix One customer onboarding, sanctions and PEP screening, risk review and compliance records. UAE availability; additional GCC markets are planned."
+>
+  <section class="regulix-cover wrap">
+    <div class="breadcrumb">
+      <a href="/products/">Products</a>
+      <span>/ Regulix One</span>
+    </div>
+    <div class="regulix-grid">
+      <div>
+        <p class="product-label">Regulix One</p>
+        <h1>
+          Every check.
+          <br />
+          Every decision.
+          <br />A clearer record.
+        </h1>
+        <p class="lead">
+          A structured workspace for customer onboarding, screening and the review behind a
+          compliance decision.
+        </p>
+        <a class="button" href="https://regulixone.com/">
+          Explore Regulix One <Icon name="diagonal" />
+        </a>
+        <p class="availability-note">Live in the UAE. Other GCC markets are on the roadmap.</p>
+      </div>
+      <figure class="review-branch" data-draw>
+        <figcaption>A reviewable customer journey</figcaption>
+        <ol>
+          <li>Customer information</li>
+          <li>Identity & screening checks</li>
+          <li class="decision-node">A case needs further review?</li>
+        </ol>
+        <div class="review-branches">
+          <div>
+            <span>Routine review</span>
+            <strong>Document the decision</strong>
+          </div>
+          <div>
+            <span>Further investigation</span>
+            <strong>Escalate to an analyst</strong>
+          </div>
+        </div>
+        <p>Preserve the checks, rationale and actions in the case record.</p>
+        <small>
+          Conceptual workflow adapted from the supplied AML/KYC schematic. Decisions remain
+          accountable to your team.
+        </small>
+      </figure>
+    </div>
+  </section>
+  <section class="regulix-workspace">
+    <div class="wrap">
+      <div>
+        <h2>
+          See the work
+          <br />
+          behind the workflow.
+        </h2>
+        <p>
+          Onboarding activity, screening information and records need a shared context. The
+          interface brings these into a workspace for the people responsible for review.
+        </p>
+      </div>
+      <Screen
+        name="regulix"
+        alt="Regulix One analytics dashboard showing screening activity and risk distribution"
+        crop
+        caption="Owner-supplied Regulix One interface view. Counts reflect the captured screen, not a product performance claim."
+      />
+    </div>
+  </section>
+  <section class="compliance-record wrap">
+    <div class="record-spine">
+      <h2>
+        Organise the evidence.
+        <br />
+        Keep the judgement clear.
+      </h2>
+      <p>
+        Regulix One supports the compliance workflow. It does not replace the responsible
+        professional or confer regulatory compliance.
+      </p>
+    </div>
+    <dl>
+      <div>
+        <dt>Customer due diligence</dt>
+        <dd>
+          Connect onboarding information, identity documents and the review context around a
+          customer record.
+        </dd>
+      </div>
+      <div>
+        <dt>Screening and risk review</dt>
+        <dd>
+          Review sanctions and politically exposed person findings in context. A potential match
+          needs assessment; it is not a conclusion on its own.
+        </dd>
+      </div>
+      <div>
+        <dt>Records and reporting</dt>
+        <dd>
+          Maintain the history behind decisions and prepare reporting material. Confirm the current
+          export formats and supported workflows for your market.
+        </dd>
+      </div>
+      <div>
+        <dt>Ongoing review</dt>
+        <dd>
+          Plan customer review around your operating policy. Transaction monitoring is a separate
+          custom-build discussion rather than an assumed standard feature.
+        </dd>
+      </div>
+    </dl>
+  </section>
+  <section class="wrap section">
+    <Workflow
+      id="regulix-flow"
+      title="From intake to a documented decision"
+      steps={flows.aml}
+      caption="Conceptual AML/KYC process based on the owner-supplied schematic; review policies are organisation-specific."
+    />
+  </section>
+  <section class="coverage-panel wrap">
+    <div>
+      <h2>Country context matters.</h2>
+      <p>
+        UAE signup is available. Saudi Arabia, Qatar, Oman, Kuwait and Bahrain are listed on the
+        product roadmap. Check current coverage, processing details and commercial terms before
+        choosing a plan.
+      </p>
+    </div>
+    <a class="button" href="https://regulixone.com/">
+      View current coverage <Icon name="diagonal" />
+    </a>
+  </section>
+</Layout>

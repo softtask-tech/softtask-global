@@ -1,0 +1,18 @@
+---
+import Photo from './Photo.astro';
+interface Props {
+  name: string;
+  alt: string;
+  caption: string;
+  crop?: boolean;
+  eager?: boolean;
+}
+const { name, alt, caption, crop = false, eager = false } = Astro.props;
+---
+
+<figure class="product-screen">
+  <div class:list={['screen-surface', crop && 'screen-analytics']}>
+    <Photo name={name} alt={alt} eager={eager} sizes="(max-width: 760px) 100vw, 80vw" />
+  </div>
+  <figcaption>{caption}</figcaption>
+</figure>

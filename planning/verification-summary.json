@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-15",
+  "stage": "Development source handover; not deployed",
+  "pages_built": 30,
+  "content_pages": 29,
+  "browser_checks": 521,
+  "browser_failures": 0,
+  "backend_tests": 12,
+  "backend_failures": 0,
+  "screen_widths": [
+    320,
+    390,
+    620,
+    768,
+    820,
+    1024,
+    1440
+  ],
+  "indexing_checks": 64,
+  "indexing_failures": 0,
+  "static_seo_pages_checked": 30,
+  "static_seo_failures": 0,
+  "typecheck": {
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "javascript_errors": [],
+  "lighthouse_local_homepage": {
+    "performance": 88,
+    "accessibility": 100,
+    "best_practices": 100,
+    "seo": 69,
+    "context": "Local Python preview, intentionally noindex. SEO crawlability audit fails by design. Production indexing flag separately verified across all pages. This is a lab snapshot, not field performance."
+  },
+  "visual_review": "Reviewed desktop, phone and tablet captures of Company, product and capability pages. Checked image proportions, workflow and presence controls, and reduced motion. Automated accessibility scans do not establish full conformance.",
+  "build_note": "Build succeeds; Windows Fontconfig emits nonfatal cache warnings during social image generation. Generated images checked.",
+  "outstanding": [
+    "UAE and Saudi street addresses",
+    "Final legal operator, policies and processing details",
+    "Stock image licence confirmation and clean Regulix demo screenshot",
+    "Editorial approval of delivery framework and technical explainers",
+    "Real provider configuration, Cloudflare bindings and staging verification before public launch"
+  ]
+}

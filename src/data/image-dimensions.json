@@ -1,0 +1,67 @@
+{
+  "team": {
+    "width": 1920,
+    "height": 1281,
+    "widths": [640, 1280, 1920]
+  },
+  "engineering": {
+    "width": 1280,
+    "height": 1920,
+    "widths": [640, 1280, 1280]
+  },
+  "server": {
+    "width": 1920,
+    "height": 1397,
+    "widths": [640, 1280, 1920]
+  },
+  "chip": {
+    "width": 1920,
+    "height": 1280,
+    "widths": [640, 1280, 1920]
+  },
+  "software": {
+    "width": 1920,
+    "height": 1281,
+    "widths": [640, 1280, 1920]
+  },
+  "automation": {
+    "width": 1280,
+    "height": 1920,
+    "widths": [640, 1280, 1280]
+  },
+  "data": {
+    "width": 1920,
+    "height": 1280,
+    "widths": [640, 1280, 1920]
+  },
+  "network": {
+    "width": 1920,
+    "height": 1280,
+    "widths": [640, 1280, 1920]
+  },
+  "tubblor": {
+    "width": 1440,
+    "height": 892,
+    "widths": [640, 1280, 1440]
+  },
+  "kytheos": {
+    "width": 1477,
+    "height": 828,
+    "widths": [640, 1280, 1477]
+  },
+  "regulix": {
+    "width": 1917,
+    "height": 867,
+    "widths": [640, 1280, 1917]
+  },
+  "facility": {
+    "width": 1344,
+    "height": 896,
+    "widths": [640, 1280, 1344]
+  },
+  "cooling": {
+    "width": 1344,
+    "height": 896,
+    "widths": [640, 1280, 1344]
+  }
+}

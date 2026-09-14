@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Photo from '../../components/Photo.astro';
+import Presence from '../../components/Presence.astro';
+import Icon from '../../components/Icon.astro';
+---
+
+<Layout title="About Soft Task">
+  <section class="company-cover wrap">
+    <div class="company-cover-copy">
+      <div class="breadcrumb">
+        <a href="/">Home</a>
+        <span>/ Company</span>
+      </div>
+      <h1>
+        The connections
+        <br />
+        behind progress.
+      </h1>
+      <p>
+        Software. Data. Intelligence. Infrastructure. We bring the disciplines together around the
+        work your business needs to do.
+      </p>
+      <a class="button" href="#our-presence">
+        Meet Soft Task <Icon />
+      </a>
+    </div>
+    <figure class="company-cover-photo">
+      <Photo
+        name="software"
+        alt="Illustrative photograph of a software developer working at a screen"
+        eager
+        sizes="(max-width: 760px) 100vw, 48vw"
+      />
+      <figcaption>
+        Technology is a team effort.<small>Illustrative engineering photography</small>
+      </figcaption>
+    </figure>
+    <div class="company-cover-note">
+      <span>Singapore headquarters</span>
+      <span>Serving clients in 33+ countries</span>
+    </div>
+  </section>
+  <section class="company-manifesto wrap">
+    <h2>One requirement can touch an entire business.</h2>
+    <div>
+      <p>
+        A customer-facing application relies on information held elsewhere. A useful AI workflow
+        needs dependable data. A growing platform needs an infrastructure plan that can keep pace.
+      </p>
+      <p>
+        Soft Task works across those connections. We help define the requirement, bring the relevant
+        disciplines into the scope and prepare a result that the next team can own.
+      </p>
+    </div>
+  </section>
+  <div id="our-presence">
+    <Presence compact />
+  </div>
+  <section class="company-disciplines wrap">
+    <div>
+      <h2>
+        A connected company.
+        <br />
+        Specialist focus.
+      </h2>
+      <p>Explore the capabilities and products behind the wider business.</p>
+    </div>
+    <div class="discipline-branches">
+      <a href="/services/">
+        <span>Enterprise engineering</span>
+        <strong>Software, AI, data and infrastructure</strong>
+        <Icon name="diagonal" />
+      </a>
+      <a href="/products/tubblor/">
+        <span>Tubblor</span>
+        <strong>Marketing intelligence and digital growth</strong>
+        <Icon name="diagonal" />
+      </a>
+      <a href="/products/regulix-one/">
+        <span>Regulix One</span>
+        <strong>AML and KYC workflows</strong>
+        <Icon name="diagonal" />
+      </a>
+      <a href="/products/kytheos/">
+        <span>Kytheos</span>
+        <strong>Cybersecurity, including STRID</strong>
+        <Icon name="diagonal" />
+      </a>
+    </div>
+  </section>
+  <section class="delivery-invitation">
+    <div class="wrap">
+      <p>From a first question to an operational handover.</p>
+      <h2>
+        See how the work
+        <br />
+        comes together.
+      </h2>
+      <div>
+        <a class="button light" href="/company/how-we-work/">
+          Our delivery approach <Icon />
+        </a>
+        <a class="text-link" href="/company/engagement-models/">
+          Ways to work together <Icon />
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

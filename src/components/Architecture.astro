@@ -1,0 +1,106 @@
+---
+interface Props {
+  kind: 'cloud' | 'web3' | 'data' | 'software';
+}
+const { kind } = Astro.props;
+---
+
+{kind === 'cloud' ? (
+  <figure class="architecture architecture-cloud" data-draw>
+    <figcaption>
+      Design around the whole service.<small>Illustrative active / standby architecture</small>
+    </figcaption>
+    <div class="traffic-node">Traffic routing & health checks</div>
+    <svg viewBox="0 0 700 55" preserveAspectRatio="none" aria-hidden="true">
+      <path class="route-line" d="M350 0V20H160V55M350 20H540V55" />
+    </svg>
+    <div class="region-pair">
+      <div>
+        <h3>Primary environment</h3>
+        <span>Load balancing</span>
+        <span>Application services</span>
+        <span>Primary data store</span>
+      </div>
+      <div>
+        <h3>Recovery environment</h3>
+        <span>Routing readiness</span>
+        <span>Standby services</span>
+        <span>Replicated data</span>
+      </div>
+    </div>
+    <p>
+      Replication, recovery objectives and failover decisions need an agreed design and testing.
+    </p>
+  </figure>
+) : kind === 'web3' ? (
+  <figure class="architecture architecture-web3" data-draw>
+    <figcaption>
+      The product beyond the chain.<small>Illustrative Web3 platform layers</small>
+    </figcaption>
+    <div class="web3-layers">
+      <div>
+        <span>Experience</span>
+        <strong>Applications · wallets · exchange interfaces</strong>
+      </div>
+      <div>
+        <span>Business services</span>
+        <strong>Accounts · orders · settlement · reconciliation</strong>
+      </div>
+      <div>
+        <span>Network</span>
+        <strong>Contracts · nodes · transaction confirmation</strong>
+      </div>
+      <div>
+        <span>Operating model</span>
+        <strong>Governance · key ownership · monitoring</strong>
+      </div>
+    </div>
+  </figure>
+) : kind === 'data' ? (
+  <figure class="architecture architecture-data" data-draw>
+    <figcaption>
+      Know where a number came from.<small>Illustrative data lineage</small>
+    </figcaption>
+    <div class="data-sources">
+      <span>Business systems</span>
+      <span>Files & events</span>
+      <span>External APIs</span>
+    </div>
+    <svg viewBox="0 0 600 70" preserveAspectRatio="none" aria-hidden="true">
+      <path class="route-line" d="M70 0V25H300V70M300 0V70M530 0V25H300" />
+    </svg>
+    <div class="data-transform">
+      <strong>Validate → transform → document</strong>
+      <span>Definitions, quality rules and ownership</span>
+    </div>
+    <div class="data-outcomes">
+      <span>Operational reporting</span>
+      <span>Analytics & AI inputs</span>
+    </div>
+  </figure>
+) : (
+  <figure class="architecture architecture-software" data-draw>
+    <figcaption>
+      An application is a connected system.<small>Illustrative application composition</small>
+    </figcaption>
+    <div class="app-window">
+      <div>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <h3>The user’s workflow</h3>
+      <p>Roles, tasks and exceptions</p>
+      <div class="app-modules">
+        <span>Interface</span>
+        <span>Business rules</span>
+        <span>API contracts</span>
+        <span>Data model</span>
+      </div>
+    </div>
+    <div class="app-integrations">
+      <span>Existing systems</span>
+      <span>Release & operations</span>
+    </div>
+  </figure>
+)}

@@ -1,0 +1,140 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Icon from '../../../components/Icon.astro';
+import Workflow from '../../../components/Workflow.astro';
+import { flows } from '../../../data/flows';
+---
+
+<Layout
+  title="Web3, crypto & wallet development"
+  description="Soft Task develops Web3 applications, crypto and token platforms, wallets and smart-contract integrations. Explore product scope, governance and delivery considerations."
+>
+  <section class="web3-product-cover wrap">
+    <div class="breadcrumb">
+      <a href="/services/blockchain-engineering/">Blockchain & Web3</a>
+      <span>/ Web3 development</span>
+    </div>
+    <div>
+      <h1>
+        Build for the people
+        <br />
+        behind the wallet.
+      </h1>
+      <p>
+        Web3 and crypto development connects a usable product with contracts, transaction behaviour
+        and a clearly defined operating model.
+      </p>
+    </div>
+    <nav aria-label="Web3 development topics">
+      <a href="#applications">Applications</a>
+      <a href="#tokens">Crypto & tokens</a>
+      <a href="#wallets">Wallets</a>
+      <a href="#contracts">Smart contracts</a>
+    </nav>
+  </section>
+  <section class="web3-product-grid wrap">
+    <article id="applications">
+      <span>Product experience</span>
+      <h2>Decentralised applications</h2>
+      <p>
+        Develop the interface and services around a decentralised workflow. Account connection,
+        transaction signing, network selection and confirmation states need to be understandable to
+        the user.
+      </p>
+      <ul>
+        <li>Web3 application interfaces and backend integrations</li>
+        <li>Marketplace and token-enabled workflows</li>
+        <li>On-chain event indexing and application data</li>
+        <li>Transaction status, fees and exception handling</li>
+      </ul>
+    </article>
+    <article id="tokens">
+      <span>Asset lifecycle</span>
+      <h2>Crypto & token development</h2>
+      <p>
+        Define the purpose, rules and controls of a token before implementation. Token contracts,
+        allocation mechanisms and administrative functions should reflect the agreed product and
+        governance model.
+      </p>
+      <ul>
+        <li>Token and crypto platform architecture</li>
+        <li>Issuance, transfer and lifecycle logic</li>
+        <li>Administrative permissions and governance</li>
+        <li>Integration with wallets and business systems</li>
+      </ul>
+    </article>
+    <article id="wallets">
+      <span>Control & ownership</span>
+      <h2>Wallet development</h2>
+      <p>
+        Wallet design begins with who controls the keys. A custodial model and a user-controlled
+        model have different operating responsibilities, recovery paths and integration
+        requirements.
+      </p>
+      <ul>
+        <li>Wallet interfaces and account connection</li>
+        <li>Signing and transaction submission flows</li>
+        <li>Balance views and transaction history</li>
+        <li>Integration with the selected custody architecture</li>
+      </ul>
+    </article>
+    <article id="contracts">
+      <span>Rules & execution</span>
+      <h2>Smart-contract engineering</h2>
+      <p>
+        Specify what a contract should do, who may change it and how failures are handled. Testing
+        must cover the relationship between contract behaviour and the application that depends on
+        it.
+      </p>
+      <ul>
+        <li>Contract specifications and implementation</li>
+        <li>Unit, integration and scenario testing</li>
+        <li>Deployment and upgrade procedures</li>
+        <li>Independent review coordination where commissioned</li>
+      </ul>
+    </article>
+  </section>
+  <section class="wrap section">
+    <Workflow
+      id="web3-development"
+      title="Connect the user journey to the ledger"
+      steps={flows.web3}
+    />
+  </section>
+  <section class="web3-ownership">
+    <div class="wrap">
+      <h2>
+        The operating model
+        <br />
+        is part of the product.
+      </h2>
+      <div>
+        <p>
+          Define signing authority, permissions, network dependencies, transaction monitoring and
+          reconciliation. Identify who can pause an operation, approve a change and investigate an
+          exception.
+        </p>
+        <p>
+          Engineering does not establish permission to operate a financial service. Applicable
+          market requirements, independent reviews and operating responsibilities must be addressed
+          in the project scope with the appropriate specialists.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="product-next wrap">
+    <div>
+      <h2>Building an exchange?</h2>
+      <p>
+        Explore the application, execution, wallet and reconciliation work behind centralised and
+        decentralised exchange platforms.
+      </p>
+      <a class="text-link" href="/services/blockchain-engineering/exchange-development/">
+        Exchange development <Icon />
+      </a>
+    </div>
+    <a class="button" href="/contact/?service=blockchain-engineering">
+      Discuss a Web3 project <Icon />
+    </a>
+  </section>
+</Layout>

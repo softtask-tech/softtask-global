@@ -1,0 +1,42 @@
+{
+  "name": "softtask-global",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1 --port 4321",
+    "check": "astro check",
+    "test": "node --test tests/worker.test.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "cf:dev": "wrangler dev",
+    "cf:deploy": "npm run build && wrangler deploy",
+    "audit": "node scripts/audit.mjs",
+    "test:seo": "node tests/static-seo.mjs",
+    "test:responsive": "node tests/content-responsive.mjs",
+    "test:interactions": "node tests/inner-interactions.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "astro": "^7.3.2",
+    "lucide": "^1.45.0",
+    "motion": "^13.2.0",
+    "sharp": "^0.35.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "lighthouse": "^13.4.1",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^1.0.0",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.131.1"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

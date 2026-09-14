@@ -1,0 +1,50 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  steps: { name: string; detail: string }[];
+  variant?: string;
+  caption?: string;
+}
+const {
+  id,
+  title,
+  steps,
+  variant = 'line',
+  caption = 'Conceptual workflow; the implementation is agreed for each engagement.',
+} = Astro.props;
+---
+
+<figure class:list={['workflow', `workflow-${variant}`]} data-workflow>
+  <figcaption>
+    <span>{title}</span>
+    <small>{caption}</small>
+  </figcaption>
+  <div class="workflow-track" data-draw>
+    <svg viewBox="0 0 1000 10" preserveAspectRatio="none" aria-hidden="true">
+      <path class="route-line" d="M0 5H1000" />
+    </svg>
+    <ol>
+      {steps.map((step, i) => (
+        <li>
+          <button
+            aria-expanded={i === 0 ? 'true' : 'false'}
+            aria-controls={`${id}-detail-${i}`}
+            data-flow-step={i}
+          >
+            <span class="flow-dot">{i + 1}</span>
+            <span>{step.name}</span>
+          </button>
+        </li>
+      ))}
+    </ol>
+  </div>
+  <div class="workflow-description">
+    {steps.map((step, i) => (
+      <div id={`${id}-detail-${i}`} data-flow-detail={i} hidden={i !== 0}>
+        <strong>{step.name}</strong>
+        <p>{step.detail}</p>
+      </div>
+    ))}
+  </div>
+</figure>

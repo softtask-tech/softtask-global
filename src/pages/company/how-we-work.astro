@@ -1,0 +1,257 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import Workflow from '../../components/Workflow.astro';
+import Photo from '../../components/Photo.astro';
+import ContactBand from '../../components/ContactBand.astro';
+const phases = [
+  {
+    id: 'discover',
+    title: 'Understand the work before defining the solution.',
+    label: 'Discover',
+    question: 'What needs to change, and why?',
+    body: 'We begin with the workflow: the people using it, the information moving through it and the systems it depends on. Business goals sit alongside practical constraints such as access, budgets, procurement and maintenance windows.',
+    actions: [
+      'Walk through representative workflows with their owners.',
+      'Separate observed problems from assumptions that need testing.',
+      'Identify dependencies, decision makers and measures of success.',
+    ],
+    output:
+      'A shared problem statement, an initial dependency map and the questions that must be resolved before committing to a solution.',
+    decision: 'Agree the problem worth solving.',
+  },
+  {
+    id: 'shape',
+    title: 'Make the choices and their consequences visible.',
+    label: 'Shape',
+    question: 'What is the right scope for this stage?',
+    body: 'Architecture is a series of decisions about how the business will operate. We compare practical options, record trade-offs and define a delivery boundary. Software, data, infrastructure and third-party responsibilities need to fit together.',
+    actions: [
+      'Describe the target state and the path from today’s systems.',
+      'Record deliverables, exclusions, assumptions and external dependencies.',
+      'Agree acceptance criteria, ownership and the process for approving changes.',
+    ],
+    output:
+      'An agreed scope and architecture direction, with a delivery plan, responsibility map and acceptance criteria.',
+    decision: 'Approve the scope and delivery baseline.',
+  },
+  {
+    id: 'deliver',
+    title: 'Build in stages that people can review.',
+    label: 'Deliver',
+    question: 'How will we know the work is progressing?',
+    body: 'Delivery should expose important decisions early. We organise implementation around reviewable increments and use the agreed requirements to guide testing. Reviews bring together technical evidence and feedback from the people who will use the result.',
+    actions: [
+      'Validate uncertain integrations and data assumptions early.',
+      'Review working increments against representative user scenarios.',
+      'Record issues, decisions and the effect of scope changes on time and cost.',
+    ],
+    output:
+      'Reviewable implementation, test evidence, an issue record and an updated release or migration plan.',
+    decision: 'Confirm readiness for acceptance.',
+  },
+  {
+    id: 'transition',
+    title: 'Make the result ready for its next owner.',
+    label: 'Transition',
+    question: 'Who will run it after the project?',
+    body: 'A release is a transition in responsibility. We plan validation, documentation and operational ownership alongside implementation. The required depth depends on the system: an application release and a facility deployment need different acceptance evidence.',
+    actions: [
+      'Run the agreed acceptance checks with nominated owners.',
+      'Record configurations, dependencies, known limitations and recovery procedures.',
+      'Agree training, outstanding actions and any continuing support scope.',
+    ],
+    output:
+      'An acceptance record and handover pack, with named owners and the support arrangements agreed for the engagement.',
+    decision: 'Accept the handover and next actions.',
+  },
+];
+---
+
+<Layout title="How we work">
+  <section class="page-hero process-hero">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/company/">Company</a>
+        <span>/ How we work</span>
+      </div>
+      <h1>
+        Complex work.
+        <br />
+        <em>A clear way forward.</em>
+      </h1>
+      <p class="lead">
+        From the first question to the operational handover, keep the purpose clear, the decisions
+        visible and the right people involved.
+      </p>
+      <nav class="phase-nav" aria-label="Delivery stages">
+        {phases.map((p, i) => (
+          <a href={`#${p.id}`}>
+            <span>0{i + 1}</span>
+            {p.label}
+            <Icon />
+          </a>
+        ))}
+      </nav>
+    </div>
+  </section>
+  <section class="section wrap service-intro">
+    <h2>
+      A shared understanding.
+      <br />
+      Before a shared deadline.
+    </h2>
+    <div>
+      <p>
+        A useful project plan explains more than what will be built. It explains why the work
+        matters, what depends on it and how both teams will decide that it is ready.
+      </p>
+      <p>
+        This is the framework we bring to a project conversation. Specific deliverables, review
+        frequency, timelines and support commitments are agreed in the engagement scope.
+      </p>
+    </div>
+  </section>
+  <section class="wrap process-interaction">
+    <Workflow
+      id="delivery-route"
+      title="Explore the decisions through a project"
+      steps={phases.map((p) => ({ name: p.label, detail: p.decision + ' ' + p.output }))}
+    />
+  </section>
+  <div class="wrap phase-sequence">
+    {phases.map((p, i) => (
+      <section class:list={['delivery-phase', `delivery-phase-${p.id}`]} id={p.id}>
+        <div class="phase-heading">
+          <span class="phase-number">0{i + 1}</span>
+          <p>{p.label}</p>
+          <h2>{p.title}</h2>
+        </div>
+        {p.id === 'deliver' && (
+          <figure class="delivery-work-photo">
+            <Photo name="software" alt="Illustrative photograph of application engineering" />
+            <figcaption>Review work while it is taking shape. Illustrative photography.</figcaption>
+          </figure>
+        )}
+        <div class="phase-content">
+          <h3>{p.question}</h3>
+          <p>{p.body}</p>
+          <ul>
+            {p.actions.map((a) => (
+              <li>{a}</li>
+            ))}
+          </ul>
+          <div class="phase-output">
+            <h4>What this stage produces</h4>
+            <p>{p.output}</p>
+            <span>
+              <Icon name="check" />
+              {p.decision}
+            </span>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+  <section class="scope-section">
+    <div class="wrap">
+      <div class="section-heading">
+        <h2>
+          Make responsibility
+          <br />
+          part of the design.
+        </h2>
+        <p>
+          Agree these roles at the start. One person may hold more than one role in a smaller
+          engagement.
+        </p>
+      </div>
+      <div class="responsibility-grid">
+        <article>
+          <h3>Your business owner</h3>
+          <p>
+            Defines priorities, explains operational constraints and identifies the people who can
+            validate the outcome. Approves business decisions and changes to the agreed brief.
+          </p>
+        </article>
+        <article>
+          <h3>The delivery team</h3>
+          <p>
+            Translates the brief into implementation, raises dependencies and provides evidence for
+            review. Records decisions and prepares the material needed for handover.
+          </p>
+        </article>
+        <article>
+          <h3>Operations and specialists</h3>
+          <p>
+            Contribute access, integration knowledge and operating requirements. Facility
+            specialists, vendors and other providers participate where the scope depends on their
+            work.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section wrap service-intro">
+    <h2>
+      When the brief changes,
+      <br />
+      make the decision explicit.
+    </h2>
+    <div>
+      <p>
+        New information is part of delivery. A discovered dependency, a changed workflow or a
+        revised launch date may alter the original scope. Record the request, its reason and its
+        effect on the work before deciding how to proceed.
+      </p>
+      <ol class="decision-list">
+        <li>
+          <strong>Describe the change.</strong> Separate a defect against agreed requirements from
+          an additional requirement.
+        </li>
+        <li>
+          <strong>Assess the effect.</strong> Review dependencies, cost, sequencing and acceptance
+          criteria.
+        </li>
+        <li>
+          <strong>Agree the next step.</strong> Approve, defer or revise the request and update the
+          delivery record.
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="wrap section project-faq">
+    <h2>Before we begin.</h2>
+    <details>
+      <summary>Do we need a complete specification?</summary>
+      <p>
+        No. Start with the business problem, the systems involved and the constraints you already
+        know. Discovery can help identify the information needed to define a responsible scope.
+      </p>
+    </details>
+    <details>
+      <summary>Can you work with our existing technology team?</summary>
+      <p>
+        That can be defined in the engagement. Agree who owns architecture, repositories,
+        environments, reviews and releases so responsibilities are clear across both teams.
+      </p>
+    </details>
+    <details>
+      <summary>How is confidential project information handled?</summary>
+      <p>
+        Agree confidentiality terms and an appropriate sharing method before sending sensitive
+        material. An initial enquiry can describe the problem at a high level without including
+        customer data, credentials or restricted documents.
+      </p>
+    </details>
+    <details>
+      <summary>What happens after handover?</summary>
+      <p>
+        Define ongoing support separately: covered systems, service hours, response targets,
+        escalation routes and excluded work. Handover should identify the operating owner even when
+        no continuing support is commissioned.
+      </p>
+    </details>
+  </section>
+  <ContactBand />
+</Layout>

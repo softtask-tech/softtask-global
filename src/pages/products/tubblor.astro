@@ -1,0 +1,139 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import Screen from '../../components/Screen.astro';
+import Workflow from '../../components/Workflow.astro';
+---
+
+<Layout
+  title="Tubblor — marketing intelligence"
+  description="Connect website analysis, search presence, social signals and competitor context with Tubblor, a Soft Task product for clearer digital growth priorities."
+>
+  <section class="tubblor-cover wrap">
+    <div class="breadcrumb">
+      <a href="/products/">Products</a>
+      <span>/ Tubblor</span>
+    </div>
+    <div class="tubblor-cover-grid">
+      <div>
+        <p class="product-label">Marketing intelligence</p>
+        <h1>
+          See the signals.
+          <br />
+          Choose the next move.
+        </h1>
+        <p class="lead">
+          Tubblor brings your digital presence into a clearer view, so a marketing conversation can
+          begin with what needs attention.
+        </p>
+        <a class="button" href="https://www.tubblor.com/">
+          Explore Tubblor <Icon name="diagonal" />
+        </a>
+      </div>
+      <div class="signal-orbit" data-draw>
+        <svg viewBox="0 0 500 440" aria-hidden="true">
+          <path
+            class="route-line"
+            d="M70 80Q250 80 250 220M430 90Q250 90 250 220M50 330Q250 330 250 220M430 330Q250 330 250 220"
+          />
+          <circle cx="250" cy="220" r="165" />
+          <circle cx="250" cy="220" r="110" />
+        </svg>
+        <strong>
+          Tubblor<span>Marketing intelligence</span>
+        </strong>
+        <span class="signal signal-a">Website</span>
+        <span class="signal signal-b">Search</span>
+        <span class="signal signal-c">Social & reviews</span>
+        <span class="signal signal-d">Competitors</span>
+      </div>
+    </div>
+  </section>
+  <section class="report-feature">
+    <div class="wrap">
+      <div class="report-heading">
+        <h2>Bring the picture together.</h2>
+        <p>
+          Assess the channels, then work through the priorities. A score is a starting point for
+          investigation, not a substitute for understanding the business.
+        </p>
+      </div>
+      <Screen
+        name="tubblor"
+        alt="Tubblor marketing intelligence categories and example score on its product website"
+        caption="Tubblor website illustration. The displayed score is an example, not a Soft Task client result."
+      />
+    </div>
+  </section>
+  <section class="signal-editorial wrap">
+    <h2>
+      From scattered observations
+      <br />
+      to a practical discussion.
+    </h2>
+    <div class="signal-topics">
+      <article>
+        <span>Understand</span>
+        <h3>Your digital presence</h3>
+        <p>
+          Bring website health, content, search presence and social context into the same review.
+          Understand where the public experience is inconsistent or difficult to use.
+        </p>
+      </article>
+      <article>
+        <span>Compare</span>
+        <h3>The market around you</h3>
+        <p>
+          Competitor context helps explain where a brand is visible and where it may be missing an
+          opportunity. Use it to sharpen the questions behind a marketing plan.
+        </p>
+      </article>
+      <article>
+        <span>Prioritise</span>
+        <h3>The next action</h3>
+        <p>
+          Turn findings into a sequence of work. Decide what can be improved now, what requires
+          deeper investigation and what should be measured over time.
+        </p>
+      </article>
+    </div>
+  </section>
+  <section class="wrap section">
+    <Workflow
+      id="tubblor-flow"
+      title="A clearer starting point for marketing"
+      steps={[
+        {
+          name: 'Describe your presence',
+          detail: 'Begin with the website and relevant public profiles you want to understand.',
+        },
+        {
+          name: 'Review the findings',
+          detail: 'Read the report in the context of your audience, market and business goals.',
+        },
+        {
+          name: 'Choose priorities',
+          detail: 'Separate actionable improvements from questions needing deeper research.',
+        },
+        {
+          name: 'Revisit the work',
+          detail:
+            'Use subsequent reviews to understand changes and refine the next set of priorities.',
+        },
+      ]}
+    />
+  </section>
+  <section class="product-next wrap">
+    <div>
+      <h2>Digital growth has a specialist home.</h2>
+      <p>
+        Bring digital audits, content strategy, social media, brand identity and wider marketing
+        conversations to Tubblor. Current product features, service scope and plans are described on
+        its website.
+      </p>
+    </div>
+    <a class="button" href="https://www.tubblor.com/">
+      Visit Tubblor <Icon name="diagonal" />
+    </a>
+  </section>
+</Layout>

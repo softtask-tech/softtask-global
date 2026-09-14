@@ -1,0 +1,40 @@
+---
+import dimensions from '../data/image-dimensions.json';
+interface Props {
+  name: string;
+  alt: string;
+  eager?: boolean;
+  class?: string;
+  sizes?: string;
+}
+const {
+  name,
+  alt,
+  eager = false,
+  class: className = '',
+  sizes = '(max-width: 760px) 100vw, 60vw',
+} = Astro.props;
+const meta = dimensions[name as keyof typeof dimensions];
+const widths = meta?.widths || [640, 1280, 1920];
+const srcset = (format: string) =>
+  widths
+    .map((width, i) => ({ width, file: [640, 1280, 1920][i] }))
+    .filter((item, i, items) => items.findIndex((x) => x.width === item.width) === i)
+    .map((item) => `/images/${name}-${item.file}.${format} ${item.width}w`)
+    .join(', ');
+---
+
+<picture class={className}>
+  <source type="image/avif" srcset={srcset('avif')} sizes={sizes} />
+  <img
+    src={`/images/${name}-1280.webp`}
+    srcset={srcset('webp')}
+    sizes={sizes}
+    alt={alt}
+    width={meta?.width || 1920}
+    height={meta?.height || 1280}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : 'auto'}
+    decoding="async"
+  />
+</picture>

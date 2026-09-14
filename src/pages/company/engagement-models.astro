@@ -1,0 +1,121 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import Workflow from '../../components/Workflow.astro';
+const models = [
+  {
+    title: 'Clarify the next decision',
+    label: 'Discovery & assessment',
+    text: 'For a business requirement that needs a clearer technical scope. Map the current workflow, dependencies and constraints before choosing an implementation direction.',
+    bring: 'A business owner, current-system context and the decisions you need to make.',
+    result: 'An assessment or discovery output defined around the questions in scope.',
+  },
+  {
+    title: 'Deliver a defined change',
+    label: 'Project delivery',
+    text: 'For a system, integration or infrastructure change with agreed outcomes. Establish deliverables, acceptance criteria and the dependencies each team will own.',
+    bring: 'Priorities, access owners, review participants and acceptance expectations.',
+    result: 'A reviewable implementation and handover against the agreed scope.',
+  },
+  {
+    title: 'Work alongside your team',
+    label: 'Collaborative engineering',
+    text: 'For work that needs to connect with an existing delivery organisation. Agree architecture authority, repositories, environments and responsibilities across teams.',
+    bring: 'Your delivery practices, technical owners and the capability gaps to address.',
+    result: 'A defined contribution to the wider programme, with decisions and work recorded.',
+  },
+];
+---
+
+<Layout
+  title="Ways to work with Soft Task"
+  description="Explore discovery, project delivery and collaborative engineering with Soft Task. Compare the inputs, responsibilities and outcomes to define the right engagement."
+>
+  <section class="engagement-cover wrap">
+    <div class="breadcrumb">
+      <a href="/company/">Company</a>
+      <span>/ Ways to work together</span>
+    </div>
+    <h1>
+      Start where
+      <br />
+      the work needs you.
+    </h1>
+    <p>
+      Not every project begins with a specification. Choose the conversation that fits the decision
+      in front of you.
+    </p>
+  </section>
+  <section class="model-comparison wrap">
+    {models.map((m) => (
+      <article>
+        <span>{m.label}</span>
+        <h2>{m.title}</h2>
+        <p>{m.text}</p>
+        <dl>
+          <dt>Bring to the discussion</dt>
+          <dd>{m.bring}</dd>
+          <dt>Define the outcome</dt>
+          <dd>{m.result}</dd>
+        </dl>
+        <a class="text-link" href="/contact/">
+          Discuss this approach <Icon />
+        </a>
+      </article>
+    ))}
+  </section>
+  <section class="working-agreement">
+    <div class="wrap">
+      <h2>
+        A working relationship
+        <br />
+        needs a working agreement.
+      </h2>
+      <div class="agreement-grid">
+        <p>
+          Regardless of the starting point, agree the responsibilities that make delivery practical.
+          Commercial terms and support commitments follow the actual scope.
+        </p>
+        <ul>
+          <li>Who makes business and technical decisions</li>
+          <li>What is included, excluded and dependent on others</li>
+          <li>How work is reviewed and accepted</li>
+          <li>Who owns the result and its ongoing operation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="wrap section">
+    <Workflow
+      id="engage"
+      title="From conversation to an agreed engagement"
+      steps={[
+        {
+          name: 'Discuss',
+          detail:
+            'Explain the requirement, your current context and the constraint that matters most.',
+        },
+        {
+          name: 'Explore',
+          detail: 'Identify the information and specialists needed to define a responsible scope.',
+        },
+        {
+          name: 'Agree',
+          detail:
+            'Record deliverables, responsibilities, acceptance criteria and commercial terms.',
+        },
+        {
+          name: 'Begin',
+          detail: 'Start the agreed work with the right owners and review points in place.',
+        },
+      ]}
+    />
+  </section>
+  <section class="cross-border wrap">
+    <h2>Understand the delivery approach.</h2>
+    <p>See how discovery, design, implementation and handover connect through a project.</p>
+    <a class="button" href="/company/how-we-work/">
+      How we work <Icon />
+    </a>
+  </section>
+</Layout>

@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import { productProfiles } from '../data/product-profiles';
+---
+
+<Layout title="The Soft Task product portfolio">
+  <section class="portfolio-cover wrap">
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/ Products</span>
+    </div>
+    <h1>
+      Different questions.
+      <br />
+      Focused products.
+    </h1>
+    <p>
+      Three specialist brands. Explore the thinking, workflows and current availability behind each
+      one.
+    </p>
+  </section>
+  <section class="portfolio-gallery wrap" aria-label="Explore our products">
+    {productProfiles.map((p, i) => (
+      <a class:list={['portfolio-tile', `portfolio-tile-${i}`]} href={`/products/${p.slug}/`}>
+        <div>
+          <span>{p.category}</span>
+          <Icon name="diagonal" size={28} />
+        </div>
+        <h2>{p.name}</h2>
+        {p.slug === 'regulix-one' ? (
+          <div class="portfolio-record">
+            <span>Customer information</span>
+            <span>Screening & review</span>
+            <span>A documented decision</span>
+          </div>
+        ) : (
+          <Photo
+            name={p.image}
+            alt={`${p.name} public product website illustration`}
+            sizes="(max-width:760px) 100vw, 40vw"
+          />
+        )}
+        <p>{p.description}</p>
+        <strong>Explore {p.name}</strong>
+      </a>
+    ))}
+  </section>
+  <section class="portfolio-connection wrap">
+    <h2>
+      A wider company.
+      <br />A clear place to begin.
+    </h2>
+    <div>
+      <p>
+        Marketing and digital growth conversations belong with Tubblor. Compliance workflows have a
+        home in Regulix One. Cybersecurity, including STRID crypto investigation and recovery
+        enquiries, sits with Kytheos.
+      </p>
+      <p>
+        For software, AI, data and infrastructure projects that connect several disciplines, start
+        with the Soft Task team.
+      </p>
+      <a class="button" href="/contact/">
+        Discuss an enterprise project <Icon />
+      </a>
+    </div>
+  </section>
+</Layout>

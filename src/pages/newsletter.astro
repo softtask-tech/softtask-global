@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<Layout title="Subscribe to perspectives">
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/">Home</a>
+        <span>/ Newsletter</span>
+      </div>
+      <h1>
+        A useful perspective.
+        <br />
+        <em>Space to think.</em>
+      </h1>
+      <p class="lead">
+        Receive Soft Task updates on software, AI, data and infrastructure. Choose the topics that
+        matter to your work.
+      </p>
+    </div>
+  </section>
+  <section class="section wrap form-layout">
+    <aside class="form-context">
+      <h2>
+        Substance for
+        <br />
+        your next decision.
+      </h2>
+      <p>
+        Technical explainers, practical questions and product updates. Confirm your email to
+        subscribe, and unsubscribe whenever you choose.
+      </p>
+      <ul>
+        <li>Questions to ask before an infrastructure change.</li>
+        <li>Practical considerations for software and data workflows.</li>
+        <li>AI evaluation and the role of human review.</li>
+        <li>Updates from the Soft Task product portfolio.</li>
+      </ul>
+      <p>
+        Your subscription is separate from a project enquiry. Confirmation verifies the email
+        address before it is added to the active subscriber list.
+      </p>
+      <a class="text-link" href="/insights/">
+        Read the latest perspectives <Icon />
+      </a>
+    </aside>
+    <form class="form-grid" data-endpoint="/api/subscribe" method="post" action="/api/subscribe">
+      <label class="field full">
+        Email address
+        <input name="email" type="email" required autocomplete="email" maxlength="254" />
+      </label>
+      <label class="field full">
+        Your main interest
+        <select name="topic" required>
+          <option value="all">All perspectives</option>
+          <option value="infrastructure">Cloud & infrastructure</option>
+          <option value="software">Software engineering</option>
+          <option value="ai-data">AI & data</option>
+        </select>
+      </label>
+      <label class="checkbox-field">
+        <input type="checkbox" name="consent" required />
+        <span>
+          I would like to receive Soft Task updates by email. I have read the{' '}
+          <a href="/privacy/">privacy information</a> and understand I can unsubscribe.
+        </span>
+      </label>
+      <div class="sr-only" aria-hidden="true">
+        <label>
+          Leave this empty
+          <input name="website" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+      <div class="turnstile-mount" data-action="subscribe"></div>
+      <p class="form-status" role="status" tabindex="-1" hidden></p>
+      <button class="button primary form-submit" type="submit">
+        Subscribe to updates <Icon />
+      </button>
+      <p class="form-note">
+        Subscriptions are awaiting activation. This form will not claim a subscription before the
+        email service accepts it.
+      </p>
+    </form>
+  </section>
+</Layout>

@@ -1,0 +1,119 @@
+[
+  {
+    "name": "team",
+    "original": "this_is_engineering-engineer-4690505_1920.jpg",
+    "generated": false,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "Illustrative technology imagery; not evidence of Soft Task people, projects or facilities",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  },
+  {
+    "name": "engineering",
+    "original": "this_is_engineering-engineer-4915802_1920.jpg",
+    "generated": false,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "Illustrative technology imagery; not evidence of Soft Task people, projects or facilities",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  },
+  {
+    "name": "server",
+    "original": "dlohner-sever-3100049_1920.jpg",
+    "generated": false,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "Illustrative technology imagery; not evidence of Soft Task people, projects or facilities",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  },
+  {
+    "name": "chip",
+    "original": "blickpixel-cpu-564774_1920.jpg",
+    "generated": false,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "Illustrative technology imagery; not evidence of Soft Task people, projects or facilities",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  },
+  {
+    "name": "software",
+    "original": "this_is_engineering-engineer-4904884_1920.jpg",
+    "generated": false,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "Illustrative technology imagery; not evidence of Soft Task people, projects or facilities",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  },
+  {
+    "name": "automation",
+    "original": "this_is_engineering-engineer-4915804_1920.jpg",
+    "generated": false,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "Illustrative technology imagery; not evidence of Soft Task people, projects or facilities",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  },
+  {
+    "name": "data",
+    "original": "geralt-data-2899901_1920.jpg",
+    "generated": false,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "Illustrative technology imagery; not evidence of Soft Task people, projects or facilities",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  },
+  {
+    "name": "network",
+    "original": "cookieone-internet-8097838_1920.jpg",
+    "generated": false,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "Illustrative technology imagery; not evidence of Soft Task people, projects or facilities",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  },
+  {
+    "name": "tubblor",
+    "original": "our product screenshot/tubblor/Screenshot 2026-09-15 000729.png",
+    "generated": false,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "Owner-supplied public product website screenshot; preserve its illustrative context",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  },
+  {
+    "name": "kytheos",
+    "original": "our product screenshot/kythoes/Screenshot 2026-09-15 001243.png",
+    "generated": false,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "Owner-supplied public product website screenshot; preserve its illustrative context",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  },
+  {
+    "name": "regulix",
+    "original": "our product screenshot/regulixone/Screenshot 2026-09-15 001825.png",
+    "generated": false,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "Owner-supplied public product website screenshot; preserve its illustrative context",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  },
+  {
+    "name": "facility",
+    "original": "SOFTTASK_Wide-angle_symmetrical_view_down_a_long_server_rack__2e4c693c-83f4-4953-ada3-02734441686b_1.png",
+    "generated": true,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "AI-generated infrastructure illustration; not a Soft Task facility",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  },
+  {
+    "name": "cooling",
+    "original": "SOFTTASK_Industrial_cooling_units_and_power_distribution_unit_d33853cf-92c5-4c28-aef9-19116125fab3_0.png",
+    "generated": true,
+    "origin": "Owner-supplied Downloads/freeimages folder",
+    "use": "AI-generated infrastructure illustration; not a Soft Task facility",
+    "rights": "Owner collected; original licence/source URL confirmation outstanding before public launch",
+    "processing": "Responsive width variants; no generative alteration"
+  }
+]

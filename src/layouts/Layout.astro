@@ -1,0 +1,319 @@
+---
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/newsreader/wght-italic.css';
+import manropeFont from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
+import newsreaderFont from '@fontsource-variable/newsreader/files/newsreader-latin-wght-italic.woff2?url';
+import '../styles/global.css';
+import '../styles/inner.css';
+import Icon from '../components/Icon.astro';
+import { services } from '../data/services';
+import { articles } from '../data/articles';
+import { pageSEO } from '../data/seo';
+import { productProfiles } from '../data/product-profiles';
+interface Props {
+  title: string;
+  description?: string;
+  dark?: boolean;
+}
+const { title: inputTitle, description: inputDescription, dark = false } = Astro.props;
+const path = Astro.url.pathname;
+const {
+  title,
+  description,
+  article,
+  json,
+  image: socialImage,
+} = pageSEO(path, inputTitle, inputDescription);
+const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !path.includes('404');
+const searchItems = [
+  ...productProfiles.map((p) => ({
+    title: p.name,
+    description: p.description,
+    url: `/products/${p.slug}/`,
+  })),
+  {
+    title: 'Our global presence',
+    description: 'Singapore headquarters, India, UAE and USA. Serving clients in 33+ countries.',
+    url: '/company/locations/',
+  },
+  {
+    title: 'Ways to work together',
+    description: 'Discovery, project delivery and collaborative engineering.',
+    url: '/company/engagement-models/',
+  },
+  {
+    title: 'Web3 and crypto development',
+    description: 'Decentralised applications, crypto, tokens, wallets and smart contracts.',
+    url: '/services/blockchain-engineering/web3-development/',
+  },
+  {
+    title: 'Crypto exchange development',
+    description: 'Centralised and decentralised exchange platform engineering.',
+    url: '/services/blockchain-engineering/exchange-development/',
+  },
+  ...services.map((s) => ({ title: s.name, description: s.intro, url: `/services/${s.slug}/` })),
+  ...articles.map((a) => ({ title: a.title, description: a.summary, url: `/insights/${a.slug}/` })),
+  {
+    title: 'Company and locations',
+    description: 'Singapore headquarters and regional websites',
+    url: '/company/',
+  },
+  { title: 'Products', description: 'Tubblor, Regulix One and Kytheos', url: '/products/' },
+  { title: 'Contact Soft Task', description: 'Discuss a technology project', url: '/contact/' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#14382d" />
+    <link rel="preload" href={manropeFont} as="font" type="font/woff2" crossorigin />
+    {path === '/' && (
+      <link rel="preload" href={newsreaderFont} as="font" type="font/woff2" crossorigin />
+    )}
+    <title>{title} | Soft Task</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(path, 'https://softtask.co')} />
+    <meta
+      name="robots"
+      content={indexable ? 'index, follow, max-image-preview:large' : 'noindex, nofollow'}
+    />
+    <meta property="og:title" content={`${title} | Soft Task`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:site_name" content="Soft Task" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:url" content={new URL(path, 'https://softtask.co')} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${title} — Soft Task`} />
+    <meta name="twitter:title" content={`${title} | Soft Task`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline type="application/ld+json" set:html={json}></script>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body class:list={[dark && 'dark-top', path !== '/' && 'inner-page']} data-page={path}>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Soft Task home">
+          <img src="/logo.png" width="40" height="40" alt="" />
+          <span>
+            soft task<span class="brand-period">.</span>
+          </span>
+        </a>
+        <button
+          class="mobile-toggle"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="main-nav" aria-label="Main navigation">
+          <details class="mega">
+            <summary class:list={[path.startsWith('/services') && 'current']}>
+              What we do <Icon name="chevron" size={14} />
+            </summary>
+            <div class="mega-panel">
+              <div>
+                <h2>
+                  Technology with
+                  <br />a purpose.
+                </h2>
+                <a class="text-link" href="/services/">
+                  Explore all capabilities <Icon />
+                </a>
+              </div>
+              <div class="mega-links">
+                {services.map((s) => (
+                  <a href={`/services/${s.slug}/`}>
+                    {s.name}
+                    <Icon name="diagonal" size={18} />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </details>
+          <a href="/products/" aria-current={path.startsWith('/products') ? 'page' : undefined}>
+            Our products
+          </a>
+          <a href="/insights/" aria-current={path.startsWith('/insights') ? 'page' : undefined}>
+            Perspectives
+          </a>
+          <a href="/company/" aria-current={path.startsWith('/company') ? 'page' : undefined}>
+            Company
+          </a>
+        </nav>
+        <div class="header-actions">
+          <button class="icon-button search-open" aria-label="Search website">
+            <Icon name="search" />
+          </button>
+          <a class="header-contact" href="/contact/">
+            Let’s talk <Icon name="diagonal" size={18} />
+          </a>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <a class="brand" href="/" aria-label="Soft Task home">
+            <img src="/logo.png" width="40" height="40" alt="" />
+            <span>soft task.</span>
+          </a>
+          <p>
+            Considered thinking.
+            <br />
+            Practical engineering.
+          </p>
+          <a class="text-link" href="/contact/">
+            Start a conversation <Icon name="diagonal" />
+          </a>
+        </div>
+        <div class="footer-grid">
+          <div>
+            <h2>Capabilities</h2>
+            {services.map((s) => (
+              <a href={`/services/${s.slug}/`}>{s.name}</a>
+            ))}
+          </div>
+          <div>
+            <h2>Explore</h2>
+            <a href="/company/">Company</a>
+            <a href="/company/locations/">Our presence</a>
+            <a href="/company/how-we-work/">How we work</a>
+            <a href="/company/engagement-models/">Ways to work together</a>
+            <a href="/products/">Our products</a>
+            <a href="/insights/">Perspectives</a>
+            <a href="/careers/">Careers</a>
+          </div>
+          <div>
+            <h2>Our world</h2>
+            <a href="https://softtask.sg">Singapore</a>
+            <a href="https://softtask.ae">United Arab Emirates</a>
+            <a href="https://softtask.in">India</a>
+            <span>Saudi Arabia — planned</span>
+          </div>
+          <div class="newsletter">
+            <h2>
+              A useful perspective.
+              <br />
+              In your inbox.
+            </h2>
+            <p>Notes on software, data and infrastructure.</p>
+            <a class="text-link" href="/newsletter/">
+              Subscribe to updates <Icon />
+            </a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© {new Date().getFullYear()} Soft Task</span>
+          <div>
+            <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
+            <button class="cookie-open">Cookie settings</button>
+            <a href="/accessibility/">Accessibility</a>
+          </div>
+          <span class="global-label">
+            <Icon name="globe" size={16} /> Global / English
+          </span>
+        </div>
+      </div>
+    </footer>
+    <section class="cookie-banner" aria-label="Cookie choices" hidden>
+      <div>
+        <strong>Your privacy, your choice.</strong>
+        <p>We use essential storage for your preferences. Optional tracking is off.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="button small" data-consent="reject">
+          Reject optional
+        </button>
+        <button class="button small" data-consent="accept">
+          Accept optional
+        </button>
+        <button class="plain-button cookie-open">Settings</button>
+      </div>
+    </section>
+    <dialog id="cookie-dialog" aria-labelledby="cookie-title">
+      <button class="dialog-close" aria-label="Close cookie settings">
+        <Icon name="close" />
+      </button>
+      <h2 id="cookie-title">Your cookie choices.</h2>
+      <p>Choose what this browser remembers. You can return to these settings at any time.</p>
+      <div class="preference">
+        <div>
+          <h3>Essential</h3>
+          <p>Stores your privacy choice and supports requested features.</p>
+        </div>
+        <span>Always on</span>
+      </div>
+      <label class="preference">
+        <span>
+          <strong>Analytics</strong>
+          <span class="small-copy">
+            Allow optional audience measurement if enabled. No analytics tool is currently
+            installed.
+          </span>
+        </span>
+        <input type="checkbox" id="analytics-choice" />
+      </label>
+      <label class="preference">
+        <span>
+          <strong>Marketing</strong>
+          <span class="small-copy">
+            Allow optional marketing tracking if enabled. No advertising tags are currently
+            installed.
+          </span>
+        </span>
+        <input type="checkbox" id="marketing-choice" />
+      </label>
+      <button class="button primary" id="save-cookies">
+        Save my choices <Icon />
+      </button>
+      <a class="policy-link" href="/cookies/">
+        Read the cookie information
+      </a>
+    </dialog>
+    <dialog id="search-dialog" aria-labelledby="search-title">
+      <button class="dialog-close" aria-label="Close search">
+        <Icon name="close" />
+      </button>
+      <h2 id="search-title">
+        What can we help
+        <br />
+        you find?
+      </h2>
+      <label class="sr-only" for="site-search">
+        Search services and perspectives
+      </label>
+      <input
+        id="site-search"
+        type="search"
+        placeholder="Try infrastructure, AI or products"
+        autocomplete="off"
+      />
+      <p id="search-count" aria-live="polite"></p>
+      <div id="search-results"></div>
+    </dialog>
+    <script
+      is:inline
+      type="application/json"
+      id="search-data"
+      set:html={JSON.stringify(searchItems).replace(/</g, '\u003c')}
+    ></script>
+    <script src="../scripts/site.ts"></script>
+  </body>
+</html>

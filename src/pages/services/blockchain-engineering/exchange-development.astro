@@ -1,0 +1,140 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Icon from '../../../components/Icon.astro';
+import Architecture from '../../../components/Architecture.astro';
+---
+
+<Layout
+  title="Crypto exchange development"
+  description="Explore Soft Task crypto exchange development for centralised and decentralised platforms: interfaces, execution, wallets, settlement, reconciliation and operations."
+  dark
+>
+  <section class="exchange-cover">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/services/blockchain-engineering/">Blockchain & Web3</a>
+        <span>/ Exchange development</span>
+      </div>
+      <h1>
+        More than an
+        <br />
+        order on a screen.
+      </h1>
+      <div>
+        <p>
+          An exchange connects an experience to an execution model, an asset-control model and an
+          operating record. Soft Task develops the technology around those relationships.
+        </p>
+        <a class="button light" href="/contact/?service=blockchain-engineering">
+          Discuss exchange development <Icon />
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="exchange-models wrap">
+    <h2>
+      Start with the
+      <br />
+      exchange model.
+    </h2>
+    <div>
+      <article>
+        <span>Centralised exchange</span>
+        <h3>Coordinate the platform’s systems.</h3>
+        <p>
+          Define the relationship between accounts, balances, order handling, matching, wallets and
+          settlement. Integration with onboarding, reporting and operational controls belongs in the
+          platform architecture.
+        </p>
+        <ul>
+          <li>Trading interfaces and account workflows</li>
+          <li>Order handling and matching-engine integration</li>
+          <li>Wallet, deposit and withdrawal workflows</li>
+          <li>Balance records and reconciliation</li>
+        </ul>
+      </article>
+      <article>
+        <span>Decentralised exchange</span>
+        <h3>Connect the application to the protocol.</h3>
+        <p>
+          Define how the interface connects to contracts and liquidity mechanisms. Explain signing,
+          network fees, transaction confirmation and failure states so users can understand the
+          action they are taking.
+        </p>
+        <ul>
+          <li>Wallet-connected application interfaces</li>
+          <li>Swap and liquidity workflow integrations</li>
+          <li>Smart-contract development and testing</li>
+          <li>On-chain event and transaction indexing</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+  <section class="exchange-architecture wrap">
+    <Architecture kind="web3" />
+    <div>
+      <h2>
+        Keep the records
+        <br />
+        in agreement.
+      </h2>
+      <p>
+        Order state, balances, transfers and on-chain confirmations may update at different times.
+        Define which record is authoritative and how the system handles duplicates, delays and
+        failed dependencies.
+      </p>
+      <p>
+        Reconciliation and exception handling deserve their own acceptance criteria. A normal
+        successful trade does not demonstrate how the platform behaves during an outage or a partial
+        failure.
+      </p>
+    </div>
+  </section>
+  <section class="exchange-readiness">
+    <div class="wrap">
+      <h2>Before a launch decision.</h2>
+      <div class="readiness-list">
+        <article>
+          <h3>Validate the flows</h3>
+          <p>
+            Test account access, order lifecycle, deposits, withdrawals and failure scenarios with
+            representative conditions.
+          </p>
+        </article>
+        <article>
+          <h3>Assign asset control</h3>
+          <p>
+            Document custody, signing permissions, operational access and recovery responsibilities.
+          </p>
+        </article>
+        <article>
+          <h3>Prepare operations</h3>
+          <p>Agree monitoring, reconciliation, incident escalation and release ownership.</p>
+        </article>
+        <article>
+          <h3>Confirm external requirements</h3>
+          <p>
+            Licensing, independent reviews, banking and liquidity arrangements require their own
+            owners and approvals.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="product-next wrap">
+    <div>
+      <h2>
+        Define the platform
+        <br />
+        before the build.
+      </h2>
+      <p>
+        Bring the intended markets, exchange model, custody approach and integration requirements.
+        We can then shape the engineering scope around them.
+      </p>
+    </div>
+    <a class="button" href="/contact/?service=blockchain-engineering">
+      Start the conversation <Icon />
+    </a>
+  </section>
+</Layout>
