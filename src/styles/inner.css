@@ -2178,6 +2178,8 @@
   .presence-pin {
     position: static;
     transform: none;
+    white-space: normal;
+    min-width: 0;
     font-size: 12px;
     padding: 12px 8px;
     background: #204735;
@@ -2185,7 +2187,7 @@
   }
   .presence-pins {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
     align-content: center;
     gap: 12px;
     position: relative;

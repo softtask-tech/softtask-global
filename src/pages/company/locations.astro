@@ -44,8 +44,9 @@ import Icon from '../../components/Icon.astro';
           <div>
             <p>{p.note}</p>
             {p.address && <address>{p.address}</address>}
+            <p><a href={`mailto:${p.email}`}>{p.email}</a></p>
             <a class="text-link" href={p.url}>
-              {p.url.startsWith('http') ? 'Visit regional website' : 'Contact the global team'}
+              Explore Soft Task in this market
               <Icon name="diagonal" />
             </a>
           </div>

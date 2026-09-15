@@ -18,4 +18,10 @@
     "NOTIFY_TO": "contact@softtask.co"
   },
   "triggers": { "crons": ["0 3 * * *"] },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "softtask-newsletter",
+    "database_id": "3f03e4ae-24a3-4804-987e-0166f246a8f6",
+    "migrations_dir": "worker/migrations"
+  }],
 }

@@ -20,8 +20,8 @@ export const governance: Policy[] = [
       { id: 'providers', title: 'Who handles information', text: ['Relevant Soft Task personnel and service providers may need information to fulfil your request. Access should be limited to the purpose and the people responsible. We do not sell enquiry details or use a contact-form submission as permission for third-party marketing.'], rows: [
         ['Google Analytics', 'Audience measurement by Google using advanced consent mode. The tag loads with storage denied and can send cookieless measurements before consent; Analytics cookies require your agreement. Advertising storage and personalisation signals remain disabled. Google may process analytics information internationally; see Google’s privacy information and your cookie choices.'],
         ['Google Workspace', 'The owner-confirmed provider for corporate email and enquiry correspondence.'],
-        ['Cloudflare', 'Hosting and spam-prevention provider. Turnstile checks contact-form submissions before the backend processes an enquiry.'],
-        ['Resend', 'Transactional email provider for configured form notifications. Newsletter confirmation also requires the subscription service to be activated.'],
+        ['Cloudflare', 'Hosting, private newsletter database and spam-prevention provider. The newsletter database stores email, topic, confirmation status and relevant timestamps. Turnstile checks public form submissions before processing.'],
+        ['Resend', 'Transactional email provider for enquiry notifications, newsletter confirmation links and subscription welcome messages.'],
         ['Client and product systems', 'Project-specific processing must be covered by the relevant contract or product notice. This website notice does not replace a data processing agreement.']
       ] },
       { id: 'retention', title: 'Retention and international handling', text: ['Information should be kept only while needed for the stated purpose, a related business record, or applicable legal requirements. The retention schedule proposed for adoption is 12 months after the last meaningful contact for unsuccessful project enquiries and 6 months after the recruitment process ends for unsuccessful applications. Company adoption and operational setup of this proposed schedule are pending. Ask privacy@softtask.co about a specific record or deletion request.', 'The website’s providers and relevant teams may process information in more than one country. Applicable transfer safeguards and contractual arrangements must be assessed for the processing involved. We do not promise that website data stays within a single country.', 'The current build remembers cookie choices in your browser for up to 180 days. Newsletter confirmation links expire after 24 hours. These technical settings do not determine how long correspondence remains in corporate email.'] },
@@ -162,3 +162,4 @@ export const publicContacts: [string, string, string][] = [
   ['Kytheos', 'kytheos@softtask.co', 'Cybersecurity product enquiries'],
   ['STRID', 'strid@softtask.co', 'Soft Task crypto investigation and recovery enquiries']
 ];
+

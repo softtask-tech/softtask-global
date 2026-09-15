@@ -314,7 +314,9 @@ if (document.querySelector('.turnstile-mount')) {
             size: matchMedia('(max-width: 400px)').matches ? 'compact' : 'flexible',
           });
           const note = el.closest('form')?.querySelector('.form-note');
-          if (note) note.textContent = 'Your request is processed only when you submit this form.';
+          if (note) note.textContent = el.dataset.action === 'subscribe'
+            ? 'Check your inbox after submitting. Confirm your email within 24 hours to join the list.'
+            : 'Your request is processed only when you submit this form.';
         });
       };
       document.head.append(script);

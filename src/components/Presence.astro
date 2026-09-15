@@ -62,12 +62,11 @@ const { compact = false } = Astro.props;
           <h3>{p.city}</h3>
           <p>{p.note}</p>
           {p.address && <address>{p.address}</address>}
+          <p><a href={`mailto:${p.email}`}>{p.email}</a></p>
           <a class="text-link" href={compact ? '/company/locations/' : p.url}>
             {compact
               ? 'Explore our presence'
-              : p.url.startsWith('http')
-                ? 'Visit country website'
-                : 'Discuss a project'}{' '}
+              : 'Explore this location'}{' '}
             <span aria-hidden="true">↗</span>
           </a>
         </article>

@@ -1,5 +1,6 @@
 import catalogue from '../data/catalogue.json';
 import {solutions} from '../data/discovery';
+import {presence} from '../data/presence';
 export const prerender = true;
 export function GET() {
   const link=(name:string,path:string)=>`- [${name}](https://softtask.co${path})`;
@@ -11,6 +12,7 @@ export function GET() {
     '## Company and contact',
     link('Company','/company/'),link('Confirmed presence','/company/locations/'),link('Global delivery','/company/global-delivery/'),link('How we work','/company/how-we-work/'),link('Contact','/contact/'),link('Governance','/governance/'),
     'Project enquiries: contact@softtask.co',
+    ...presence.map(p=>link(`Soft Task ${p.name}`,p.url)),
     '## Capabilities',...catalogue.pillars.map(p=>link(p.title,p.url)),
     '## Industries',...catalogue.industries.map(i=>link(i.title,`/industries/${i.id}/`)),
     '## Solution briefs',...solutions.map(s=>link(s.searchTitle,s.url)),

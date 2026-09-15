@@ -7,6 +7,7 @@ import '../styles/global.css';
 import '../styles/inner.css';
 import '../styles/catalogue.css';
 import catalogue from '../data/catalogue.json';
+import { presence } from '../data/presence';
 import Icon from '../components/Icon.astro';
 import { services } from '../data/services';
 import { articles } from '../data/articles';
@@ -32,6 +33,7 @@ const {
 } = pageSEO(path, inputTitle, inputDescription);
 const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !path.includes('404');
 const searchItems = [
+  ...presence.map(p=>({title:`Soft Task ${p.name}`,description:p.note,url:p.url})),
   ...catalogue.industries.map(i=>({title:i.title,description:[i.description,...i.sectors].join(' '),url:`/industries/${i.id}/`})),
   ...catalogue.pillars.filter(p=>p.scope.length || p.id==='cybersecurity').map(p=>({title:p.title,description:p.description,url:p.url})),
   ...solutions.map(s=>({title:s.searchTitle,description:s.problem,url:s.url})),
@@ -205,10 +207,7 @@ const searchItems = [
           </div>
           <div>
             <h2>Our world</h2>
-            <a href="https://softtask.sg">Singapore</a>
-            <a href="https://softtask.ae">United Arab Emirates</a>
-            <a href="https://softtask.in">India</a>
-            <span>Saudi Arabia — planned</span>
+            {presence.map(p=><a href={p.url}>{p.name}{p.id==='saudi'&&' — launching soon'}</a>)}
           </div>
           <div class="newsletter">
             <a class="footer-email" href="mailto:contact@softtask.co">contact@softtask.co</a>
