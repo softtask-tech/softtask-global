@@ -13,6 +13,8 @@ import { articles } from '../data/articles';
 import { pageSEO } from '../data/seo';
 import { productProfiles } from '../data/product-profiles';
 import { governance } from '../data/governance';
+import SearchAnswers from '../components/SearchAnswers.astro';
+import {solutions} from '../data/discovery';
 interface Props {
   title: string;
   description?: string;
@@ -31,7 +33,8 @@ const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !path.incl
 const searchItems = [
   ...catalogue.industries.map(i=>({title:i.title,description:[i.description,...i.sectors].join(' '),url:`/industries/${i.id}/`})),
   ...catalogue.pillars.filter(p=>p.scope.length).map(p=>({title:p.title,description:p.description,url:p.url})),
-  ...catalogue.scenarios.map(s=>({title:s.title,description:s.problem,url:`/industries/${s.industry}/#${s.id}`})),
+  ...solutions.map(s=>({title:s.searchTitle,description:s.problem,url:s.url})),
+  {title:'Global technology delivery',description:'International projects, markets and delivery planning',url:'/company/global-delivery/'},
   {title:'Who we serve',description:'Industries and business problems',url:'/industries/'},
   {title:'Responsible AI',description:'Guardrails, evaluation and human review',url:'/services/ai-automation/responsible-ai/'},
   ...governance.map(p => ({ title: p.title, url: p.path, description: p.description })),
@@ -113,7 +116,7 @@ const searchItems = [
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="/" aria-label="Soft Task home">
-          <img src="/logo.png" width="40" height="40" alt="" />
+          <img src="/logo-small.webp" width="40" height="40" alt="" />
           <span>
             soft task<span class="brand-period">.</span>
           </span>
@@ -160,18 +163,17 @@ const searchItems = [
     </header>
     <main id="main">
       <slot />
+      <SearchAnswers path={path}/>
     </main>
     <footer class="site-footer">
       <div class="wrap">
         <div class="footer-top">
           <a class="brand" href="/" aria-label="Soft Task home">
-            <img src="/logo.png" width="40" height="40" alt="" />
+            <img src="/logo-small.webp" width="40" height="40" alt="" />
             <span>soft task.</span>
           </a>
           <p>
-            Considered thinking.
-            <br />
-            Practical engineering.
+            Technology for innovators.
           </p>
           <a class="text-link" href="/contact/">
             Start a conversation <Icon name="diagonal" />
@@ -190,6 +192,7 @@ const searchItems = [
             <a href="/industries/">Who we serve</a>
             <a href="/services/">All 15 capability pillars</a>
             <a href="/company/locations/">Our presence</a>
+            <a href="/company/global-delivery/">Global delivery</a>
             <a href="/company/how-we-work/">How we work</a>
             <a href="/company/engagement-models/">Ways to work together</a>
             <a href="/products/">Our products</a>
@@ -206,6 +209,8 @@ const searchItems = [
             <span>Saudi Arabia — planned</span>
           </div>
           <div class="newsletter">
+            <a class="footer-email" href="mailto:contact@softtask.co">contact@softtask.co</a>
+            <p>Write to us about your project.</p>
             <h2>
               A useful perspective.
               <br />
@@ -266,8 +271,7 @@ const searchItems = [
         <span>
           <strong>Analytics</strong>
           <span class="small-copy">
-            Allow optional audience measurement if enabled. No analytics tool is currently
-            installed.
+            Allow Google Analytics to measure page visits and enquiry conversions. It loads only after you choose analytics.
           </span>
         </span>
         <input type="checkbox" id="analytics-choice" />

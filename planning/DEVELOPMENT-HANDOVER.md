@@ -2,9 +2,9 @@
 
 ## Implemented
 
-65 generated pages: 64 content routes plus a 404 page. The connected catalogue adds 16 industry detail pages, industry and problem directories, six service pages and an AI guardrails page. All 15 pillars connect to relevant industries; specialist pillars route to the three products. The 32 workflows are illustrative opportunities, not customer success claims. Governance, company, presence, engagement models, Web3 and exchange-development pages remain included.
+98 generated pages: 97 content routes plus a 404 page. Search revision adds 32 standalone solution briefs and global delivery. The connected catalogue adds 16 industry detail pages, industry and problem directories, six service pages and an AI guardrails page. All 15 pillars connect to relevant industries; specialist pillars route to the three products. The 32 workflows are illustrative opportunities, not customer success claims. Governance, company, presence, engagement models, Web3 and exchange-development pages remain included.
 
-Responsive design, self-hosted fonts, optimised owner-supplied photographs, service tabs with keyboard control, search with empty state, mobile navigation, native dialogs, persistent versioned cookie preferences, contact prefill and error handling. No tracking providers are installed.
+Responsive design, self-hosted fonts, optimised owner-supplied photographs, service tabs with keyboard control, search with empty state, mobile navigation, native dialogs, persistent versioned cookie preferences, contact prefill and error handling. Google Analytics is installed with analytics opt-in, denied advertising consent and no custom-event form contents. See SEARCH-AND-LEAD-STRATEGY.md.
 
 Cloudflare Worker code includes same-origin validation, size limits, field validation, Turnstile server verification, Resend contact delivery and D1 newsletter subscriptions. Newsletter flow uses hashed one-use confirmation tokens, explicit POST confirmation, topic selection, unsubscribe and expired-pending cleanup. Link-scanning GET requests do not subscribe or unsubscribe. No live email has been sent; provider tests use controlled mocks.
 
@@ -36,7 +36,7 @@ Add approved assets through scripts/prepare-images.mjs, retaining provenance in 
 - Finalise privacy, terms, data processing, retention and monitored contact details for the actual operator. Current policy pages explicitly identify the development state.
 - Verify photo licences and get genuine company/team or approved project imagery where available.
 - Connect and test providers. Set the final domain only after approved launch readiness.
-- For an approved production build, set the build environment variable PUBLIC_SITE_INDEXABLE=true. The build coordinates the HTML robots directive, robots.txt and Cloudflare asset headers, and advertises the sitemap. Leave this variable unset for development and staging. Do not edit the three outputs independently. This flag does not deploy the site.
+- Production builds are indexable by default. Set PUBLIC_SITE_INDEXABLE=false explicitly for staging and local review builds. The build coordinates the HTML robots directive, robots.txt and Cloudflare asset headers, and advertises the sitemap. Do not retain a false build override in the production Cloudflare project. Do not edit the three outputs independently. This flag does not deploy the site.
 - Prepare relevant softtask.tech redirects from real legacy usage; do not preserve bad routes mechanically. Maintain old HTTPS and all email-related DNS records.
 
 ## Validation scope
@@ -45,7 +45,7 @@ Build and type checks, Worker unit/flow tests with mocks, browser checks and sav
 
 ## Deployment and rollback
 
-The source repository is softtask-tech/softtask-global. Pushing source does not deploy this website. No DNS change or Cloudflare deployment has occurred. Record the current live DNS and deployment before cutover. Deploy protected staging first, then an approved production version. Use Cloudflare deployment history to roll back the Worker/assets together; preserve the previous site until form and route checks pass. D1 backups and migration rollback need an operational owner before launch.
+The source repository is softtask-tech/softtask-global. The owner has deployed the website to Cloudflare Worker softtaskglobalwebsite at softtask.co. Cloudflare may deploy a GitHub push through its connected build. Record the current live DNS and deployment before cutover. Deploy protected staging first, then an approved production version. Use Cloudflare deployment history to roll back the Worker/assets together; preserve the previous site until form and route checks pass. D1 backups and migration rollback need an operational owner before launch.
 
 
 ## September 15 content and responsive revision

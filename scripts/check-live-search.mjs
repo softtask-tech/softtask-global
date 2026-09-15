@@ -1,0 +1,11 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+const xml=await readFile('dist/sitemap-0.xml','utf8');const urls=[...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1]);
+const results=[];let cursor=0;
+await Promise.all(Array.from({length:4},async()=>{while(cursor<urls.length){const url=urls[cursor++];try{const response=await fetch(url,{signal:AbortSignal.timeout(20000)});const html=await response.text();const robots=html.match(/<meta name="robots" content="([^"]*)"/)?.[1];const canonical=html.match(/<link rel="canonical" href="([^"]*)"/)?.[1];results.push({url,status:response.status,robots,header:response.headers.get('x-robots-tag'),canonical,passed:response.status===200&&canonical===url&&!!robots&&!robots.includes('noindex')&&!response.headers.get('x-robots-tag')?.includes('noindex')});}catch(error){results.push({url,passed:false,error:error.message});}}}));
+const robots=await (await fetch('https://softtask.co/robots.txt',{signal:AbortSignal.timeout(20000)})).text();
+const sitemap=await (await fetch('https://softtask.co/sitemap-0.xml',{signal:AbortSignal.timeout(20000)})).text();
+const preview=await fetch('https://softtaskglobalwebsite.softtask-tech.workers.dev/',{signal:AbortSignal.timeout(20000)});
+const www=await fetch('https://www.softtask.co/contact/',{redirect:'manual',signal:AbortSignal.timeout(20000)});
+const report={checked:results.length,failures:results.filter(r=>!r.passed),sitemapURLs:(sitemap.match(/<loc>/g)||[]).length,previewRobots:preview.headers.get('x-robots-tag'),wwwStatus:www.status,wwwLocation:www.headers.get('location'),robots,results};
+await mkdir('../../outputs/search-review',{recursive:true});await writeFile('../../outputs/search-review/live.json',JSON.stringify(report,null,2));console.log(JSON.stringify({...report,robots:undefined,results:undefined},null,2));
+if(report.failures.length||report.sitemapURLs!==urls.length||!report.previewRobots?.includes('noindex')||![301,308].includes(www.status))process.exitCode=1;

@@ -47,6 +47,7 @@ if(industry&&scenario){
   if(valid(industry,query.get('industry')))industry.value=query.get('industry')!;
   if(valid(scenario,query.get('scenario')))scenario.value=query.get('scenario')!;
   const update=()=>{
+    if(industry.value){const details=document.querySelector<HTMLDetailsElement>('[data-optional-context]');if(details)details.open=true;}
     Array.from(scenario.options).forEach(o=>{if(o.value){o.hidden=o.dataset.industry!==industry.value;o.disabled=o.hidden;}});
     if(scenario.selectedOptions[0]?.disabled)scenario.value='';
     const message=document.querySelector<HTMLElement>('[data-enquiry-context]');

@@ -20,6 +20,7 @@ const json = (data, status = 200) =>
       'Content-Type': 'application/json',
       'Cache-Control': 'no-store',
       'X-Content-Type-Options': 'nosniff',
+      'X-Robots-Tag': 'noindex, nofollow',
     },
   });
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -161,7 +162,19 @@ export default {
         newsletterActive: !!(ready(env) && env.DB),
         siteKey: ready(env) ? env.PUBLIC_TURNSTILE_SITE_KEY : null,
       });
-    if (!path.startsWith('/api/')) return env.ASSETS.fetch(request);
+    if (!path.startsWith('/api/')) {
+      if (url.hostname === 'www.softtask.co') {
+        url.hostname = 'softtask.co';
+        return Response.redirect(url.toString(), 308);
+      }
+      const preview = url.hostname !== 'softtask.co';
+      if (preview && path === '/robots.txt') return new Response('User-agent: *\nDisallow: /\n', { headers: { 'Content-Type': 'text/plain', 'X-Robots-Tag': 'noindex, nofollow' } });
+      const asset = await env.ASSETS.fetch(request);
+      if (!preview && asset.status !== 404) return asset;
+      const response = new Response(asset.body, asset);
+      response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+      return response;
+    }
     if (['/api/confirm', '/api/unsubscribe'].includes(path)) {
       if (!env.DB)
         return resultPage(

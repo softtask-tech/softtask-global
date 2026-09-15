@@ -1,35 +1,34 @@
 # Soft Task global website
 
-New build for **softtask.co**, hosted on Cloudflare. This repository covers the global corporate website only.
+Global corporate website for **softtask.co**. Cloudflare Worker: **softtaskglobalwebsite**. Singapore headquarters; regional websites remain separate projects.
 
-The Singapore, UAE, India and Saudi websites will have separate repositories and their own designs, structures and local content. Shared brand identity does not require shared page layouts.
+## Current build
 
-## Current stage
+98 generated HTML pages (97 content routes plus 404): 15 capability pillars, 16 industry families, 32 solution briefs, three product pages, company and governance information. The global-delivery page separates enquiry markets from confirmed presence.
 
-Development build: 65 generated pages (64 content routes plus 404), with 15 capability pillars, 16 industry families, 72 source subsectors and 32 illustrative problem-to-solution workflows. Navigation, search, service pages, products and enquiry context share one catalogue. Source is maintained on GitHub; no Cloudflare deployment has occurred.
+Shared catalogue: src/data/catalogue.json. Search titles, solution URLs and buyer answers: src/data/discovery.ts. Detailed existing services: src/data/services.ts. Governance: src/data/governance.ts.
 
-Use Node 22.12+ and npm. Run `npm ci`, `npm run dev`, `npm run build`. Run `npm run check`, `npm test` and `npm run test:browser` for verification. `npm run cf:dev` runs the complete local Worker after a build. Provider credentials are not supplied; live submissions remain unavailable until configured.
+## Develop and verify
 
-See [the development handover](planning/DEVELOPMENT-HANDOVER.md) for architecture, editing, integration setup and launch blockers, and [the toolkit record](planning/TOOLKIT-USED.md) for the requested resources.
+Use Node 24 and npm. Run npm ci, npm run dev, npm run check and npm test. Build with npm run build. Static SEO: npm run test:seo. Production search checks: node tests/search-readiness.mjs. Browser scripts tests/contact-ui.mjs, tests/search-ui.mjs and tests/analytics-consent.mjs use Microsoft Edge; local page previews use port 4322.
 
-This is ready for development review, not public launch. Review previews are intentionally non-indexable. Confirm company records, image licences, publication copy and provider setup before launch.
+**Production builds are indexable by default.** Set PUBLIC_SITE_INDEXABLE=false for staging/local review builds. CI explicitly tests non-indexable and production modes. The Worker applies noindex to workers.dev previews and API/error responses, and redirects www to softtask.co. Production Cloudflare must not retain a false PUBLIC_SITE_INDEXABLE build override.
 
+## Analytics and forms
 
-Content and SEO revision (September 15): see planning/DEVELOPMENT-HANDOVER.md. Preview indexing remains disabled. An approved production build uses the build environment variable PUBLIC_SITE_INDEXABLE=true to coordinate HTML, robots.txt and asset headers. This does not publish or deploy anything. Run `node tests/content-responsive.mjs` against the built preview for metadata and seven-width checks.
+GA4 G-REH51537N8 loads on the public domain only after analytics consent. Form data is not included in our analytics event payloads. Consent version 2 re-prompts older saved choices. See planning/SEARCH-AND-LEAD-STRATEGY.md for GA4 dashboard settings and verification.
 
+Contact delivery uses Resend and Turnstile runtime secrets. Newsletter operation additionally requires Cloudflare D1 and its migration. No credentials belong in Git. The owner configured the live contact bindings; real delivery verification is separate from automated mocked tests.
 
-## Current website
+## Search handover
 
-Includes separate Tubblor, Regulix One and Kytheos pages; company presence and engagement models; Web3 and crypto exchange engineering. Industry pages connect a business problem to a proposed approach, AI's role, human controls, pilot measures and relevant capabilities. These examples are opportunities, not customer case studies or verified delivery outcomes.
+Sitemap: https://softtask.co/sitemap-index.xml
 
-`npm run test:seo` checks metadata, structured-data parsing, social images and local links after building. `npm run test:responsive` and `npm run test:interactions` run against the local built preview (default http://127.0.0.1:4322). These browser scripts require Microsoft Edge. `TEST_BASE_URL` and `QA_OUTPUT` control the preview address and review output directory.
+- planning/SEARCH-AND-LEAD-STRATEGY.md — findings, regional strategy, crawler distinctions and account actions.
+- planning/SEARCH-PAGE-MAP.md — complete page/topic map.
+- planning/DEVELOPMENT-HANDOVER.md — architecture and operational setup.
+- planning/TURNSTILE-INTEGRATION.md — existing widget and origin validation.
 
-GitHub Actions verifies the source on pushes and pull requests. It does not publish to Cloudflare. See planning/DEVELOPMENT-HANDOVER.md for provider configuration and launch steps.
+IndexNow: node scripts/submit-indexnow.mjs is a dry run; use --submit after the key file and indexable build are live. It notifies participating search engines, not Google. A receipt is not indexing or ranking confirmation.
 
-## Governance centre
-
-The governance centre includes 12 policy pages, a governance hub and a 15-address public contact directory. See `/governance/`. Run `node tests/governance.mjs` against the local preview to verify policy navigation, mobile layouts, accessibility and enquiry consent. See `planning/RETENTION-AND-GOVERNANCE-OPERATIONS.md` for the proposed retention schedule and implementation responsibilities.
-
-## Connected capability and industry catalogue
-
-See `planning/INTEGRATED-CATALOGUE-DIRECTION.md`. Public content lives in `src/data/catalogue.json`; the initial generator is `planning/build-catalogue.py`. Update its curated definitions before regenerating so manual JSON changes are not overwritten. Existing detailed service copy remains in `src/data/services.ts`. Run `node tests/catalogue.mjs` against the built preview at port 4322 for responsive, accessibility and journey checks. AI guardrail examples explain proposed design controls; they do not certify a deployed system.
+Public case studies, image licences, operational policy adoption and any delivery claims still require their appropriate evidence and owners. See the handover for outstanding operational work.

@@ -132,13 +132,14 @@ tabs.forEach((t, i) => {
   });
 });
 
+import { setAnalyticsConsent, trackLead } from './analytics';
 type Consent = { version: number; analytics: boolean; marketing: boolean; expires: number };
 const consentKey = 'softtask-consent-v1';
 let current: Consent | null = null;
 try {
   const saved = JSON.parse(localStorage.getItem(consentKey) || 'null');
   if (
-    saved?.version === 1 &&
+    saved?.version === 2 &&
     saved.expires > Date.now() &&
     typeof saved.analytics === 'boolean' &&
     typeof saved.marketing === 'boolean'
@@ -147,9 +148,11 @@ try {
 } catch {}
 const banner = q<HTMLElement>('.cookie-banner');
 const cookieDialog = q<HTMLDialogElement>('#cookie-dialog');
+setAnalyticsConsent(current?.analytics ?? false);
 if (banner) banner.hidden = !!current;
 function saveConsent(analytics: boolean, marketing: boolean) {
-  current = { version: 1, analytics, marketing, expires: Date.now() + 180 * 86400000 };
+  current = { version: 2, analytics, marketing, expires: Date.now() + 180 * 86400000 };
+  setAnalyticsConsent(analytics);
   try {
     localStorage.setItem(consentKey, JSON.stringify(current));
   } catch {}
@@ -216,6 +219,15 @@ document.querySelectorAll('.search-open').forEach((b) =>
 search?.addEventListener('input', renderSearch);
 
 document.querySelectorAll<HTMLFormElement>('form[data-endpoint]').forEach((form) => {
+  const message = form.querySelector<HTMLTextAreaElement>('[name=message]');
+  const count = form.querySelector<HTMLElement>('#message-count');
+  const updateMessage = () => {
+    if (!message) return;
+    if (count) count.textContent = `${message.value.length.toLocaleString('en')} / 5,000`;
+    message.setCustomValidity(message.value && message.value.trim().length < 20 ? 'Please describe your project in at least 20 characters.' : '');
+  };
+  message?.addEventListener('input', updateMessage);
+  form.addEventListener('reset', () => setTimeout(updateMessage, 0));
   const phone = form.querySelector<HTMLInputElement>('[name=phone]');
   const phoneCountry = form.querySelector<HTMLSelectElement>('[name=phoneCountry]');
   phone?.addEventListener('input', () => { if (phoneCountry) phoneCountry.required = !!phone.value.trim(); });
@@ -226,6 +238,7 @@ document.querySelectorAll<HTMLFormElement>('form[data-endpoint]').forEach((form)
     service.value = requested;
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    updateMessage();
     if (!form.reportValidity()) return;
     const status = form.querySelector<HTMLElement>('.form-status');
     const button = form.querySelector<HTMLButtonElement>('[type=submit]');
@@ -248,6 +261,7 @@ document.querySelectorAll<HTMLFormElement>('form[data-endpoint]').forEach((form)
           result.message || 'Your request could not be sent. Please try again later.',
         );
       status.textContent = result.message;
+      if (form.dataset.endpoint === '/api/contact') trackLead(String(data.service || 'not-sure'));
       form.reset();
     } catch (error) {
       status.dataset.error = 'true';

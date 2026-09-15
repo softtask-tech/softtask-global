@@ -141,6 +141,19 @@ test('static requests pass through to asset binding', async () => {
   });
   assert.equal(await r.text(), 'asset');
 });
+test('canonical public pages remain indexable while previews and errors are excluded',async()=>{
+  const env={ASSETS:{fetch:()=>new Response('public content')}};
+  const canonical=await worker.fetch(new Request('https://softtask.co/services/'),env);
+  assert.equal(canonical.headers.get('x-robots-tag'),null);
+  const www=await worker.fetch(new Request('https://www.softtask.co/services/?source=ref'),env);
+  assert.equal(www.status,308);assert.equal(www.headers.get('location'),'https://softtask.co/services/?source=ref');
+  const preview=await worker.fetch(new Request('https://softtaskglobalwebsite.softtask-tech.workers.dev/services/'),env);
+  assert.match(preview.headers.get('x-robots-tag'),/noindex/);
+  const robots=await worker.fetch(new Request('https://softtaskglobalwebsite.softtask-tech.workers.dev/robots.txt'),env);
+  assert.match(await robots.text(),/Disallow: \//);
+  const missing=await worker.fetch(new Request('https://softtask.co/missing/'),{ASSETS:{fetch:()=>new Response('missing',{status:404})}});
+  assert.equal(missing.status,404);assert.match(missing.headers.get('x-robots-tag'),/noindex/);
+});
 
 const configured = {
   SITE_ORIGIN: 'https://softtask.co',

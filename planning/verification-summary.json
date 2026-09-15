@@ -1,10 +1,10 @@
 {
   "date": "2026-09-15",
-  "stage": "Connected capability and industry development revision; not deployed",
-  "pages_built": 65,
-  "content_pages": 64,
+  "stage": "Search, analytics and contact revision; local checks complete, live verification follows push",
+  "pages_built": 98,
+  "content_pages": 97,
   "browser_failures": 0,
-  "backend_tests": 16,
+  "backend_tests": 20,
   "backend_failures": 0,
   "screen_widths": [
     320,
@@ -14,7 +14,7 @@
     1440
   ],
   "indexing_failures": 0,
-  "static_seo_pages_checked": 65,
+  "static_seo_pages_checked": 98,
   "static_seo_failures": 0,
   "typecheck": {
     "errors": 0,
@@ -26,10 +26,10 @@
     "performance": 88,
     "accessibility": 100,
     "best_practices": 100,
-    "seo": 69,
-    "context": "Historical inner-page revision only; not re-run for the connected catalogue."
+    "seo": 100,
+    "context": "Search revision, local mobile lab run; not production field data."
   },
-  "visual_review": "Desktop navigation and logistics workflow, plus mobile logistics workflow visually reviewed. 28 routes tested at five widths; accessibility scans on five representative routes at three widths. Search, scenario deep links, guardrail examples, menu interaction and enquiry context verified.",
+  "visual_review": "Reviewed solution brief desktop and contact mobile; footer email wrapping corrected. 35 responsive checks and 21 accessibility scans passed, plus five-width contact checks.",
   "build_note": "Build succeeds; Windows Fontconfig emits nonfatal cache warnings during social image generation. Generated images checked.",
   "outstanding": [
     "Adopt and implement the proposed retention schedule",
@@ -42,5 +42,7 @@
   "governance_browser_checks": 219,
   "prior_revision_indexing_checks": 64,
   "catalogue_browser_checks": 312,
-  "worker_dry_run": "Cloudflare packaging passed without deployment"
+  "worker_dry_run": "Cloudflare packaging passed without deployment",
+  "search_readiness": "98 pages; production directives, unique metadata, HTML reachability, visible questions and sitemap coverage passed",
+  "analytics_consent": "Opt-in, no duplicate tag, sanitized URL, conversion payload, withdrawal and persisted rejection passed with mocked provider"
 }

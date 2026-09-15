@@ -14,6 +14,7 @@
     "cf:deploy": "npm run build && wrangler deploy",
     "audit": "node scripts/audit.mjs",
     "test:seo": "node tests/static-seo.mjs",
+    "test:search": "node tests/search-readiness.mjs",
     "test:responsive": "node tests/content-responsive.mjs",
     "test:interactions": "node tests/inner-interactions.mjs"
   },

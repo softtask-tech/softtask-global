@@ -31,34 +31,12 @@ const phoneCountries = getCountries().map(code => ({code, name:countryNames.of(c
   </section>
   <section class="section wrap form-layout">
     <aside class="form-context">
-      <h2>
-        Bring the challenge.
-        <br />
-        We’ll start there.
-      </h2>
-      <p>
-        You do not need a complete specification to start. A little context helps us understand
-        which capabilities the conversation needs.
-      </p>
-      <ul>
-        <li>The business problem or intended outcome</li>
-        <li>Your current systems and constraints</li>
-        <li>The market and timeframe for the work</li>
-      </ul>
-      <h3>What comes next</h3>
-      <p>Prefer email? Write to <a href="mailto:contact@softtask.co">contact@softtask.co</a>.</p>
-      <p>
-        The first conversation establishes the requirement, identifies relevant technical
-        disciplines and clarifies what information is needed to define a scope. Delivery dates and
-        commercial terms follow that assessment.
-      </p>
-      <p>
-        Keep the initial description at a business level. Agree a suitable sharing method before
-        providing confidential documents or system access.
-      </p>
-      <a class="text-link" href="/company/locations/">
-        Looking for a local conversation? <Icon />
-      </a>
+      <h2>Email us or use the form.</h2>
+      <p>Choose whichever is easier. A short description of the challenge is enough to begin.</p>
+      <a class="direct-email" href="mailto:contact@softtask.co">contact@softtask.co</a>
+      <p>For project and sales enquiries.</p>
+      <details class="contact-next"><summary>What happens next?</summary><p>We review your requirement, identify the relevant disciplines and arrange the next conversation. Scope, timing and commercial terms follow that assessment.</p><p>Please keep confidential records out of the initial enquiry.</p></details>
+      <a class="text-link" href="/company/locations/">Find our regional contacts <Icon /></a>
     </aside>
     <form class="form-grid enquiry-form" data-endpoint="/api/contact" method="post" action="/api/contact">
       <input type="hidden" name="noticeVersion" value={policyVersion} />
@@ -105,18 +83,21 @@ const phoneCountries = getCountries().map(code => ({code, name:countryNames.of(c
           <option value="not-sure">Help me define the scope</option>
         </select>
       </label>
+      <details class="full optional-context" data-optional-context><summary>Add industry context (optional)</summary><div class="form-grid">
       <label class="field">Your industry (optional)<select name="industry"><option value="">Choose an industry</option>{catalogue.industries.map(i=><option value={i.id}>{i.title}</option>)}</select></label>
       <label class="field">Workflow of interest (optional)<select name="scenario"><option value="">Describe it in your message</option>{catalogue.scenarios.map(s=><option value={s.id} data-industry={s.industry}>{s.title}</option>)}</select></label>
+      </div></details>
       <p class="enquiry-context" data-enquiry-context hidden></p>
       <label class="field full">
         A little about the project
         <textarea
-          name="message"
+          name="message" aria-describedby="message-help message-count"
           required
           minlength="20"
           maxlength="5000"
           placeholder="What needs to change? Include any useful context, without confidential or sensitive information."
         ></textarea>
+        <span class="message-guidance"><span id="message-help">At least 20 characters. No confidential information.</span><span id="message-count">0 / 5,000</span></span>
       </label>
       <label class="checkbox-field consent-panel">
         <input type="checkbox" name="consent" required />
@@ -147,15 +128,16 @@ const phoneCountries = getCountries().map(code => ({code, name:countryNames.of(c
 </Layout>
 
 <style>
+.direct-email{display:block;font-size:clamp(18px,2vw,25px);font-weight:600;text-decoration:underline;margin:20px 0 6px;overflow-wrap:anywhere}.contact-next{padding-block:14px;border-block:1px solid var(--line);font-size:14px}.contact-next summary,.optional-context summary{cursor:pointer;font-weight:600}.optional-context .form-grid{padding-top:18px}.optional-context{padding:14px;background:#f3f6ef;font-size:14px}.message-guidance{display:flex;justify-content:space-between;gap:16px;font-size:12px;line-height:1.5;font-weight:400;color:var(--muted)}#message-count{white-space:nowrap}.page-hero{padding-block:42px}.page-hero h1{font-size:clamp(32px,4vw,54px)}
   .form-layout{grid-template-columns:minmax(240px,.7fr) minmax(0,1.3fr);gap:clamp(32px,5vw,80px);align-items:start}
-  .enquiry-form{background:#fff;padding:clamp(20px,3vw,40px);border:1px solid #d5ded4;border-top:4px solid var(--forest);gap:24px;min-width:0}
+  .enquiry-form{background:#fff;padding:clamp(20px,3vw,40px);border:1px solid #d5ded4;border-top:4px solid var(--forest);gap:18px;min-width:0}
   .full,.verification-area{grid-column:1/-1;min-width:0}
   .form-heading h2{font-size:24px;line-height:1.25;margin:0 0 8px}
   .form-heading p,.field-hint{font-size:13px;color:var(--muted);line-height:1.6;margin:0;font-weight:400}
-  .project-heading{padding-top:26px;border-top:1px solid #d5ded4;margin-top:6px}
+  .project-heading{padding-top:18px;border-top:1px solid #d5ded4;margin-top:6px}
   .enquiry-form .field{font-size:14px;min-width:0}
   .enquiry-form input,.enquiry-form select,.enquiry-form textarea{font-size:16px;min-height:50px;min-width:0;background:#fafbf8;border-color:#a9b7ad;border-radius:4px}
-  .enquiry-form textarea{min-height:160px;line-height:1.6}
+  .enquiry-form textarea{min-height:110px;line-height:1.6}
   .enquiry-form input:focus,.enquiry-form select:focus,.enquiry-form textarea:focus{outline:2px solid var(--forest);outline-offset:2px;background:white}
   .phone-fields{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:12px}
   .optional{font-weight:400;color:var(--muted)}
@@ -165,5 +147,5 @@ const phoneCountries = getCountries().map(code => ({code, name:countryNames.of(c
   .form-note{font-size:12px;line-height:1.6;margin:0}
   .form-submit{width:100%;justify-content:space-between;min-height:54px;border-radius:4px}
   @media(max-width:1000px){.form-layout{grid-template-columns:1fr}.form-context{max-width:680px}.form-context ul{display:none}}
-  @media(max-width:600px){.enquiry-form{grid-template-columns:minmax(0,1fr);padding:20px 16px;gap:20px}.phone-fields{grid-template-columns:minmax(0,1fr)}.form-heading h2{font-size:22px}.consent-panel{padding:14px}.form-layout{padding-top:32px}.form-context h2{font-size:28px}.enquiry-form .field{grid-column:1/-1}}
+  @media(max-width:600px){.enquiry-form{grid-template-columns:minmax(0,1fr);padding:20px 16px;gap:16px}.phone-fields{grid-template-columns:minmax(0,1fr)}.form-heading h2{font-size:22px}.consent-panel{padding:14px}.form-layout{padding-top:32px}.form-context h2{font-size:28px}.enquiry-form .field{grid-column:1/-1}}
 </style>

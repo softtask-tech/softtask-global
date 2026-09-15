@@ -1,0 +1,7 @@
+---
+import {answersForPath} from '../data/discovery';
+const {path}=Astro.props;
+const answers=answersForPath(path);
+---
+{answers.length>0&&<section class="wrap search-answers" aria-labelledby="answers-title"><div><h2 id="answers-title">Questions before you begin</h2><p>Understand the scope, the starting point and the decisions we would make together.</p><a href="/company/global-delivery/">Working with Soft Task across markets</a></div><div>{answers.map(item=><details><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></section>}
+<style>.search-answers{display:grid;grid-template-columns:1fr 1.65fr;gap:48px;padding-block:64px;border-top:1px solid var(--line)}h2{font-size:30px;line-height:1.2}p{font-size:15px;line-height:1.8;color:var(--muted)}a{text-decoration:underline;font-size:14px}details{border-bottom:1px solid var(--line);padding:18px 0}summary{font-size:17px;font-weight:600;cursor:pointer;line-height:1.5}details p{max-width:75ch}@media(max-width:700px){.search-answers{grid-template-columns:1fr;gap:20px;padding-block:40px}h2{font-size:26px}}</style>
