@@ -93,23 +93,30 @@ async function mail(env, to, subject, text, key, replyTo = env.MAIL_REPLY_TO) {
 async function botCheck(env, data, request, kind) {
   if (
     typeof data['cf-turnstile-response'] !== 'string' ||
+    data['cf-turnstile-response'].trim().length === 0 ||
     data['cf-turnstile-response'].length > 2048
   )
     return false;
   const payload = { secret: env.TURNSTILE_SECRET, response: data['cf-turnstile-response'] };
   const ip = request.headers.get('CF-Connecting-IP');
   if (ip) payload.remoteip = ip;
-  const r = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  const result = await r.json();
-  return (
-    result.success === true &&
-    result.action === kind &&
-    result.hostname === new URL(env.SITE_ORIGIN || 'https://softtask.co').hostname
-  );
+  try {
+    const r = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(10_000),
+    });
+    if (!r.ok) return false;
+    const result = await r.json();
+    return (
+      result?.success === true &&
+      result.action === kind &&
+      result.hostname === new URL(env.SITE_ORIGIN || 'https://softtask.co').hostname
+    );
+  } catch {
+    return false;
+  }
 }
 function resultPage(title, message, action, rawToken) {
   const form = action

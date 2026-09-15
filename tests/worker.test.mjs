@@ -193,6 +193,36 @@ test('recipient cannot be overridden by submitted fields and different services 
   assert.equal(sent[0].body.to, configured.NOTIFY_TO);
   assert.notEqual(sent[0].key, sent[1].key);
 });
+test('Turnstile fails closed for invalid responses and unavailable verification', async (t) => {
+  let outcome;
+  let calls = 0;
+  t.mock.method(globalThis, 'fetch', async (url, options) => {
+    assert.match(String(url), /challenges.cloudflare.com\/turnstile\/v0\/siteverify$/);
+    assert.ok(options.signal);
+    calls++;
+    if (outcome instanceof Error) throw outcome;
+    return outcome;
+  });
+  for (const token of [undefined, '', '   ', 'x'.repeat(2049)]) {
+    const r = await worker.fetch(request({ ...valid, 'cf-turnstile-response': token }), configured);
+    assert.equal(r.status, 422);
+  }
+  assert.equal(calls, 0);
+  for (outcome of [
+    Response.json({ success: true, action: 'subscribe', hostname: 'softtask.co' }),
+    Response.json({ success: 'true', action: 'contact', hostname: 'softtask.co' }),
+    Response.json({ success: false, 'error-codes': ['timeout-or-duplicate'] }),
+    Response.json({ success: true, action: 'contact', hostname: 'softtask.co' }, { status: 500 }),
+    Response.json(null),
+    new Response('invalid json'),
+    new Error('network unavailable'),
+  ]) {
+    const r = await worker.fetch(request({ ...valid, 'cf-turnstile-response': 'test-token' }), configured);
+    assert.equal(r.status, 422);
+  }
+  assert.equal(calls, 7);
+});
+
 test('a valid challenge from the wrong hostname is rejected', async (t) => {
   let calls = 0;
   t.mock.method(globalThis, 'fetch', async () => {

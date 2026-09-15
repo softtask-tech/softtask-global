@@ -10,6 +10,7 @@
     "not_found_handling": "404-page",
   },
   "vars": {
+    "PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAAE2KzH37PqwhUbvB",
     "SITE_ORIGIN": "https://softtask.co",
     "MAIL_FROM": "Soft Task Website <notifications@softtask.co>",
     "MAIL_REPLY_TO": "contact@softtask.co",
