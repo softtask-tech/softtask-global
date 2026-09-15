@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { writeFile } from 'node:fs/promises';
 import { createSocialCards } from './scripts/social-cards.mjs';
+import { createAgentMarkdown } from './scripts/agent-markdown.mjs';
 // Production builds are public by default; preview/CI explicitly sets false.
 const indexable = process.env.PUBLIC_SITE_INDEXABLE !== 'false' && process.argv.includes('build');
 export default defineConfig({
@@ -19,6 +20,7 @@ export default defineConfig({
       hooks: {
         'astro:build:done': async ({ dir }) => {
           await createSocialCards(dir);
+          await createAgentMarkdown(dir);
           await writeFile(
             new URL('robots.txt', dir),
             indexable

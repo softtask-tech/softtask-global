@@ -1,5 +1,6 @@
 import catalogue from '../src/data/catalogue.json' with { type: 'json' };
 import {brandedEmail} from './emails.mjs';
+import { serveNegotiatedAsset } from './markdown.mjs';
 import { parsePhoneNumberFromString, isSupportedCountry } from 'libphonenumber-js/min';
 function phoneNumber(data) {
   if (!data.phone) return null;
@@ -173,7 +174,7 @@ export default {
       }
       const preview = url.hostname !== 'softtask.co';
       if (preview && path === '/robots.txt') return new Response('User-agent: *\nDisallow: /\n', { headers: { 'Content-Type': 'text/plain', 'X-Robots-Tag': 'noindex, nofollow' } });
-      const asset = await env.ASSETS.fetch(request);
+      const asset = await serveNegotiatedAsset(request, env);
       if (!preview && asset.status !== 404) return asset;
       const response = new Response(asset.body, asset);
       response.headers.set('X-Robots-Tag', 'noindex, nofollow');
