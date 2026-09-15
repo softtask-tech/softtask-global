@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+<title id="title">An industry story a non-technical visitor can follow</title>
+<desc id="desc">An illustrative logistics scenario connects an arrived shipment, missing release document, software checks, AI extraction and a human approval step. It distinguishes a proposed system from verified results.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#14382d"/></marker></defs>
+<rect width="1400" height="820" fill="#f5f6ef"/>
+<g font-family="Arial,sans-serif" fill="#14382d">
+<text x="64" y="60" font-size="20">Soft Task · Industry experience concept</text>
+<text x="64" y="126" font-size="43" font-weight="700">The shipment arrived. The paperwork did not.</text>
+<text x="64" y="166" font-size="21">Show the problem, the proposed system and the person who stays in control.</text>
+<g stroke="#14382d" stroke-width="2" marker-end="url(#arrow)"><path d="M330 305H385"/><path d="M675 305H730"/><path d="M1020 305H1075"/></g>
+<rect x="64" y="230" width="266" height="155" rx="8" fill="#e4ecdf"/>
+<path d="M88 252h62v32H88zM99 252v32m13-32v32m13-32v32m13-32v32" fill="none" stroke="#14382d" stroke-width="2"/>
+<text x="88" y="319" font-size="23" font-weight="700">A container arrives</text><text x="88" y="351" font-size="17">The delivery clock starts.</text>
+<rect x="390" y="230" width="285" height="155" rx="8" fill="#fff" stroke="#c78140" stroke-width="2"/>
+<text x="414" y="270" font-size="17">The bottleneck</text><text x="414" y="314" font-size="23" font-weight="700">Release is blocked</text><text x="414" y="350" font-size="17">One document is missing.</text>
+<rect x="735" y="230" width="285" height="155" rx="8" fill="#e4ecdf"/>
+<text x="759" y="270" font-size="17">The software</text><text x="759" y="314" font-size="23" font-weight="700">Connect the evidence</text><text x="759" y="350" font-size="17">Events, checklists and deadlines.</text>
+<rect x="1080" y="230" width="256" height="155" rx="8" fill="#14382d"/>
+<text x="1104" y="270" font-size="17" fill="#fff">The team</text><text x="1104" y="314" font-size="23" font-weight="700" fill="#fff">A clear next action</text><text x="1104" y="350" font-size="17" fill="#fff">Review before instructions.</text>
+<path d="M875 385V430H420V470M875 430H1050V470" stroke="#14382d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="64" y="470" width="615" height="180" rx="8" fill="#fff"/>
+<text x="88" y="509" font-size="24" font-weight="700">Where AI can help</text>
+<text x="88" y="550" font-size="19">Read dates and references from approved documents.</text>
+<text x="88" y="582" font-size="19">Suggest the likely missing item and show its source.</text>
+<text x="88" y="614" font-size="19">Conflicting or missing evidence remains unresolved.</text>
+<rect x="721" y="470" width="615" height="180" rx="8" fill="#e4ecdf"/>
+<text x="745" y="509" font-size="24" font-weight="700">Where AI must stop</text>
+<text x="745" y="550" font-size="19">No invented release requirement or hidden approval.</text>
+<text x="745" y="582" font-size="19">No external instruction without an authorised operator.</text>
+<text x="745" y="614" font-size="19">Permissions and action limits are enforced by the system.</text>
+<path d="M64 700H1336" stroke="#c3cec0"/>
+<text x="64" y="739" font-size="19" font-weight="700">Pilot measures</text><text x="230" y="739" font-size="19">Late documents · exception age · incorrect flags · avoidable charges</text>
+<text x="64" y="782" font-size="16">Illustrative solution concept. Validate data, scope, controls and results in a project-specific pilot.</text>
+</g></svg>
