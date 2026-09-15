@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import CapabilityConnections from '../../components/CapabilityConnections.astro';
 import Icon from '../../components/Icon.astro';
 import Screen from '../../components/Screen.astro';
 import Workflow from '../../components/Workflow.astro';
@@ -8,8 +7,8 @@ import { flows } from '../../data/flows';
 ---
 
 <Layout
-  title="Kytheos — cybersecurity & STRID"
-  description="Meet Kytheos, Soft Task’s cybersecurity product and services brand. Explore Guardian, the developing ecosystem and STRID crypto investigation enquiries."
+  title="Kytheos Guardian — cybersecurity product in beta"
+  description="Explore Kytheos Guardian, a Soft Task cybersecurity product in public beta. Learn about its assessment workflow and the wider portfolio in development."
   dark
 >
   <section class="kytheos-cover">
@@ -28,7 +27,7 @@ import { flows } from '../../data/flows';
           </h1>
           <p class="lead">
             Cybersecurity should help people understand what they are seeing and what to do next.
-            Kytheos gives that work a specialist home.
+            Kytheos Guardian is our public beta product for exploring security signals. The wider product portfolio is in development.
           </p>
           <a class="button light" href="https://kytheos.com/">
             Explore Kytheos <Icon name="diagonal" />
@@ -54,7 +53,7 @@ import { flows } from '../../data/flows';
             <span>Explanation</span>
             <strong>A clearer next step</strong>
           </div>
-          <small>Illustrative decision flow, not a live analysis.</small>
+          <small>Guardian assessment workflow</small>
         </div>
       </div>
     </div>
@@ -84,7 +83,7 @@ import { flows } from '../../data/flows';
     <Screen
       name="kytheos"
       alt="Kytheos Guardian illustrative suspicious-link analysis on the product website"
-      caption="Kytheos website illustration. This screen is an example, not a live result."
+      caption="Kytheos Guardian product interface example."
     />
   </section>
   <section class="security-architecture">
@@ -110,29 +109,8 @@ import { flows } from '../../data/flows';
     </div>
   </section>
   <section class="strid-feature wrap">
-    <div class="strid-title">
-      <span>Within Kytheos</span>
-      <h2>STRID.</h2>
-      <p>
-        Crypto investigation
-        <br />& recovery enquiries
-      </p>
-    </div>
-    <div>
-      <h3>Give the investigation the right context.</h3>
-      <p>
-        STRID is Soft Task’s crypto investigation and recovery division, with its specialist home
-        under Kytheos. Begin by describing the incident and the known transaction references through
-        the appropriate enquiry route.
-      </p>
-      <p>
-        Scope, evidence handling and any next steps depend on the circumstances. Investigation does
-        not guarantee that assets can be recovered.
-      </p>
-      <a class="text-link" href="https://kytheos.com/">
-        Contact Kytheos about STRID <Icon name="diagonal" />
-      </a>
-    </div>
+    <div class="strid-title"><span>Services by Soft Task</span><h2>Need a security team?</h2></div>
+    <div><h3>Speak directly with Soft Task.</h3><p>Soft Task manages cybersecurity services and STRID crypto investigation engagements. Explore penetration testing, cloud and identity security, incident response, digital forensics and security architecture with our team.</p><a class="text-link" href="/services/cybersecurity/">Explore Soft Task cybersecurity services <Icon name="diagonal" /></a></div>
   </section>
   <section class="ecosystem-status wrap">
     <h2>
@@ -151,8 +129,7 @@ import { flows } from '../../data/flows';
         <span>In development</span>
         <h3>The wider Kytheos portfolio</h3>
         <p>
-          The product website describes further modules for teams. Check availability there; planned
-          capabilities are not presented here as live services.
+          The product website describes further modules for teams. Guardian is available in public beta; further modules are in development.
         </p>
       </article>
     </div>
@@ -160,6 +137,6 @@ import { flows } from '../../data/flows';
       View the Kytheos ecosystem <Icon name="diagonal" />
     </a>
   </section>
-<section class="section wrap"><h2>Speak with the product team</h2><p>Email <a href="mailto:kytheos@softtask.co">kytheos@softtask.co</a> for product enquiries and coordination.</p><p>For STRID crypto investigation and recovery enquiries, email <a href="mailto:strid@softtask.co">strid@softtask.co</a>. Recovery outcomes cannot be guaranteed.</p></section>
-<CapabilityConnections id="cybersecurity"/>
+<section class="section wrap"><h2>Speak with the product team</h2><p>Email <a href="mailto:kytheos@softtask.co">kytheos@softtask.co</a> for product enquiries and coordination.</p></section>
+
 </Layout>

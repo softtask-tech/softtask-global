@@ -148,7 +148,7 @@ export const flows: Record<string, { name: string; detail: string }[]> = {
     {
       name: 'Tracked response',
       detail:
-        'Record approved actions and ownership through to closure. This is an architectural illustration, not a claim that all Kytheos modules are live.',
+        'Record approved actions and ownership through to closure. This workflow outlines the developing Kytheos architecture.',
     },
   ],
 };

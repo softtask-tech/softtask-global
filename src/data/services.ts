@@ -171,7 +171,7 @@ export const services = [
     inputs:
       'Product scope, target markets, participating parties, governance rules, custody model, transaction requirements and integration owners.',
     boundary:
-      'Engineering scope is distinct from platform operation, licensing and financial services. Independent security review, custody responsibilities and market-specific requirements should be assigned explicitly. STRID crypto investigations belong with Kytheos.',
+      'Engineering scope is distinct from platform operation, licensing and financial services. Independent security review, custody responsibilities and market-specific requirements should be assigned explicitly. Soft Task delivers STRID crypto investigation and recovery enquiries through its cybersecurity team.',
   },
 ];
 export const products = [
@@ -197,9 +197,9 @@ export const products = [
   {
     name: 'Kytheos',
     path: '/products/kytheos/',
-    label: 'Cybersecurity',
+    label: 'Security product · Public beta',
     url: 'https://kytheos.com/',
-    description: 'Explore security products and the specialist home for cybersecurity services.',
+    description: 'Explore Guardian in public beta and the developing Kytheos security product portfolio.',
     color: 'green',
     monogram: 'k',
   },

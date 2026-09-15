@@ -153,7 +153,7 @@ export const guides: Record<
       ],
       [
         'Where do crypto investigation enquiries go?',
-        'Kytheos is the specialist home for cybersecurity and STRID crypto investigation and recovery enquiries. This capability page concerns engineering. Investigation outcomes and asset recovery cannot be guaranteed.',
+        'Soft Task delivers cybersecurity and STRID crypto investigation services alongside blockchain engineering. Investigation scope, evidence handling and recovery options are assessed for each enquiry.',
       ],
     ],
     related: 'before-you-move-a-workload',

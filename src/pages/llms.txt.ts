@@ -6,8 +6,8 @@ export function GET() {
   const text=[
     '# Soft Task',
     '> Technology for innovators. Software, AI, data, cloud, infrastructure and specialist products.',
-    'Soft Task is headquartered in Singapore and serves clients in 33+ countries. This file is a convenience directory of the public website, not a search-engine requirement or a claim of AI endorsement.',
-    'The published workflows are illustrative solution opportunities, not completed customer case studies. Product availability and scope follow the individual product pages. Saudi presence is planned; delivery markets are not office locations.',
+    'Soft Task is headquartered in Singapore and serves clients in 33+ countries. This directory connects our public capabilities, industries and solution briefs.',
+    'The solution briefs describe business problems, engineering approaches, AI guardrails and pilot measures. Product pages explain availability. Singapore is the headquarters; the locations page lists confirmed contact addresses. Saudi presence is planned.',
     '## Company and contact',
     link('Company','/company/'),link('Confirmed presence','/company/locations/'),link('Global delivery','/company/global-delivery/'),link('How we work','/company/how-we-work/'),link('Contact','/contact/'),link('Governance','/governance/'),
     'Project enquiries: contact@softtask.co',

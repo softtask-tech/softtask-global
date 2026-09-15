@@ -20,9 +20,9 @@ export const productProfiles = [
   {
     slug: 'kytheos',
     name: 'Kytheos',
-    category: 'Cybersecurity',
+    category: 'Cybersecurity product · Public beta',
     description:
-      'Explore Kytheos, the specialist home for Soft Task cybersecurity, Guardian and STRID crypto investigation and recovery enquiries.',
+      'Explore Kytheos Guardian, Soft Task’s cybersecurity product in public beta, with a wider product portfolio in development.',
     url: 'https://kytheos.com/',
     image: 'kytheos',
   },

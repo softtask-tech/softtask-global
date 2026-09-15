@@ -55,9 +55,9 @@
     {
       "id": "cybersecurity",
       "title": "Cybersecurity",
-      "group": "Specialist products",
-      "description": "Security and investigation enquiries through Kytheos and STRID.",
-      "url": "/products/kytheos/",
+      "group": "Platforms & operations",
+      "description": "Protect applications, identities and critical systems with Soft Task cybersecurity and STRID investigation services.",
+      "url": "/services/cybersecurity/",
       "categories": [
         "Security Architecture & Audits",
         "Penetration Testing",
@@ -321,7 +321,8 @@
         "connected-devices",
         "data-engineering",
         "systems-integration",
-        "managed-technology"
+        "managed-technology",
+        "cybersecurity"
       ],
       "visual": "asset",
       "steps": [
@@ -347,7 +348,8 @@
         "enterprise-systems",
         "connected-devices",
         "quality-engineering",
-        "systems-integration"
+        "systems-integration",
+        "cybersecurity"
       ],
       "visual": "lineage",
       "steps": [
@@ -430,7 +432,8 @@
         "software-engineering",
         "systems-integration",
         "data-engineering",
-        "quality-engineering"
+        "quality-engineering",
+        "cybersecurity"
       ],
       "visual": "handoff",
       "steps": [
@@ -663,7 +666,8 @@
         "data-centres",
         "cloud-infrastructure",
         "connected-devices",
-        "managed-technology"
+        "managed-technology",
+        "cybersecurity"
       ],
       "visual": "racks",
       "steps": [

@@ -1,0 +1,37 @@
+# Website completion audit — 15 September 2026
+
+## Implemented in this revision
+
+- Neutral, practical solution language replaces the repeated disclaimers in 32 solution briefs, 16 industry pages and their visible search answers. Interface captions and responsible-AI examples use concise descriptive language. Product availability, investigation constraints and human approval boundaries remain accurate.
+- Soft Task cybersecurity has a dedicated `/services/cybersecurity/` page: eleven service areas, four business-risk scenarios, a scoped engagement process and STRID contact. It remains one of the existing 15 pillars. Menus, search, related industries, service metadata, sitemap and the public text directory use the service route.
+- Kytheos is a separate product: Guardian public beta, wider portfolio in development. Cybersecurity and STRID delivery enquiries belong to Soft Task.
+- Inner-page line height and heading-to-body spacing improved. The security diagram draws once; expanding service details uses a short transition. Reduced-motion preferences disable both effects.
+- GA4 `G-REH51537N8` now uses advanced consent mode, explicitly selected by the owner. The production head bootstraps the tag with storage denied before configuration. Analytics cookies require consent; cookieless measurement is possible before consent and after rejection. Advertising storage and personalisation stay denied. Custom lead/email events require consent; our event code excludes form contents and URL query strings. Preferences and policies explain the behavior and ask visitors with old consent records to choose again.
+
+## Verification
+
+- Production build: 99 HTML pages, including 404; 98 public content URLs.
+- Full metadata/internal-link checks and search-readiness checks passed; backend has 20 passing tests.
+- Browser checks cover nine representative pages at 320, 390, 768, 1024 and 1440 pixels, including cybersecurity and Kytheos; 27 accessibility scans passed.
+- Controlled browser test confirms consent order, single tag per page, sanitised URLs, consent-gated conversion events, withdrawal, cookie removal and persisted rejection. Google and email delivery are mocked in this test; it does not prove account-side reporting or inbox receipt.
+- Deployment and live checks are recorded separately after publication. Automated checks are a useful baseline; ongoing content and accessibility review remains necessary.
+
+## Owner / operations actions still needed
+
+| Priority | Item | Completion evidence |
+| --- | --- | --- |
+| High | GA4 account verification | Open the live site in Google Tag Assistant, confirm the new tag is detected, and verify a consenting visit in GA4 Realtime. Mark `generate_lead` as a key event. Review Enhanced Measurement settings so form interactions or site-search queries do not introduce information outside the tracking code reviewed here. |
+| High | End-to-end enquiry receipt | Submit an agreed test enquiry, verify the notification reaches contact@softtask.co and check the reply address. Provider acceptance and configuration readiness alone do not establish inbox delivery. |
+| High | Data retention operations | Approve or amend the proposed 12-month unsuccessful-enquiry / 6-month unsuccessful-recruitment schedule; assign mailbox owners and implement review/deletion processes. |
+| Medium | Newsletter | Service remains inactive until storage/migrations and the confirmation/unsubscribe delivery path are configured and verified. Decide whether to activate it now. |
+| Medium | Address completion | Supply UAE and Saudi publication addresses when ready. Keep the US location labelled as a contact address. |
+| Medium | Trust evidence | Confirm image usage rights and approve any named clients, testimonials or publishable outcomes before adding them. Maintain current product availability statements. |
+| Ongoing | Search and reliability | Review Search Console and Bing Webmaster Tools, field performance, genuine crawl access, uptime, mailbox delivery failures and security dependencies. Indexing and ranking depend on search engines. |
+
+## Analytics reference
+
+Google describes the difference between basic and advanced consent mode, including cookieless pings with denied storage: https://developers.google.com/tag-platform/security/concepts/consent-mode
+
+Google's verification workflow: https://developers.google.com/tag-platform/security/guides/consent-debugging
+
+The earlier search strategy's strict opt-in description is superseded by this owner-approved advanced-mode implementation. This mode does not by itself determine whether every jurisdiction's consent requirements are met; the responsible company should review its chosen processing and notices with its privacy adviser.

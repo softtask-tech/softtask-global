@@ -1,4 +1,3 @@
-const measurementId = 'G-REH51537N8';
 type AnalyticsWindow = Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void; [key: `ga-disable-${string}`]: boolean };
 const analyticsWindow = window as unknown as AnalyticsWindow;
 let allowed = false;
@@ -13,36 +12,12 @@ function clearAnalyticsCookies() {
 }
 export function setAnalyticsConsent(granted: boolean) {
   allowed = granted && production;
-  analyticsWindow[`ga-disable-${measurementId}`] = !allowed;
-  if (!allowed) {
-    if (loaded) analyticsWindow.gtag?.('consent', 'update', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
-    clearAnalyticsCookies();
-    return;
-  }
-  if (loaded) { analyticsWindow.gtag?.('consent', 'update', { analytics_storage: 'granted' }); return; }
-  analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
-  analyticsWindow.gtag = function () { analyticsWindow.dataLayer!.push(arguments); };
-  const gtag = analyticsWindow.gtag;
-  gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
-  gtag('consent', 'update', { analytics_storage: 'granted' });
-  gtag('js', new Date());
-  let referrer = '';
-  try { referrer = document.referrer ? new URL(document.referrer).origin : ''; } catch {}
-  gtag('config', measurementId, {
-    send_page_view: false,
-    page_location: `${location.origin}${location.pathname}`,
-    page_referrer: referrer,
-    allow_google_signals: false,
-    allow_ad_personalization_signals: false,
-    cookie_expires: 15552000,
+  loaded = production && typeof analyticsWindow.gtag === 'function';
+  if (loaded) analyticsWindow.gtag?.('consent', 'update', {
+    analytics_storage: allowed ? 'granted' : 'denied',
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
   });
-  gtag('event', 'page_view', { page_title: document.title, page_location: `${location.origin}${location.pathname}`, page_referrer: referrer });
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-  script.id = 'softtask-google-analytics';
-  document.head.append(script);
-  loaded = true;
+  if (!allowed) clearAnalyticsCookies();
 }
 export function trackLead(service: string) {
   if (allowed && loaded) analyticsWindow.gtag?.('event', 'generate_lead', { service, method: 'contact_form' });

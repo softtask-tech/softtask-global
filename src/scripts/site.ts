@@ -139,7 +139,7 @@ let current: Consent | null = null;
 try {
   const saved = JSON.parse(localStorage.getItem(consentKey) || 'null');
   if (
-    saved?.version === 2 &&
+    saved?.version === 3 &&
     saved.expires > Date.now() &&
     typeof saved.analytics === 'boolean' &&
     typeof saved.marketing === 'boolean'
@@ -151,7 +151,7 @@ const cookieDialog = q<HTMLDialogElement>('#cookie-dialog');
 setAnalyticsConsent(current?.analytics ?? false);
 if (banner) banner.hidden = !!current;
 function saveConsent(analytics: boolean, marketing: boolean) {
-  current = { version: 2, analytics, marketing, expires: Date.now() + 180 * 86400000 };
+  current = { version: 3, analytics, marketing, expires: Date.now() + 180 * 86400000 };
   setAnalyticsConsent(analytics);
   try {
     localStorage.setItem(consentKey, JSON.stringify(current));

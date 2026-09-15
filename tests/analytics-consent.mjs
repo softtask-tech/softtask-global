@@ -16,7 +16,12 @@ await context.route('**/*',async route=>{
 });
 try {
   await page.goto('https://softtask.co/contact/?email=private@example.com&message=private-message');
-  await page.getByRole('button',{name:'Reject optional',exact:true}).click();assert.equal(tagLoads,0);
+  await page.getByRole('button',{name:'Reject optional',exact:true}).click();assert.equal(tagLoads,1);
+  let initial=await page.evaluate(()=>Array.from(window.dataLayer||[],item=>Array.from(item)));
+  assert.equal(initial[0][0],'consent');assert.equal(initial[0][1],'default');assert.equal(initial[0][2].analytics_storage,'denied');
+  assert.ok(initial.findIndex(i=>i[0]==='config')>0);
+  assert.equal(initial.filter(i=>i[0]==='event'&&i[1]==='page_view').length,1);
+  assert.ok(!(await context.cookies()).some(c=>c.name.startsWith('_ga')));
   await page.getByRole('button',{name:'Cookie settings',exact:true}).click();await page.locator('#analytics-choice').check();await page.locator('#save-cookies').click();
   await page.locator('#softtask-google-analytics').waitFor({state:'attached'});assert.equal(tagLoads,1);
   let layer=await page.evaluate(()=>Array.from(window.dataLayer||[],item=>Array.from(item)));
@@ -28,7 +33,8 @@ try {
   assert.ok(!JSON.stringify(layer).includes('Private Name'));assert.ok(!JSON.stringify(layer).includes('private project'));
   await context.addCookies([{name:'_ga',value:'test-cookie',domain:'softtask.co',path:'/',secure:true}]);
   await page.getByRole('button',{name:'Cookie settings',exact:true}).click();await page.locator('#analytics-choice').uncheck();await page.locator('#save-cookies').click();
-  assert.equal(await page.evaluate(()=>window['ga-disable-G-REH51537N8']),true);assert.ok(!(await context.cookies()).some(c=>c.name==='_ga'));
-  await page.reload();assert.equal(await page.locator('#softtask-google-analytics').count(),0);assert.equal(tagLoads,1);
-  assert.deepEqual(errors,[]);console.log('Analytics passed: opt-in only, one tag, clean page URL, non-personal conversion event, withdrawal and persistent rejection. No live analytics or enquiry sent.');
+  const withdrawn=await page.evaluate(()=>Array.from(window.dataLayer||[],item=>Array.from(item)).filter(i=>i[0]==='consent').at(-1));assert.equal(withdrawn[2].analytics_storage,'denied');assert.ok(!(await context.cookies()).some(c=>c.name==='_ga'));
+  await page.reload();assert.equal(await page.locator('#softtask-google-analytics').count(),1);assert.equal(tagLoads,2);
+  const persisted=await page.evaluate(()=>Array.from(window.dataLayer||[],item=>Array.from(item)).filter(i=>i[0]==='consent').at(-1));assert.equal(persisted[2].analytics_storage,'denied');
+  assert.deepEqual(errors,[]);console.log('Analytics passed: advanced consent defaults before configuration, one tag per page, clean page URL, non-personal conversion event, withdrawal and persistent rejection. No live analytics or enquiry sent.');
 } finally {await browser.close();}

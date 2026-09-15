@@ -4,5 +4,17 @@
 @media(max-width:1000px){.catalogue-hero{gap:30px}.industry-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pillar-group{gap:30px;grid-template-columns:.55fr 1.45fr}.sector-hero>.wrap{gap:30px}.industry-connect{gap:30px}.catalogue-menu{grid-template-columns:repeat(2,minmax(0,1fr))!important}.scenario-explorer>header{gap:30px}.sector-preparation{gap:30px}.header-inner #main-nav{gap:18px}}
 @media(max-width:700px){.catalogue-hero{grid-template-columns:1fr;padding-top:40px;padding-bottom:35px;gap:25px}.catalogue-hero h1,.solutions-heading h1{font-size:2.7rem}.catalogue-illustration{padding:15px}.catalogue-illustration .sector-mark{height:160px}.catalogue-filter{display:block}.catalogue-filter p{margin:15px 0 0}.industry-grid{grid-template-columns:1fr}.industry-grid article{padding:25px}.industry-grid .sector-mark{height:105px}.pillar-group{grid-template-columns:1fr;gap:15px}.pillar-group>div{grid-template-columns:1fr;gap:25px}.pillar-item{border-bottom:1px solid #c8d2c0;padding-bottom:20px}.catalogue-bottom{padding:25px}.catalogue-bottom h2{font-size:1.8rem}.sector-hero{padding:35px 0}.sector-hero>.wrap{grid-template-columns:1fr;gap:25px}.sector-hero h1{font-size:2.65rem}.sector-scene .sector-mark{height:140px}.sector-scene{padding:15px}.sector-flow ol{grid-template-columns:1fr;gap:0}.sector-flow li{border-top:0;border-left:2px solid #8ba883;padding:10px 0 20px 22px;display:flex;gap:20px}.sector-flow li span{margin:3px 0}.sector-flow li:not(:last-child):after{display:none}.scenario-explorer{padding-top:10px}.scenario-explorer>header{display:block}.scenario-explorer h2{font-size:1.9rem;margin-bottom:20px}.scenario-explorer>nav{flex-direction:column}.scenario-explorer>nav a{padding:16px}.scenario-explorer article{padding:23px}.scenario-explorer article h3{font-size:1.5rem}.scenario-boundaries{grid-template-columns:1fr;gap:20px}.scenario-build{padding:18px}.industry-connect{grid-template-columns:1fr;gap:20px}.industry-connect>div:last-child{grid-template-columns:1fr}.sector-preparation{grid-template-columns:1fr;padding:25px}.solution-list{grid-template-columns:1fr;gap:15px}.solutions-heading{padding-top:40px}.scope-disclosure ul{columns:1}.pillar-delivery ol,.pillar-evidence{grid-template-columns:1fr;gap:20px}.guardrail-grid{grid-template-columns:1fr}.guardrail-demo{padding:20px}.catalogue-menu{max-height:none;overflow:visible;grid-template-columns:1fr!important;padding:20px!important}.catalogue-menu .menu-overview{display:grid;gap:10px}.catalogue-menu h2{margin-top:10px}.catalogue-connections h2{font-size:1.6rem}}
 /* Direct project contact stays visible alongside the newsletter route. */
+/* Keep inner-page reading rhythm clear where base resets remove paragraph margins. */
+.inner-page main h1{line-height:1.16}
+.inner-page main h2{line-height:1.28}
+.inner-page main h3{line-height:1.4}
+.inner-page main :is(h2,h3,h4)+:is(p,ul,ol,dl){margin-top:16px}
+.inner-page main :is(p,ul,ol,dl)+:is(h2,h3){margin-top:30px}
+.inner-page main p{line-height:1.8}
+.inner-page main details summary{line-height:1.5}
+@media(prefers-reduced-motion:no-preference){
+  .inner-page .text-link{transition:text-underline-offset .18s ease}
+  .inner-page .text-link:hover{ text-underline-offset:7px }
+}
 .footer-grid .newsletter .footer-email{font-size:clamp(17px,1.6vw,23px);line-height:1.4;font-weight:600;overflow-wrap:anywhere;text-decoration:underline}
 @media(max-width:600px){.footer-grid .newsletter{grid-column:1/-1}.footer-grid .newsletter .footer-email{font-size:20px}}

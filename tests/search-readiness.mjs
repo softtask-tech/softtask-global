@@ -15,7 +15,7 @@ for(const file of files){
   check((html.match(/<h1(?:\s|>)/g)||[]).length===1,`${route}: one H1`);
   check(html.includes('mailto:contact@softtask.co'),`${route}: direct enquiry email`);
   check(html.includes('Technology for innovators'),`${route}: slogan`);
-  check(!/<script[^>]*src="https:\/\/www.googletagmanager/.test(html),`${route}: no unconditional analytics`);
+  check(!/<script[^>]*src="https:\/\/www.googletagmanager/.test(html),`${route}: no unguarded external analytics script`);
   if(!relative.includes('404'))check(/<meta name="robots" content="index, follow/.test(html),`${route}: indexable production HTML`);
   const answers=graph.find(n=>n['@type']==='FAQPage');
   if(answers){for(const answer of answers.mainEntity)check(visibleHTML.includes(answer.name.replaceAll('&','&amp;'))||visibleHTML.includes(answer.name),`${route}: visible question ${answer.name}`);}

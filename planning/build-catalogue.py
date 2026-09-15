@@ -4,7 +4,7 @@ p=Path('.')
 coverage=json.loads((p/'planning/INDUSTRY-CAPABILITY-COVERAGE.json').read_text(encoding='utf-8'))
 base='''software-engineering|Software development|Build & connect|Applications that fit the way your business works.|/services/software-engineering/
 blockchain-engineering|Blockchain & digital assets|Build & connect|Wallets, tokens and exchange workflows with clear operating responsibilities.|/services/blockchain-engineering/
-cybersecurity|Cybersecurity|Specialist products|Security and investigation enquiries through Kytheos and STRID.|/products/kytheos/
+cybersecurity|Cybersecurity|Platforms & operations|Protect applications, identities and critical systems with Soft Task cybersecurity and STRID investigation services.|/services/cybersecurity/
 ai-automation|AI & automation|Intelligence & data|Use approved information to assist decisions and reduce repetitive work.|/services/ai-automation/
 cloud-infrastructure|Cloud & DevOps|Platforms & operations|Build, migrate and operate the platforms your services depend on.|/services/cloud-infrastructure/
 data-centres|Data centres & critical infrastructure|Platforms & operations|Connect capacity, availability, networks, power and cooling requirements.|/services/data-centres/
@@ -51,7 +51,7 @@ for i,line in enumerate(meta.splitlines()):
  if i==15:sectors=['Software platforms','SaaS businesses','Telecommunications operations']
  industries.append(dict(id=id,title=title,headline=headline,description=description,pillars=related.split(','),visual=visual,steps=steps.split(','),sectors=sectors))
 for industry in industries:
- if industry['id'] in ['financial-services','government-public-services','software-telecommunications']:
+ if industry['id'] in ['financial-services','government-public-services','software-telecommunications','energy-utilities','manufacturing','data-centres-infrastructure','healthcare-life-sciences']:
   industry['pillars'].append('cybersecurity')
 text=(p/'planning/INDUSTRY-OPPORTUNITIES.md').read_text(encoding='utf-8')
 blocks=re.findall(r'^### (\d+)\. ([^\n]+)\n(.*?)(?=^### |^## |\Z)',text,re.M|re.S)

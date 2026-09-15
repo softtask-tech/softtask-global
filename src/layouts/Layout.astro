@@ -13,6 +13,7 @@ import { articles } from '../data/articles';
 import { pageSEO } from '../data/seo';
 import { productProfiles } from '../data/product-profiles';
 import { governance } from '../data/governance';
+import Analytics from '../components/Analytics.astro';
 import SearchAnswers from '../components/SearchAnswers.astro';
 import {solutions} from '../data/discovery';
 interface Props {
@@ -32,7 +33,7 @@ const {
 const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !path.includes('404');
 const searchItems = [
   ...catalogue.industries.map(i=>({title:i.title,description:[i.description,...i.sectors].join(' '),url:`/industries/${i.id}/`})),
-  ...catalogue.pillars.filter(p=>p.scope.length).map(p=>({title:p.title,description:p.description,url:p.url})),
+  ...catalogue.pillars.filter(p=>p.scope.length || p.id==='cybersecurity').map(p=>({title:p.title,description:p.description,url:p.url})),
   ...solutions.map(s=>({title:s.searchTitle,description:s.problem,url:s.url})),
   {title:'Global technology delivery',description:'International projects, markets and delivery planning',url:'/company/global-delivery/'},
   {title:'Who we serve',description:'Industries and business problems',url:'/industries/'},
@@ -108,6 +109,7 @@ const searchItems = [
     <meta name="twitter:card" content="summary_large_image" />
     <script is:inline type="application/ld+json" set:html={json}></script>
     <link rel="icon" type="image/png" href="/favicon.png" />
+  <Analytics />
   </head>
   <body class:list={[dark && 'dark-top', path !== '/' && 'inner-page']} data-page={path}>
     <a class="skip-link" href="#main">
@@ -242,7 +244,7 @@ const searchItems = [
     <section class="cookie-banner" aria-label="Cookie choices" hidden>
       <div>
         <strong>Your privacy, your choice.</strong>
-        <p>We use essential storage for your preferences. Optional tracking is off.</p>
+        <p>Analytics cookies need your agreement. Google can receive cookieless measurements with storage denied. <a href="/cookies/">See your choices</a>.</p>
       </div>
       <div class="cookie-actions">
         <button class="button small" data-consent="reject">
@@ -271,7 +273,7 @@ const searchItems = [
         <span>
           <strong>Analytics</strong>
           <span class="small-copy">
-            Allow Google Analytics to measure page visits and enquiry conversions. It loads only after you choose analytics.
+            Allow Analytics cookies to measure visits and enquiries. The Google tag loads with storage denied until you agree and can send cookieless measurements without analytics consent.
           </span>
         </span>
         <input type="checkbox" id="analytics-choice" />

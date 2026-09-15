@@ -24,3 +24,4 @@ jobs:
         env:
           PUBLIC_SITE_INDEXABLE: 'true'
       - run: npm run test:search
+      - run: node tests/security-content.mjs

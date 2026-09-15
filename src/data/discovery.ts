@@ -12,7 +12,7 @@ export const pillarSearch: Record<string, [string, string]> = {
   'quality-engineering': ['Software testing & quality assurance services', 'Build a practical software quality strategy with Soft Task. Cover functional testing, automation, critical workflows, failure handling and release acceptance.'],
   'connected-devices': ['IoT software & embedded systems development', 'Connect devices, telemetry and operational workflows with Soft Task. Scope IoT applications, embedded integration, data quality and device lifecycle needs.'],
   'systems-integration': ['API development & systems integration services', 'Connect applications and data through APIs with Soft Task. Plan interface contracts, authentication, event handling, retries and integration monitoring.'],
-  'cybersecurity': ['Kytheos cybersecurity & STRID investigation', 'Explore Kytheos, Soft Task’s cybersecurity portfolio, and STRID crypto investigation. Review published module availability and discuss your security requirement.'],
+  'cybersecurity': ['Cybersecurity services, penetration testing & incident response', 'Protect applications, cloud platforms and critical systems with Soft Task. Explore penetration testing, detection, incident response, zero-trust architecture and STRID investigation.'],
   'regtech': ['Regulix One: AML, KYC & compliance workflows', 'Explore Regulix One by Soft Task for AML, KYC and compliance workflows. Discuss evidence, integrations and the responsibilities that remain with your organisation.'],
   'digital-experience': ['Tubblor: marketing intelligence & digital experience', 'Explore Tubblor by Soft Task for marketing intelligence and digital experience. Connect marketing information with clearer planning and operational workflows.'],
 };
@@ -73,7 +73,7 @@ export type Answer = { question:string; answer:string };
 export function answersForPath(path:string):Answer[] {
   const pillar=catalogue.pillars.find(p=>p.url===path);
   if(pillar)return [
-    {question:`What does Soft Task cover in ${pillar.title.toLowerCase()}?`,answer:`The capability includes ${pillar.categories.slice(0,5).join(', ').toLowerCase()}. We begin with the business workflow, current technology and delivery constraints, then agree the implementation scope and acceptance criteria. ${pillar.id==='cybersecurity'?'Cybersecurity and STRID enquiries are handled through Kytheos. Product module availability follows the published product status.':''}`},
+    {question:`What does Soft Task cover in ${pillar.title.toLowerCase()}?`,answer:`The capability includes ${pillar.categories.slice(0,5).join(', ').toLowerCase()}. We begin with the business workflow, current technology and delivery constraints, then agree the implementation scope and acceptance criteria. ${pillar.id==='cybersecurity'?'Soft Task delivers cybersecurity and STRID investigation services directly. Kytheos is a separate product in beta.':''}`},
     {question:'Can you work with our existing systems?',answer:`Discovery identifies the interfaces, licences, data quality and access permissions required for ${pillar.title.toLowerCase()}. We plan a bounded integration or migration, test recovery and exceptions, and agree who owns the resulting system. Replacing every system is not a prerequisite.`},
     {question:'How do international projects start?',answer:'Soft Task is headquartered in Singapore and serves clients in 33+ countries. Start with your market, business objective and existing systems. We agree working hours, contracting arrangements, data location, local requirements and support coverage before committing to delivery.'},
   ];
@@ -81,7 +81,7 @@ export function answersForPath(path:string):Answer[] {
   if(industry){const examples=solutions.filter(s=>s.industry===industry.id);return [
     {question:`How can technology help ${industry.title.toLowerCase()}?`,answer:`Start with a measurable operational problem. Examples we can explore include ${examples.map(s=>s.searchTitle.toLowerCase()).join(' and ')}. Soft Task connects the relevant software, data, integration and infrastructure capabilities around that workflow.`},
     {question:'What can AI do, and what remains with people?',answer:`For example: ${examples[0].ai} ${examples[0].boundary} We define allowed inputs, evidence requirements, access controls and evaluation criteria before a pilot.`},
-    {question:'Are these completed customer projects?',answer:'These are illustrative solution opportunities, not published customer case studies or promises of a particular result. A discovery phase establishes the baseline, available data, feasibility, delivery scope and measures for your organisation.'},
+    {question:'How do we turn an opportunity into a delivery plan?',answer:'We map your current process, establish a baseline and review the available data. Together we define the delivery scope, acceptance measures and a first release that your team can evaluate.'},
   ];}
   const solution=solutions.find(s=>s.url===path);
   if(solution)return [

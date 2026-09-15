@@ -1,0 +1,29 @@
+<!-- Google Consent Mode: defaults must precede configuration and the external tag. -->
+<script is:inline>
+  if (['softtask.co', 'www.softtask.co'].includes(location.hostname)) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', {
+      analytics_storage: 'denied', ad_storage: 'denied',
+      ad_user_data: 'denied', ad_personalization: 'denied', wait_for_update: 500
+    });
+    window.gtag('set', 'ads_data_redaction', true);
+    window.gtag('js', new Date());
+    let referrer = '';
+    try { referrer = document.referrer ? new URL(document.referrer).origin : ''; } catch {}
+    window.gtag('config', 'G-REH51537N8', {
+      send_page_view: false, page_location: location.origin + location.pathname,
+      page_referrer: referrer, allow_google_signals: false,
+      allow_ad_personalization_signals: false, cookie_expires: 15552000
+    });
+    window.gtag('event', 'page_view', {
+      page_title: document.title, page_location: location.origin + location.pathname,
+      page_referrer: referrer
+    });
+    const tag = document.createElement('script');
+    tag.id = 'softtask-google-analytics';
+    tag.async = true;
+    tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-REH51537N8';
+    document.head.append(tag);
+  }
+</script>
