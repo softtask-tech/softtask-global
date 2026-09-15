@@ -14,7 +14,11 @@
 - Full metadata/internal-link checks and search-readiness checks passed; backend has 20 passing tests.
 - Browser checks cover nine representative pages at 320, 390, 768, 1024 and 1440 pixels, including cybersecurity and Kytheos; 27 accessibility scans passed.
 - Controlled browser test confirms consent order, single tag per page, sanitised URLs, consent-gated conversion events, withdrawal, cookie removal and persisted rejection. Google and email delivery are mocked in this test; it does not prove account-side reporting or inbox receipt.
-- Deployment and live checks are recorded separately after publication. Automated checks are a useful baseline; ongoing content and accessibility review remains necessary.
+- Published code commit: `d1ca0cf`; GitHub verification passed and Cloudflare serves the new cybersecurity page.
+- Live audit: all 98 public content URLs return 200 with correct canonicals and indexable metadata. The sitemap contains all 98. The www host redirects permanently and the worker preview remains noindex.
+- Live browser fetched the actual Google tag successfully (HTTP 200), found one tag, confirmed no Analytics cookies before consent and Analytics cookies after acceptance. Measurement requests were intercepted to avoid recording test traffic; account-side detection and Realtime remain to be checked by the owner.
+- IndexNow returned HTTP 200 for 98 submitted URLs. This confirms receipt, not indexing or ranking.
+- Expanded cybersecurity service panels also passed keyboard, reduced-motion, overflow and accessibility checks at four widths. Automated checks are a useful baseline; ongoing content and accessibility review remains necessary.
 
 ## Owner / operations actions still needed
 
