@@ -30,9 +30,9 @@ Newsletter collection is now active. The owner approved the private D1 database 
 
 | Priority | Item | Completion evidence |
 | --- | --- | --- |
-| High | GA4 account verification | Open the live site in Google Tag Assistant, confirm the new tag is detected, and verify a consenting visit in GA4 Realtime. Mark `generate_lead` as a key event. Review Enhanced Measurement settings so form interactions or site-search queries do not introduce information outside the tracking code reviewed here. |
+| Complete | GA4 account verification | Owner confirmed GA4 verification is complete. Ongoing campaign work should review key events and Enhanced Measurement settings. |
 | High | End-to-end enquiry receipt | Submit an agreed test enquiry, verify the notification reaches contact@softtask.co and check the reply address. Provider acceptance and configuration readiness alone do not establish inbox delivery. |
-| High | Data retention operations | Approve or amend the proposed 12-month unsuccessful-enquiry / 6-month unsuccessful-recruitment schedule; assign mailbox owners and implement review/deletion processes. |
+| High | Data retention operations | Owner approved the 12-month unsuccessful-enquiry / 6-month unsuccessful-recruitment schedule. Assign mailbox owners and implement review/deletion processes. |
 | Medium | Newsletter | Collection is active. Complete an owner-approved real inbox confirmation/unsubscribe check, then assign campaign ownership and provider suppression handling before sending bulk campaigns. |
 | Medium | Address completion | Supply UAE and Saudi publication addresses when ready. Keep the US location labelled as a contact address. |
 | Medium | Trust evidence | Confirm image usage rights and approve any named clients, testimonials or publishable outcomes before adding them. Maintain current product availability statements. |

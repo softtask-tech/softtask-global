@@ -18,3 +18,4 @@
 }
 .footer-grid .newsletter .footer-email{font-size:clamp(17px,1.6vw,23px);line-height:1.4;font-weight:600;overflow-wrap:anywhere;text-decoration:underline}
 @media(max-width:600px){.footer-grid .newsletter{grid-column:1/-1}.footer-grid .newsletter .footer-email{font-size:20px}}
+.approach-steps h3+p,.industry-entry>h2+p{margin-top:16px}

@@ -1,4 +1,5 @@
 import catalogue from '../src/data/catalogue.json' with { type: 'json' };
+import {brandedEmail} from './emails.mjs';
 import { parsePhoneNumberFromString, isSupportedCountry } from 'libphonenumber-js/min';
 function phoneNumber(data) {
   if (!data.phone) return null;
@@ -26,6 +27,7 @@ const json = (data, status = 200) =>
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const services = new Set([...catalogue.pillars.map(p=>p.id), 'not-sure']);
 const topics = new Set(['all', 'infrastructure', 'software', 'ai-data']);
+const topicNames = {all:'All perspectives',infrastructure:'Cloud & infrastructure',software:'Software engineering','ai-data':'AI & data'};
 export function validate(data, kind) {
   if (!data || typeof data !== 'object' || Array.isArray(data))
     return 'Please provide the form fields.';
@@ -91,13 +93,14 @@ const ready = (env) =>
 async function mail(env, to, subject, text, key, replyTo = env.MAIL_REPLY_TO) {
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',
+    signal: AbortSignal.timeout(15_000),
     headers: {
       Authorization: `Bearer ${env.MAIL_API_KEY}`,
       'Content-Type': 'application/json',
       'Idempotency-Key': key,
     },
     body: JSON.stringify({
-      from: env.MAIL_FROM, to, subject, text,
+      from: env.MAIL_FROM, to, subject, text, html: brandedEmail(subject, text),
       ...(replyTo ? { reply_to: replyTo } : {}),
     }),
   });
@@ -144,8 +147,9 @@ function resultPage(title, message, action, rawToken) {
       headers: {
         'Content-Type': 'text/html;charset=UTF-8',
         'Cache-Control': 'no-store',
-        'Referrer-Policy': 'no-referrer',
+        'Referrer-Policy': 'strict-origin',
         'X-Frame-Options': 'DENY',
+        'X-Robots-Tag': 'noindex, nofollow',
       },
     },
   );
@@ -241,7 +245,7 @@ export default {
             env,
             row.email,
             'Your Soft Task subscription',
-            `Your subscription is confirmed. Selected topic: ${row.pending_topic}.\n\nUnsubscribe at any time: ${origin}/api/unsubscribe?token=${unsub}`,
+            `Welcome to Soft Task perspectives. Your subscription is confirmed.\n\nSelected topic: ${topicNames[row.pending_topic] || row.pending_topic}.\n\nUnsubscribe at any time: ${origin}/api/unsubscribe?token=${unsub}`,
             `welcome-${hash}`,
           );
         } catch {
@@ -301,10 +305,16 @@ export default {
           `contact-${fingerprint}`,
           data.email,
         );
+        let acknowledgementSent = true;
+        try {
+          await mail(env, data.email, 'We have received your enquiry',
+            `Hello ${data.name},\n\nThank you for contacting Soft Task. Our team will review your enquiry and get back to you within one working day. You can reply to this email if you need to add anything.\n\nYour enquiry\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${phoneNumber(data) || 'Not provided'}\nCompany: ${data.company}\nMarket: ${data.country}\nCapability: ${catalogue.pillars.find(p=>p.id===data.service)?.title || 'Help choosing a capability'}\nIndustry: ${catalogue.industries.find(i=>i.id===data.industry)?.title || 'Not selected'}\nWorkflow: ${catalogue.scenarios.find(s=>s.id===data.scenario)?.title || 'Not selected'}\n\nMessage\n${data.message}\n\nThis acknowledgement concerns your enquiry. It does not subscribe you to marketing emails.`,
+            `contact-ack-${fingerprint}`);
+        } catch { acknowledgementSent = false; console.error('contact_acknowledgement_failed'); }
         return json(
           {
             message:
-              'Your enquiry has been accepted for email delivery. Thank you for sharing the context.',
+              `Your enquiry has been accepted for email delivery. We will get back to you within one working day.${acknowledgementSent ? ' Please check your inbox for an acknowledgement.' : ' Your enquiry is received, but the acknowledgement email could not be sent.'}`,
           },
           202,
         );
@@ -329,7 +339,7 @@ export default {
         env,
         data.email,
         'Confirm your Soft Task subscription',
-        `Confirm your subscription and selected topic (${data.topic}):\n${origin}/api/confirm?token=${raw}\n\nThis link expires in 24 hours. If you did not request this, ignore this email.`,
+        `Please confirm your email to receive Soft Task perspectives.\n\nYour selected topic: ${topicNames[data.topic]}.\n\n${origin}/api/confirm?token=${raw}\n\nThis link expires in 24 hours. If you did not request this, ignore this email.`,
         `confirm-${hash}`,
       );
       return json(

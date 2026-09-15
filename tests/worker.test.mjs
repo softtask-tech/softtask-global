@@ -195,8 +195,24 @@ test('provider acceptance returns a precise delivery message', async (t) => {
   assert.match(calls[1].body.text, /Notice version: 2026-09-15/);
   assert.match(calls[1].body.text, /Agreement recorded: \d{4}-\d{2}-\d{2}T/);
   assert.match(calls[1].body.text, /Marketing subscription: not requested/);
+  assert.match(calls[1].body.html, /https:\/\/softtask.co\/logo.png/);
+  assert.equal(calls[2].body.to, valid.email);
+  assert.match(calls[2].body.text, /within one working day/);
+  assert.ok(calls[2].body.text.includes(valid.message));
+  assert.match(calls[2].body.html, /We have received your enquiry/);
   for (const value of [valid.name, valid.email, valid.company, valid.country, valid.service, valid.message])
     assert.ok(calls[1].body.text.includes(value));
+});
+
+test('acknowledgement failure preserves the received enquiry and reports the email issue', async t => {
+  let emails=0;
+  t.mock.method(globalThis,'fetch',async url=>{
+    if(String(url).includes('siteverify'))return Response.json({success:true,action:'contact',hostname:'softtask.co'});
+    return ++emails===1?Response.json({id:'accepted-notification'}):new Response('unavailable',{status:503});
+  });
+  const r=await worker.fetch(request({...valid,'cf-turnstile-response':'test'}),configured);
+  assert.equal(r.status,202);assert.equal(emails,2);
+  assert.match((await r.json()).message,/acknowledgement email could not be sent/);
 });
 
 test('mailbox readiness enables contact without enabling unconfigured newsletter storage', async () => {
@@ -227,7 +243,7 @@ test('recipient cannot be overridden by submitted fields and different services 
     assert.equal(r.status, 202);
   }
   assert.equal(sent[0].body.to, configured.NOTIFY_TO);
-  assert.notEqual(sent[0].key, sent[1].key);
+  assert.notEqual(sent[0].key, sent[2].key);
 });
 test('Turnstile fails closed for invalid responses and unavailable verification', async (t) => {
   let outcome;

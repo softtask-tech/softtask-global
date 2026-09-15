@@ -132,7 +132,7 @@ const phoneCountries = getCountries().map(code => ({code, name:countryNames.of(c
   .form-layout{grid-template-columns:minmax(240px,.7fr) minmax(0,1.3fr);gap:clamp(32px,5vw,80px);align-items:start}
   .enquiry-form{background:#fff;padding:clamp(20px,3vw,40px);border:1px solid #d5ded4;border-top:4px solid var(--forest);gap:18px;min-width:0}
   .full,.verification-area{grid-column:1/-1;min-width:0}
-  .form-heading h2{font-size:24px;line-height:1.25;margin:0 0 8px}
+  .form-heading h2{font-size:24px;line-height:1.25;margin:0 0 16px}
   .form-heading p,.field-hint{font-size:13px;color:var(--muted);line-height:1.6;margin:0;font-weight:400}
   .project-heading{padding-top:18px;border-top:1px solid #d5ded4;margin-top:6px}
   .enquiry-form .field{font-size:14px;min-width:0}
@@ -149,3 +149,4 @@ const phoneCountries = getCountries().map(code => ({code, name:countryNames.of(c
   @media(max-width:1000px){.form-layout{grid-template-columns:1fr}.form-context{max-width:680px}.form-context ul{display:none}}
   @media(max-width:600px){.enquiry-form{grid-template-columns:minmax(0,1fr);padding:20px 16px;gap:16px}.phone-fields{grid-template-columns:minmax(0,1fr)}.form-heading h2{font-size:22px}.consent-panel{padding:14px}.form-layout{padding-top:32px}.form-context h2{font-size:28px}.enquiry-form .field{grid-column:1/-1}}
 </style>
+
