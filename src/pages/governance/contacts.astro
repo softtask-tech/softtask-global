@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { publicContacts } from '../../data/governance';
+import '../../styles/governance.css';
+---
+<Layout title="Corporate contact directory" description="Find the right Soft Task email for project enquiries, support, careers, privacy, legal questions, grievances, media, security and our three products.">
+  <header class="gov-hero"><div class="wrap gov-heading"><div><a class="gov-back" href="/governance/">Governance centre</a><h1>The right conversation.<br />The right team.</h1><p class="gov-intro">Direct corporate contacts for clients, candidates, partners and people with a concern.</p></div><aside class="gov-summary"><span>Start here</span><a href="mailto:contact@softtask.co">contact@softtask.co</a><p>For new projects or help finding the relevant team.</p><a href="/contact/">Use the project enquiry form</a></aside></div></header>
+  <section class="wrap gov-contact-list" aria-label="Public corporate emails">{publicContacts.map(([title,email,purpose]) => <div><h2>{title}</h2><p>{purpose}</p><a href={`mailto:${email}`}>{email}</a></div>)}</section>
+  <section class="wrap gov-accountability"><h2>Sensitive or unresolved matters</h2><p>For a workplace concern or serious wrongdoing, use the reporting routes and handling guidance on our grievance page. For unresolved client service issues, use the client relations page. Agree a suitable method before sending sensitive evidence.</p><div><a href="/governance/grievances/">Grievances and speaking up</a><a href="/governance/client-relations/">Client complaints and escalation</a></div></section>
+</Layout>

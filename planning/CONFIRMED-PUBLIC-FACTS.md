@@ -17,3 +17,5 @@ Owner direction confirmed September 15, 2026:
 - Blockchain scope: Web3, crypto/token development, wallets, smart contracts and centralised/decentralised exchange development, explicitly expanded by the owner.
 
 The owner confirmed that the softtask.co addresses in Soft-Task-Corporate-Email-Structure-v2.xlsx are active on Google Workspace. This supersedes the workbook's Planned labels; mailbox delivery has not yet been independently tested. The owner reported abuse@softtask.tech could not be created; it is not used by this website. General enquiries route to contact@softtask.co; automated notifications use notifications@softtask.co. Country-domain mailbox activation is not inferred from this confirmation. A Resend account exists; API credentials and sender verification are still required for website delivery.
+
+The owner confirmed the Singapore entity as the global website operator in response to a question naming Soft Task Singapore Pte. Ltd. This name is used in the privacy notice, not as a repeated marketing label. The owner requested a proposed retention schedule; adoption and operational implementation are not yet confirmed.

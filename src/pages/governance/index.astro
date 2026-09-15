@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { governance } from '../../data/governance';
+import '../../styles/governance.css';
+const groups = [
+  { title: 'Your information and choices', intro: 'Understand how information is used, manage your preferences and access the website.', slugs: ['privacy','cookies','terms','accessibility'] },
+  { title: 'People and relationships', intro: 'Respectful treatment, clear expectations and a route to raise concerns.', slugs: ['fair-treatment','grievances','client-relations','business-conduct','supplier-standards'] },
+  { title: 'Security and accountability', intro: 'Our policy principles, responsible reporting and project-specific due diligence.', slugs: ['security','responsible-disclosure','regulatory'] }
+];
+---
+<Layout title="Governance and trust" description="Find Soft Task policies, corporate contacts and reporting routes for privacy, fair treatment, grievances, security, supplier conduct and enterprise due diligence.">
+  <header class="gov-hub-hero"><div class="wrap"><a class="gov-back" href="/company/">About Soft Task</a><h1>Clear standards.<br />Accountable relationships.</h1><p>How we handle information, treat people and set expectations for our work. Find a policy, ask a question or raise a concern.</p><a class="button" href="/governance/contacts/">Corporate contact directory</a></div></header>
+  <section class="wrap gov-quick" aria-label="Common requests"><a href="/governance/grievances/"><span>Raise a concern</span><strong>Grievances and speaking up</strong></a><a href="/privacy/#rights"><span>Manage your information</span><strong>Privacy requests</strong></a><a href="/governance/responsible-disclosure/"><span>Report a weakness</span><strong>Responsible disclosure</strong></a></section>
+  <div class="wrap gov-directory">{groups.map(g => <section><header><h2>{g.title}</h2><p>{g.intro}</p></header><div>{g.slugs.map(slug => { const p=governance.find(p=>p.slug===slug)!; return <a href={p.path}><h3>{p.title}</h3><p>{p.description}</p><span aria-hidden="true">↗</span></a>; })}</div></section>)}</div>
+  <section class="wrap gov-accountability"><h2>Standards with a clear scope</h2><p>These pages describe corporate expectations and website practices. Project obligations belong in the relevant agreement. Security controls and regulatory evidence should be assessed for the actual service, jurisdiction and contracting entity.</p><a href="/governance/regulatory/">Prepare an enterprise review</a></section>
+</Layout>

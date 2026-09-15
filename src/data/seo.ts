@@ -1,6 +1,7 @@
 import { services } from './services';
 import { articles } from './articles';
 import { productProfiles } from './product-profiles';
+import { governance } from './governance';
 
 const pages: Record<string, [string, string]> = {
   '/': [
@@ -60,6 +61,8 @@ const pages: Record<string, [string, string]> = {
     'Read about accessibility features on the Soft Task website, including keyboard navigation, readable content, reduced motion and ways to report a barrier.',
   ],
 };
+
+for (const policy of governance) pages[policy.path] = [policy.title, policy.description];
 
 export function pageSEO(path: string, fallbackTitle: string, fallbackDescription?: string) {
   const service = services.find((s) => path === `/services/${s.slug}/`);

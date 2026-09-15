@@ -36,6 +36,7 @@ test('concurrent confirmation cannot consume the same token twice', async (t) =>
   assert.match(await response.text(), /already been used/);
 });
 const valid = {
+  noticeVersion: '2026-09-15',
   name: 'A Buyer',
   email: 'buyer@example.com',
   company: 'Example',
@@ -64,6 +65,8 @@ test('rejects malformed fields and missing consent', () => {
     { service: 'invented' },
     { website: 'spam' },
     { name: '' },
+    { noticeVersion: 'old' },
+    { noticeVersion: undefined },
   ])
     assert.ok(validate({ ...valid, ...change }, 'contact'));
 });
@@ -146,6 +149,9 @@ test('provider acceptance returns a precise delivery message', async (t) => {
   assert.equal(calls[1].body.to, 'test@example.com');
   assert.equal(calls[1].body.reply_to, valid.email);
   assert.equal(calls[1].body.from, configured.MAIL_FROM);
+  assert.match(calls[1].body.text, /Notice version: 2026-09-15/);
+  assert.match(calls[1].body.text, /Agreement recorded: \d{4}-\d{2}-\d{2}T/);
+  assert.match(calls[1].body.text, /Marketing subscription: not requested/);
   for (const value of [valid.name, valid.email, valid.company, valid.country, valid.service, valid.message])
     assert.ok(calls[1].body.text.includes(value));
 });

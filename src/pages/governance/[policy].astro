@@ -1,0 +1,8 @@
+---
+import PolicyPage from '../../components/PolicyPage.astro';
+import { governance } from '../../data/governance';
+export function getStaticPaths() {
+  return governance.filter(p => p.path.startsWith('/governance/')).map(policy => ({ params: { policy: policy.slug }, props: { policy } }));
+}
+---
+<PolicyPage policy={Astro.props.policy} />

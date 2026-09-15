@@ -10,6 +10,7 @@ import { services } from '../data/services';
 import { articles } from '../data/articles';
 import { pageSEO } from '../data/seo';
 import { productProfiles } from '../data/product-profiles';
+import { governance } from '../data/governance';
 interface Props {
   title: string;
   description?: string;
@@ -26,6 +27,7 @@ const {
 } = pageSEO(path, inputTitle, inputDescription);
 const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !path.includes('404');
 const searchItems = [
+  ...governance.map(p => ({ title: p.title, url: p.path, description: p.description })),
   ...productProfiles.map((p) => ({
     title: p.name,
     description: p.description,
@@ -198,6 +200,8 @@ const searchItems = [
             <a href="/products/">Our products</a>
             <a href="/insights/">Perspectives</a>
             <a href="/careers/">Careers</a>
+            <a href="/governance/">Governance and trust</a>
+            <a href="/governance/contacts/">Corporate contacts</a>
           </div>
           <div>
             <h2>Our world</h2>
@@ -223,6 +227,9 @@ const searchItems = [
           <div>
             <a href="/privacy/">Privacy</a>
             <a href="/terms/">Terms</a>
+            <a href="/governance/grievances/">Grievances</a>
+            <a href="/governance/security/">Security</a>
+            <a href="/cookies/">Cookies</a>
             <button class="cookie-open">Cookie settings</button>
             <a href="/accessibility/">Accessibility</a>
           </div>

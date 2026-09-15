@@ -2,7 +2,7 @@
 
 ## Implemented
 
-30 generated pages: 29 content routes plus a 404 page. Includes three dedicated product pages, an engagement-models page, and separate Web3 and exchange-development pages. Company, presence, capabilities and product layouts are subject-specific.
+40 generated pages: 39 content routes plus a 404 page. The governance revision adds a policy centre, corporate contacts and eight topic pages, and replaces four brief legal pages with structured notices. Includes three dedicated product pages, an engagement-models page, and separate Web3 and exchange-development pages. Company, presence, capabilities and product layouts are subject-specific.
 
 Responsive design, self-hosted fonts, optimised owner-supplied photographs, service tabs with keyboard control, search with empty state, mobile navigation, native dialogs, persistent versioned cookie preferences, contact prefill and error handling. No tracking providers are installed.
 
@@ -18,7 +18,7 @@ For the complete local Worker runtime, build then run `npm run cf:dev`. The defa
 
 1. Use a company-owned Cloudflare account and an access-protected staging hostname. Set SITE_ORIGIN to the exact preview origin and use a matching Turnstile widget.
 2. Create a D1 database, add its binding as DB in wrangler.jsonc, and apply worker/migrations/0001_subscribers.sql. Do not insert a made-up database identifier.
-3. Configure a verified sender with Resend. Store MAIL_API_KEY and TURNSTILE_SECRET as secrets. Set MAIL_FROM, NOTIFY_TO and PUBLIC_TURNSTILE_SITE_KEY. Global recipient defaults are deliberately absent until a monitored mailbox is confirmed.
+3. Configure a verified sender with Resend. Store MAIL_API_KEY and TURNSTILE_SECRET as secrets. Set MAIL_FROM, NOTIFY_TO and PUBLIC_TURNSTILE_SITE_KEY. The owner-confirmed defaults are contact@softtask.co for enquiries and notifications@softtask.co for sending, with visitor Reply-to. Credentials and live verification remain pending.
 4. Test real enquiry delivery, invalid/replayed challenges, subscription confirmation, preference reconfirmation, expiry and unsubscribe in staging using an authorised test inbox. Add account-level rate limits and operational monitoring.
 5. Select the actual newsletter campaign workflow before sending campaigns. This build stores subscriptions and handles transactional confirmation; it does not include a campaign editor or bulk sender. Campaign sends must use only active subscriptions and supply a working unsubscribe route. Obtain explicit send authorization.
 
@@ -71,3 +71,7 @@ The homepage composition is preserved. Company presence, product details and cap
 - CI: GitHub Actions checks types, build, static SEO/internal links and backend tests. It does not deploy and does not use production secrets. Browser checks are run locally with Microsoft Edge.
 - Google Search guidance: https://developers.google.com/search/docs/appearance/ai-features and https://developers.google.com/search/docs/appearance/structured-data/software-app. Static text, internal links and accurate markup support discoverability; no special AI markup or ranking guarantee is claimed.
 - Current product sources reviewed September 15: https://www.tubblor.com/ , https://regulixone.com/ , https://kytheos.com/ . Product availability belongs to those sites. UAE is the current Regulix market; Guardian is the current public Kytheos beta.
+
+## Governance revision
+
+12 structured policy pages plus a governance directory and public contact directory. Singapore operator confirmed for website privacy. Proposed 12-month enquiry / 6-month recruitment retention schedule awaits adoption and operational implementation. See RETENTION-AND-GOVERNANCE-OPERATIONS.md for responsibilities. Contact consent is required, unselected and purpose-specific; the server rejects a stale notice version and records agreement context in the email notification. No blanket compliance certification is asserted.

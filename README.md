@@ -25,3 +25,7 @@ Content and SEO revision (September 15): see planning/DEVELOPMENT-HANDOVER.md. P
 `npm run test:seo` checks metadata, structured-data parsing, social images and local links after building. `npm run test:responsive` and `npm run test:interactions` run against the local built preview (default http://127.0.0.1:4322). These browser scripts require Microsoft Edge. `TEST_BASE_URL` and `QA_OUTPUT` control the preview address and review output directory.
 
 GitHub Actions verifies the source on pushes and pull requests. It does not publish to Cloudflare. See planning/DEVELOPMENT-HANDOVER.md for provider configuration and launch steps.
+
+## Governance centre
+
+The current build contains 40 generated pages (39 content routes plus 404), including 12 policy pages, a governance hub and a 15-address public contact directory. See `/governance/`. Run `node tests/governance.mjs` against the local preview to verify policy navigation, mobile layouts, accessibility and enquiry consent. See `planning/RETENTION-AND-GOVERNANCE-OPERATIONS.md` for the proposed retention schedule and implementation responsibilities.

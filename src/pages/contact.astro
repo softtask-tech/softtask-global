@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import { services } from '../data/services';
+import { policyVersion } from '../data/governance';
 ---
 
 <Layout
@@ -57,6 +58,7 @@ import { services } from '../data/services';
       </a>
     </aside>
     <form class="form-grid" data-endpoint="/api/contact" method="post" action="/api/contact">
+      <input type="hidden" name="noticeVersion" value={policyVersion} />
       <label class="field">
         Your name
         <input name="name" required maxlength="120" autocomplete="name" />
@@ -105,8 +107,10 @@ import { services } from '../data/services';
       <label class="checkbox-field">
         <input type="checkbox" name="consent" required />
         <span>
-          I have read the <a href="/privacy/">privacy information</a> and agree to be contacted
-          about this enquiry.
+          I agree to the <a href="/terms/">website terms</a> and have read the
+          <a href="/privacy/"> privacy policy</a>. I consent to Soft Task using my submitted
+          details to assess and contact me about this enquiry and related project discussions.
+          This does not subscribe me to marketing emails.
         </span>
       </label>
       <div class="sr-only" aria-hidden="true">

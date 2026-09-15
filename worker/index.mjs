@@ -26,6 +26,7 @@ export function validate(data, kind) {
   if (data.consent !== true && data.consent !== 'true') return 'Please confirm the consent choice.';
   if (data.website) return 'The request could not be accepted.';
   if (kind === 'contact') {
+    if (data.noticeVersion !== '2026-09-15') return 'Please refresh the page and review the current privacy agreement.';
     for (const [key, min, max] of [
       ['name', 1, 120],
       ['company', 1, 160],
@@ -266,7 +267,7 @@ export default {
           env,
           env.NOTIFY_TO,
           `Soft Task website enquiry: ${data.service}`,
-          `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nMarket: ${data.country}\nCapability: ${data.service}\n\n${data.message}`,
+          `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nMarket: ${data.country}\nCapability: ${data.service}\n\n${data.message}\n\nAgreement recorded: ${new Date().toISOString()}\nNotice version: ${data.noticeVersion}\nVisitor agreed to website terms and use of submitted details to assess and contact them about this enquiry and related project discussions. Marketing subscription: not requested by this form.`,
           `contact-${fingerprint}`,
           data.email,
         );

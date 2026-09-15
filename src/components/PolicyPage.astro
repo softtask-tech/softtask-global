@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { governance, policyVersion, type Policy } from '../data/governance';
+import '../styles/governance.css';
+const { policy: p } = Astro.props as { policy: Policy };
+const emailParts = (value: string) => value.split(/([a-z.]+@softtask\.co)/g);
+---
+<Layout title={p.title} description={p.description}>
+  <header class:list={['gov-hero', `gov-${p.theme}`]}><div class="wrap gov-heading">
+    <div><a class="gov-back" href="/governance/">Governance centre</a><h1>{p.title}</h1><p class="gov-intro">{p.description}</p></div>
+    <aside class="gov-summary" aria-label="Policy summary"><span>Scope</span><p>{p.scope}</p><span>Contact</span><a href={`mailto:${p.email}`}>{p.email}</a><small>Version {policyVersion}<br />Reviewed 15 September 2026</small></aside>
+  </div></header>
+  <div class="wrap gov-document"><aside class="gov-contents"><details open><summary>On this page</summary><nav aria-label="Policy contents">{p.sections.map(s => <a href={`#${s.id}`}>{s.title}</a>)}</nav></details><a class="gov-print" href="/governance/contacts/">Find another contact</a></aside>
+    <div class="gov-body">{p.sections.map(s => <section id={s.id} class="gov-section"><h2>{s.title}</h2>
+      {s.text.map(t => <p>{emailParts(t).map(part => part.includes('@softtask.co') ? <a href={`mailto:${part}`}>{part}</a> : part)}</p>)}
+      {s.rows && <dl class="gov-matrix">{s.rows.map(([term, detail]) => <div><dt>{term}</dt><dd>{emailParts(detail).map(part => part.includes('@softtask.co') ? <a href={`mailto:${part}`}>{part}</a> : part)}</dd></div>)}</dl>}
+      {s.points && <ul class="gov-standards">{s.points.map(point => <li>{point}</li>)}</ul>}
+      {s.steps && <ol class="gov-steps">{s.steps.map(([heading, detail]) => <li><h3>{heading}</h3><p>{detail}</p></li>)}</ol>}
+    </section>)}</div>
+  </div>
+  <section class="gov-related wrap" aria-label="Related policies"><h2>Related information</h2><div>{governance.filter(x => x.slug !== p.slug && (x.theme === p.theme || ['privacy','grievances','security'].includes(x.slug))).slice(0,4).map(x => <a href={x.path}>{x.title}<span aria-hidden="true">↗</span></a>)}</div></section>
+</Layout>

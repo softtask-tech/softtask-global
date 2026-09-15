@@ -1,24 +1,20 @@
 {
   "date": "2026-09-15",
-  "stage": "Development source handover; not deployed",
-  "pages_built": 30,
-  "content_pages": 29,
-  "browser_checks": 521,
+  "stage": "Governance development revision; not deployed",
+  "pages_built": 40,
+  "content_pages": 39,
   "browser_failures": 0,
-  "backend_tests": 12,
+  "backend_tests": 15,
   "backend_failures": 0,
   "screen_widths": [
     320,
     390,
-    620,
     768,
-    820,
     1024,
     1440
   ],
-  "indexing_checks": 64,
   "indexing_failures": 0,
-  "static_seo_pages_checked": 30,
+  "static_seo_pages_checked": 40,
   "static_seo_failures": 0,
   "typecheck": {
     "errors": 0,
@@ -31,15 +27,18 @@
     "accessibility": 100,
     "best_practices": 100,
     "seo": 69,
-    "context": "Local Python preview, intentionally noindex. SEO crawlability audit fails by design. Production indexing flag separately verified across all pages. This is a lab snapshot, not field performance."
+    "context": "Prior inner-page revision only; not re-run for this governance change."
   },
-  "visual_review": "Reviewed desktop, phone and tablet captures of Company, product and capability pages. Checked image proportions, workflow and presence controls, and reduced motion. Automated accessibility scans do not establish full conformance.",
+  "visual_review": "Desktop governance hub and grievance workflow plus mobile corporate directory visually reviewed. All governance pages and contact tested at five widths, with accessibility scans at three widths.",
   "build_note": "Build succeeds; Windows Fontconfig emits nonfatal cache warnings during social image generation. Generated images checked.",
   "outstanding": [
+    "Adopt and implement the proposed retention schedule",
+    "Assign policy/mailbox owners, backups and statutory roles where required",
+    "Confirm live processor arrangements and complete Cloudflare/Resend activation",
     "UAE and Saudi street addresses",
-    "Final legal operator, policies and processing details",
-    "Stock image licence confirmation and clean Regulix demo screenshot",
-    "Editorial approval of delivery framework and technical explainers",
-    "Real provider configuration, Cloudflare bindings and staging verification before public launch"
-  ]
+    "Image licences and clean Regulix demonstration screenshot"
+  ],
+  "prior_revision_browser_checks": 521,
+  "governance_browser_checks": 219,
+  "prior_revision_indexing_checks": 64
 }
