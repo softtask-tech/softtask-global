@@ -1,0 +1,9 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import catalogue from '../../data/catalogue.json';
+import '../../styles/catalogue.css';
+---
+<Layout title="Business problems we can help solve" description="Explore 32 illustrative technology and AI opportunities: disconnected records, delayed handoffs, missing evidence and decisions that need clearer information.">
+<header class="wrap solutions-heading"><a href="/industries/">Who we serve</a><h1>Start with what<br />gets in the way.</h1><p>You do not need to know which technology to ask for. Explore the operational problem, the proposed system and the people responsible for the decision.</p></header>
+<section class="wrap" data-catalogue-filter><div class="catalogue-filter"><label for="solution-search">Search problems<input id="solution-search" data-filter-input type="search" placeholder="Try missing documents, stock, maintenance or contracts" /></label><p data-filter-count role="status">32 illustrative opportunities</p></div><div class="solution-list">{catalogue.scenarios.map(s=><article data-filter-item data-search={`${s.title} ${s.problem} ${catalogue.industries.find(i=>i.id===s.industry)!.title}`.toLowerCase()}><span>{catalogue.industries.find(i=>i.id===s.industry)!.title}</span><h2><a href={`/industries/${s.industry}/#${s.id}`}>{s.title}</a></h2><p>{s.problem}</p><a class="text-link" href={`/industries/${s.industry}/#${s.id}`}>Explore the proposed solution</a></article>)}</div><p data-filter-empty hidden>No match. Try a shorter phrase or <a href="/contact/">describe your requirement</a>.</p></section>
+</Layout>

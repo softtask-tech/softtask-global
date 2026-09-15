@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import worker, { validate, readBody } from '../worker/index.mjs';
+import catalogue from '../src/data/catalogue.json' with { type: 'json' };
 
 test('concurrent confirmation cannot consume the same token twice', async (t) => {
   t.mock.method(globalThis, 'fetch', async () => {
@@ -51,6 +52,12 @@ const request = (body, extra = {}) =>
     headers: { Origin: 'https://softtask.co', 'Content-Type': 'application/json', ...extra },
     body: JSON.stringify(body),
   });
+test('all 15 capability pillars are accepted and industry context must match its scenario',()=>{
+  for(const pillar of catalogue.pillars)assert.equal(validate({...valid,service:pillar.id},'contact'),null);
+  assert.equal(validate({...valid,industry:'transport-logistics',scenario:'case-15'},'contact'),null);
+  for(const context of [{industry:'invented'},{industry:'manufacturing',scenario:'case-15'},{scenario:'case-15'},{industry:'transport-logistics',scenario:'invented'}])
+    assert.ok(validate({...valid,...context},'contact'));
+});
 test('valid request is unavailable without delivery configuration, never successful', async () => {
   const r = await worker.fetch(request(valid), {});
   assert.equal(r.status, 503);

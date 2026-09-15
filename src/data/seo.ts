@@ -2,6 +2,7 @@ import { services } from './services';
 import { articles } from './articles';
 import { productProfiles } from './product-profiles';
 import { governance } from './governance';
+import catalogue from './catalogue.json';
 
 const pages: Record<string, [string, string]> = {
   '/': [
@@ -63,6 +64,9 @@ const pages: Record<string, [string, string]> = {
 };
 
 for (const policy of governance) pages[policy.path] = [policy.title, policy.description];
+pages['/services/']=['What we do: 15 connected capability pillars',"Explore Soft Task's 15 capability pillars across software, AI, data, infrastructure, enterprise systems, payments and specialist products."];
+for(const industry of catalogue.industries) pages[`/industries/${industry.id}/`]=[`${industry.title}: technology solutions`,industry.description];
+for(const pillar of catalogue.pillars.filter(p=>p.scope.length)) pages[pillar.url]=[pillar.title,pillar.description];
 
 export function pageSEO(path: string, fallbackTitle: string, fallbackDescription?: string) {
   const service = services.find((s) => path === `/services/${s.slug}/`);

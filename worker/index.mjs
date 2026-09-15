@@ -1,3 +1,4 @@
+import catalogue from '../src/data/catalogue.json' with { type: 'json' };
 const json = (data, status = 200) =>
   new Response(JSON.stringify(data), {
     status,
@@ -8,15 +9,7 @@ const json = (data, status = 200) =>
     },
   });
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const services = new Set([
-  'software-engineering',
-  'ai-automation',
-  'data-engineering',
-  'cloud-infrastructure',
-  'data-centres',
-  'blockchain-engineering',
-  'not-sure',
-]);
+const services = new Set([...catalogue.pillars.map(p=>p.id), 'not-sure']);
 const topics = new Set(['all', 'infrastructure', 'software', 'ai-data']);
 export function validate(data, kind) {
   if (!data || typeof data !== 'object' || Array.isArray(data))
@@ -36,6 +29,8 @@ export function validate(data, kind) {
       if (typeof data[key] !== 'string' || data[key].trim().length < min || data[key].length > max)
         return `Check the ${key} field and try again.`;
     if (!services.has(data.service)) return 'Choose a capability from the list.';
+    if (data.industry && !catalogue.industries.some(i=>i.id===data.industry)) return 'Choose an available industry.';
+    if (data.scenario && !catalogue.scenarios.some(s=>s.id===data.scenario && s.industry===data.industry)) return 'Choose a workflow that matches your industry.';
   } else if (!topics.has(data.topic)) return 'Choose an available newsletter topic.';
   return null;
 }
@@ -261,13 +256,13 @@ export default {
       data.email = data.email.trim().toLowerCase();
       if (kind === 'contact') {
         const fingerprint = await digest(
-          JSON.stringify([data.name, data.email, data.company, data.country, data.service, data.message, Math.floor(Date.now() / 300000)]),
+          JSON.stringify([data.name, data.email, data.company, data.country, data.service, data.industry, data.scenario, data.message, Math.floor(Date.now() / 300000)]),
         );
         await mail(
           env,
           env.NOTIFY_TO,
           `Soft Task website enquiry: ${data.service}`,
-          `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nMarket: ${data.country}\nCapability: ${data.service}\n\n${data.message}\n\nAgreement recorded: ${new Date().toISOString()}\nNotice version: ${data.noticeVersion}\nVisitor agreed to website terms and use of submitted details to assess and contact them about this enquiry and related project discussions. Marketing subscription: not requested by this form.`,
+          `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nMarket: ${data.country}\nCapability: ${data.service}\nIndustry: ${catalogue.industries.find(i=>i.id===data.industry)?.title || 'Not selected'}\nWorkflow: ${catalogue.scenarios.find(s=>s.id===data.scenario)?.title || 'Not selected'}\n\n${data.message}\n\nAgreement recorded: ${new Date().toISOString()}\nNotice version: ${data.noticeVersion}\nVisitor agreed to website terms and use of submitted details to assess and contact them about this enquiry and related project discussions. Marketing subscription: not requested by this form.`,
           `contact-${fingerprint}`,
           data.email,
         );

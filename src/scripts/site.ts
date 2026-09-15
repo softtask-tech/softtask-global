@@ -1,4 +1,5 @@
 import { animate } from 'motion/mini';
+import './catalogue';
 
 document.querySelectorAll<HTMLElement>('[data-presence]').forEach((root) => {
   root.querySelectorAll<HTMLButtonElement>('[data-presence-target]').forEach((button) => {

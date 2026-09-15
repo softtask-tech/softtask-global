@@ -1,6 +1,6 @@
 # Soft Task: industry and capability website plan
 
-Prepared 15 September 2026. This is an implementation and editorial plan, not a claim that the proposed solutions have already been delivered. The current website has not been changed by this planning pass.
+Prepared 15 September 2026. This is an implementation and editorial plan, not a claim that the proposed solutions have already been delivered. The subsequent connected-catalogue implementation is recorded in INTEGRATED-CATALOGUE-DIRECTION.md and DEVELOPMENT-HANDOVER.md. The development build now includes these industry journeys; no production deployment has occurred.
 
 ## Direction
 

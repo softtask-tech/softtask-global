@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
-import { services } from '../data/services';
 import { policyVersion } from '../data/governance';
+import catalogue from '../data/catalogue.json';
 ---
 
 <Layout
@@ -88,12 +88,13 @@ import { policyVersion } from '../data/governance';
         What would you like to discuss?
         <select name="service" required>
           <option value="">Choose a capability</option>
-          {services.map((s) => (
-            <option value={s.slug}>{s.name}</option>
-          ))}
+          {['Build & connect','Intelligence & data','Platforms & operations','Specialist products'].map(group=><optgroup label={group}>{catalogue.pillars.filter(p=>p.group===group).map(p=><option value={p.id}>{p.title}</option>)}</optgroup>)}
           <option value="not-sure">Help me define the scope</option>
         </select>
       </label>
+      <label class="field">Your industry (optional)<select name="industry"><option value="">Choose an industry</option>{catalogue.industries.map(i=><option value={i.id}>{i.title}</option>)}</select></label>
+      <label class="field">Workflow of interest (optional)<select name="scenario"><option value="">Describe it in your message</option>{catalogue.scenarios.map(s=><option value={s.id} data-industry={s.industry}>{s.title}</option>)}</select></label>
+      <p class="enquiry-context" data-enquiry-context hidden></p>
       <label class="field full">
         A little about the project
         <textarea

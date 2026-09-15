@@ -1,0 +1,7 @@
+---
+import catalogue from '../data/catalogue.json';
+const { id }=Astro.props;
+const pillar=catalogue.pillars.find(p=>p.id===id);
+const industries=catalogue.industries.filter(i=>i.pillars.includes(id));
+---
+{pillar&&<section class="section wrap catalogue-connections"><h2>Where this capability connects</h2><p>{pillar.description} Explore the industry workflows that bring this discipline together with the rest of Soft Task.</p><div class="connection-links">{industries.map(i=><a href={`/industries/${i.id}/`}>{i.title}</a>)}</div><details class="scope-disclosure"><summary>Explore the {pillar.title.toLowerCase()} scope</summary><ul>{pillar.categories.map(c=><li>{c}</li>)}</ul><p>Specific deliverables, availability and acceptance criteria are agreed for each engagement.</p></details>{id==='ai-automation'&&<p><a href="/services/ai-automation/responsible-ai/">Explore AI guardrails, evaluation and human review</a></p>}<a class="text-link" href="/services/">See all 15 capability pillars</a></section>}

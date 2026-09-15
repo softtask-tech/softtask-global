@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CapabilityConnections from '../../components/CapabilityConnections.astro';
 import Photo from '../../components/Photo.astro';
 import Icon from '../../components/Icon.astro';
 import Workflow from '../../components/Workflow.astro';
@@ -288,4 +289,5 @@ const dark = kind === 'cloud' || kind === 'web3';
       </a>
     </section>
   </div>
+<CapabilityConnections id={s.slug}/>
 </Layout>

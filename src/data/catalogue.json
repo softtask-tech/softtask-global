@@ -1,0 +1,1061 @@
+{
+  "pillars": [
+    {
+      "id": "software-engineering",
+      "title": "Software development",
+      "group": "Build & connect",
+      "description": "Applications that fit the way your business works.",
+      "url": "/services/software-engineering/",
+      "categories": [
+        "Web Application Development",
+        "Mobile App Development",
+        "E-commerce Development",
+        "Billing & Invoicing Software",
+        "Hyperlocal & Delivery Platforms",
+        "Restaurant & Hospitality Management Software",
+        "Event Management Software",
+        "Tablet & Device Management Software",
+        "Booking & Reservation Systems",
+        "CRM & Customer Engagement Software",
+        "Inventory & Warehouse Management Software",
+        "HR & Workforce Management Software",
+        "Field Service & Logistics Management Software",
+        "Education & Learning Platforms",
+        "Healthcare Software",
+        "Real Estate & Property Software",
+        "Religious / Community Management Software",
+        "Legacy Modernization & Maintenance",
+        "MVP / Prototype Development",
+        "White-label Product Development",
+        "Custom Internal Tools",
+        "Content & Social Platforms"
+      ],
+      "scope": [],
+      "sourcePillar": 1
+    },
+    {
+      "id": "blockchain-engineering",
+      "title": "Blockchain & digital assets",
+      "group": "Build & connect",
+      "description": "Wallets, tokens and exchange workflows with clear operating responsibilities.",
+      "url": "/services/blockchain-engineering/",
+      "categories": [
+        "Smart Contract Development",
+        "Wallet Development",
+        "Tokenization",
+        "DeFi Development",
+        "Blockchain Infrastructure",
+        "Crypto Trading Platforms",
+        "Digital Asset Compliance",
+        "Blockchain Consulting & Strategy"
+      ],
+      "scope": [],
+      "sourcePillar": 2
+    },
+    {
+      "id": "cybersecurity",
+      "title": "Cybersecurity",
+      "group": "Specialist products",
+      "description": "Security and investigation enquiries through Kytheos and STRID.",
+      "url": "/products/kytheos/",
+      "categories": [
+        "Security Architecture & Audits",
+        "Penetration Testing",
+        "Managed Detection & Response (MDR)",
+        "Identity Threat Protection",
+        "Incident Response",
+        "Digital Forensics & Investigation",
+        "Threat Intelligence",
+        "Secure Development (DevSecOps)",
+        "Cloud Security",
+        "OT / Industrial Security"
+      ],
+      "scope": [],
+      "sourcePillar": 3
+    },
+    {
+      "id": "ai-automation",
+      "title": "AI & automation",
+      "group": "Intelligence & data",
+      "description": "Use approved information to assist decisions and reduce repetitive work.",
+      "url": "/services/ai-automation/",
+      "categories": [
+        "Applied AI / Machine Learning",
+        "Large Language Model Integration",
+        "Autonomous Agents",
+        "Intelligent Process Automation",
+        "AI Readiness & Strategy",
+        "Industry-specific AI Products"
+      ],
+      "scope": [],
+      "sourcePillar": 4
+    },
+    {
+      "id": "cloud-infrastructure",
+      "title": "Cloud & DevOps",
+      "group": "Platforms & operations",
+      "description": "Build, migrate and operate the platforms your services depend on.",
+      "url": "/services/cloud-infrastructure/",
+      "categories": [
+        "Cloud Architecture",
+        "Cloud Migration",
+        "DevOps Engineering",
+        "Site Reliability Engineering (SRE)",
+        "Cost Optimization"
+      ],
+      "scope": [],
+      "sourcePillar": 5
+    },
+    {
+      "id": "data-centres",
+      "title": "Data centres & critical infrastructure",
+      "group": "Platforms & operations",
+      "description": "Connect capacity, availability, networks, power and cooling requirements.",
+      "url": "/services/data-centres/",
+      "categories": [
+        "Data Centre Design & Build",
+        "Infrastructure Engineering",
+        "Scalability Architecture",
+        "High Availability & DR",
+        "Facility Operations"
+      ],
+      "scope": [],
+      "sourcePillar": 6
+    },
+    {
+      "id": "data-engineering",
+      "title": "Data & analytics",
+      "group": "Intelligence & data",
+      "description": "Turn disconnected records into information people can use and trust.",
+      "url": "/services/data-engineering/",
+      "categories": [
+        "Data Engineering",
+        "Data Warehousing",
+        "Business Intelligence",
+        "Advanced Analytics",
+        "Data Governance"
+      ],
+      "scope": [],
+      "sourcePillar": 7
+    },
+    {
+      "id": "enterprise-systems",
+      "title": "Enterprise systems",
+      "group": "Build & connect",
+      "description": "Connect finance, customers, people and operations around a shared workflow.",
+      "url": "/services/enterprise-systems/",
+      "categories": [
+        "ERP Implementation",
+        "CRM Implementation",
+        "Digital Transformation Programmes",
+        "Accounting & Finance Systems",
+        "Supply Chain Management Systems"
+      ],
+      "scope": [
+        "Map business ownership and approval steps before selecting an ERP or CRM approach.",
+        "Connect master data and define how conflicting records are resolved.",
+        "Migrate and reconcile records in stages with acceptance checks."
+      ],
+      "sourcePillar": 8
+    },
+    {
+      "id": "regtech",
+      "title": "Compliance technology",
+      "group": "Specialist products",
+      "description": "AML and KYC product workflows through Regulix One, with integrations scoped separately.",
+      "url": "/products/regulix-one/",
+      "categories": [
+        "KYC / AML Platforms",
+        "Sanctions & Watchlist Screening",
+        "Risk Scoring Engines",
+        "Regulatory Reporting",
+        "Sector-specific Compliance Tools"
+      ],
+      "scope": [],
+      "sourcePillar": 9
+    },
+    {
+      "id": "digital-experience",
+      "title": "Digital & experience",
+      "group": "Specialist products",
+      "description": "Marketing intelligence through Tubblor; product interfaces through our software team.",
+      "url": "/products/tubblor/",
+      "categories": [
+        "UI/UX Design",
+        "Brand Systems",
+        "Digital Marketing Intelligence",
+        "Social & Brand Presence Management"
+      ],
+      "scope": [],
+      "sourcePillar": 10
+    },
+    {
+      "id": "managed-technology",
+      "title": "Managed IT & engineering teams",
+      "group": "Platforms & operations",
+      "description": "Agree the people, support responsibilities and operational handover your service needs.",
+      "url": "/services/managed-technology/",
+      "categories": [
+        "Managed IT Services",
+        "Staff Augmentation",
+        "Engagement Models"
+      ],
+      "scope": [
+        "Define support hours, ownership and the escalation route in the agreement.",
+        "Provide a documented handover with access, runbooks and change responsibilities.",
+        "Review capacity, service risks and support demand at agreed intervals."
+      ],
+      "sourcePillar": 11
+    },
+    {
+      "id": "payments-fintech",
+      "title": "Payments & fintech engineering",
+      "group": "Build & connect",
+      "description": "Connect payment devices, providers and settlement records into reliable workflows.",
+      "url": "/services/payments-fintech/",
+      "categories": [
+        "POS Systems",
+        "Payment Gateway Integration",
+        "Fintech Platform Development"
+      ],
+      "scope": [
+        "Integrate authorised payment providers and device interfaces.",
+        "Reconcile transaction, refund, fee and settlement records.",
+        "Define failure handling and review exceptions before financial adjustments."
+      ],
+      "sourcePillar": 12
+    },
+    {
+      "id": "quality-engineering",
+      "title": "Quality assurance & testing",
+      "group": "Build & connect",
+      "description": "Test the behaviour, performance and integration risks that matter before release.",
+      "url": "/services/quality-engineering/",
+      "categories": [
+        "Manual Testing",
+        "Test Automation",
+        "Performance & Load Testing",
+        "Security Testing",
+        "Mobile & API Testing"
+      ],
+      "scope": [
+        "Translate critical workflows into measurable acceptance criteria.",
+        "Exercise integration failures, recovery and representative workload conditions.",
+        "Report release risks with reproducible evidence and a correction path."
+      ],
+      "sourcePillar": 13
+    },
+    {
+      "id": "connected-devices",
+      "title": "IoT & embedded systems",
+      "group": "Platforms & operations",
+      "description": "Connect devices and sensor information to useful operational actions.",
+      "url": "/services/connected-devices/",
+      "categories": [
+        "IoT Device Integration",
+        "Sensor Data Platforms",
+        "Embedded Software Development",
+        "Smart Device Management Platforms",
+        "Industrial IoT (IIoT)"
+      ],
+      "scope": [
+        "Map device identity, connectivity, telemetry and data quality.",
+        "Plan firmware updates, offline behaviour and authorised device actions.",
+        "Validate sensor readings before using them to influence operational decisions."
+      ],
+      "sourcePillar": 14
+    },
+    {
+      "id": "systems-integration",
+      "title": "Systems integration & APIs",
+      "group": "Build & connect",
+      "description": "Make existing applications exchange information without losing ownership or context.",
+      "url": "/services/systems-integration/",
+      "categories": [
+        "Third-party API Integration",
+        "Middleware Development",
+        "Enterprise Application Integration (EAI)",
+        "Webhook & Event-driven Integration"
+      ],
+      "scope": [
+        "Establish source-of-truth ownership and approved field mappings.",
+        "Handle retries, duplicate events, failures and reconciliation explicitly.",
+        "Document interfaces, permissions and the team responsible for each boundary."
+      ],
+      "sourcePillar": 15
+    }
+  ],
+  "industries": [
+    {
+      "id": "agriculture-food",
+      "title": "Agriculture & food production",
+      "headline": "Keep the harvest moving.",
+      "description": "Connect field work, stock and delivery decisions before a missed handoff becomes waste.",
+      "pillars": [
+        "connected-devices",
+        "data-engineering",
+        "ai-automation",
+        "software-engineering"
+      ],
+      "visual": "field",
+      "steps": [
+        "Field signals",
+        "Packing plan",
+        "Dispatch decision",
+        "Buyer handoff"
+      ],
+      "sectors": [
+        "Crop Farming / AgriTech",
+        "Livestock & Dairy Farming",
+        "Fisheries & Aquaculture",
+        "Forestry & Timber",
+        "Horticulture & Floriculture"
+      ]
+    },
+    {
+      "id": "energy-utilities",
+      "title": "Energy & utilities",
+      "headline": "See the issue behind the alarm.",
+      "description": "Bring asset records, sensor quality and maintenance history into the same operational view.",
+      "pillars": [
+        "connected-devices",
+        "data-engineering",
+        "systems-integration",
+        "managed-technology"
+      ],
+      "visual": "asset",
+      "steps": [
+        "Asset readings",
+        "Evidence check",
+        "Engineer review",
+        "Work order"
+      ],
+      "sectors": [
+        "Mining & Minerals",
+        "Oil & Gas",
+        "Renewable Energy (Solar & Wind)",
+        "Power, Water & Gas Utilities",
+        "Waste Management & Recycling"
+      ]
+    },
+    {
+      "id": "manufacturing",
+      "title": "Manufacturing",
+      "headline": "Keep every change connected.",
+      "description": "Connect designs, parts, production and quality records so teams can see what a change affects.",
+      "pillars": [
+        "enterprise-systems",
+        "connected-devices",
+        "quality-engineering",
+        "systems-integration"
+      ],
+      "visual": "lineage",
+      "steps": [
+        "Design revision",
+        "Parts and orders",
+        "Production review",
+        "Quality record"
+      ],
+      "sectors": [
+        "Discrete Manufacturing (General)",
+        "Process Manufacturing (Chemicals / FMCG)",
+        "Textile & Apparel Manufacturing",
+        "Automotive Manufacturing (OEM & Parts)",
+        "Aerospace & Defense Manufacturing",
+        "Pharmaceutical Manufacturing",
+        "Electronics Manufacturing",
+        "Furniture & Home Goods Manufacturing",
+        "Jewelry & Luxury Goods Manufacturing"
+      ]
+    },
+    {
+      "id": "construction-property",
+      "title": "Construction, property & facilities",
+      "headline": "Finish the work. Close the loop.",
+      "description": "Connect project changes, asset evidence and responsible teams from construction through operation.",
+      "pillars": [
+        "software-engineering",
+        "enterprise-systems",
+        "systems-integration",
+        "connected-devices"
+      ],
+      "visual": "building",
+      "steps": [
+        "Site evidence",
+        "Asset dossier",
+        "Engineer sign-off",
+        "Operational handover"
+      ],
+      "sectors": [
+        "Construction & Contracting",
+        "Real Estate Development & Brokerage",
+        "Architecture & Engineering (AEC)",
+        "Facilities Management",
+        "Smart Cities & Urban Infrastructure"
+      ]
+    },
+    {
+      "id": "financial-services",
+      "title": "Banking, insurance & payments",
+      "headline": "Make exceptions explainable.",
+      "description": "Connect transactions, documents and decisions without losing the evidence behind them.",
+      "pillars": [
+        "payments-fintech",
+        "regtech",
+        "data-engineering",
+        "blockchain-engineering",
+        "cybersecurity"
+      ],
+      "visual": "ledger",
+      "steps": [
+        "Source records",
+        "Reconciliation",
+        "Authorised review",
+        "Recorded decision"
+      ],
+      "sectors": [
+        "Retail & Commercial Banking",
+        "Insurance",
+        "Wealth Management & Capital Markets",
+        "Microfinance & Lending",
+        "Payments & Fintech (Service Providers)"
+      ]
+    },
+    {
+      "id": "healthcare-life-sciences",
+      "title": "Healthcare & life sciences",
+      "headline": "Keep the next step visible.",
+      "description": "Connect administrative handoffs and information needed by care and quality teams.",
+      "pillars": [
+        "software-engineering",
+        "systems-integration",
+        "data-engineering",
+        "quality-engineering"
+      ],
+      "visual": "handoff",
+      "steps": [
+        "Referral or batch",
+        "Evidence check",
+        "Professional review",
+        "Confirmed handoff"
+      ],
+      "sectors": [
+        "Hospitals & Clinics",
+        "Diagnostics & Pathology Labs",
+        "Pharmacy & Drug Retail",
+        "Elderly Care / Assisted Living",
+        "Veterinary Care",
+        "Mental Health & Wellness"
+      ]
+    },
+    {
+      "id": "retail-distribution",
+      "title": "Retail & distribution",
+      "headline": "Know what can actually be sold.",
+      "description": "Bring stock condition, replenishment and planned demand into one decision process.",
+      "pillars": [
+        "enterprise-systems",
+        "data-engineering",
+        "ai-automation",
+        "digital-experience"
+      ],
+      "visual": "stock",
+      "steps": [
+        "Stock position",
+        "Demand signal",
+        "Merchandising review",
+        "Store action"
+      ],
+      "sectors": [
+        "Grocery & Supermarket Retail",
+        "Fashion & Apparel Retail",
+        "Electronics & Consumer Durables Retail",
+        "Beauty & Cosmetics",
+        "FMCG Distribution"
+      ]
+    },
+    {
+      "id": "transport-logistics",
+      "title": "Transport & logistics",
+      "headline": "The shipment arrived. What happens next?",
+      "description": "Connect movement, paperwork and ownership so a missing handoff is visible to the right team.",
+      "pillars": [
+        "systems-integration",
+        "software-engineering",
+        "data-engineering",
+        "ai-automation"
+      ],
+      "visual": "journey",
+      "steps": [
+        "Shipment event",
+        "Document check",
+        "Operator approval",
+        "Delivery handoff"
+      ],
+      "sectors": [
+        "Aviation / Airlines",
+        "Maritime & Shipping",
+        "Rail Transport",
+        "Public Transit",
+        "Freight, Trucking & 3PL",
+        "Warehousing",
+        "Ride-sharing & Mobility Services"
+      ]
+    },
+    {
+      "id": "hospitality-travel",
+      "title": "Hospitality, travel & leisure",
+      "headline": "Deliver the experience behind the booking.",
+      "description": "Connect availability, operating tasks and approved information before they reach a guest.",
+      "pillars": [
+        "software-engineering",
+        "enterprise-systems",
+        "systems-integration",
+        "digital-experience"
+      ],
+      "visual": "rooms",
+      "steps": [
+        "Booking or change",
+        "Readiness check",
+        "Staff approval",
+        "Guest experience"
+      ],
+      "sectors": [
+        "Hotels & Resorts",
+        "Travel Agencies & Tour Operators",
+        "Theme Parks & Entertainment Venues",
+        "Restaurants & QSR",
+        "Sports & Fitness Clubs"
+      ]
+    },
+    {
+      "id": "media-entertainment",
+      "title": "Media, gaming & entertainment",
+      "headline": "Keep the release in sync.",
+      "description": "Connect rights, assets and approved changes across teams and publishing channels.",
+      "pillars": [
+        "software-engineering",
+        "systems-integration",
+        "digital-experience",
+        "data-engineering"
+      ],
+      "visual": "broadcast",
+      "steps": [
+        "Approved asset",
+        "Rights and versions",
+        "Publishing approval",
+        "Audience channels"
+      ],
+      "sectors": [
+        "Film & TV Production",
+        "Music Industry",
+        "Gaming & Esports",
+        "Publishing & News Media"
+      ]
+    },
+    {
+      "id": "education-training",
+      "title": "Education & training",
+      "headline": "Turn plans into usable learning operations.",
+      "description": "Connect timetables, practical requirements and assessment evidence with accountable decisions.",
+      "pillars": [
+        "software-engineering",
+        "enterprise-systems",
+        "data-engineering",
+        "ai-automation"
+      ],
+      "visual": "schedule",
+      "steps": [
+        "Course requirements",
+        "Resources and evidence",
+        "Educator review",
+        "Learning activity"
+      ],
+      "sectors": [
+        "K-12 Schools",
+        "Higher Education / Universities",
+        "Vocational & Skill Training"
+      ]
+    },
+    {
+      "id": "government-public-services",
+      "title": "Government & public services",
+      "headline": "Make the route through a service clearer.",
+      "description": "Connect requests, current guidance and accountable staff without automating decisions that require judgement.",
+      "pillars": [
+        "software-engineering",
+        "systems-integration",
+        "ai-automation",
+        "cloud-infrastructure",
+        "cybersecurity"
+      ],
+      "visual": "routes",
+      "steps": [
+        "Service request",
+        "Approved guidance",
+        "Staff assessment",
+        "Next action"
+      ],
+      "sectors": [
+        "Defense & Military",
+        "Law Enforcement",
+        "e-Governance / Public Administration",
+        "Judiciary & Legal System",
+        "Customs & Border Control"
+      ]
+    },
+    {
+      "id": "professional-services",
+      "title": "Professional & business services",
+      "headline": "Make knowledge useful without losing control.",
+      "description": "Connect approved sources, permissions and obligations to the work your team needs to complete.",
+      "pillars": [
+        "ai-automation",
+        "systems-integration",
+        "enterprise-systems",
+        "data-engineering"
+      ],
+      "visual": "evidence",
+      "steps": [
+        "Authorised sources",
+        "Evidence retrieval",
+        "Professional review",
+        "Client work"
+      ],
+      "sectors": [
+        "Legal Services (Law Firms)",
+        "Accounting & Audit Firms",
+        "HR & Recruitment Agencies",
+        "Consulting Firms",
+        "PR & Communications"
+      ]
+    },
+    {
+      "id": "community-nonprofits",
+      "title": "Nonprofits & community organisations",
+      "headline": "Connect resources to their intended purpose.",
+      "description": "Bring funds, people and service commitments into a clear record of responsibility.",
+      "pillars": [
+        "software-engineering",
+        "enterprise-systems",
+        "data-engineering",
+        "quality-engineering"
+      ],
+      "visual": "allocation",
+      "steps": [
+        "Funds or availability",
+        "Purpose and role rules",
+        "Coordinator approval",
+        "Service delivery"
+      ],
+      "sectors": [
+        "Non-profits & NGOs",
+        "Religious Organizations",
+        "Childcare & Daycare"
+      ]
+    },
+    {
+      "id": "data-centres-infrastructure",
+      "title": "Data centres & infrastructure",
+      "headline": "Space is only one part of capacity.",
+      "description": "Connect physical capacity, dependencies and recovery evidence before changing a live environment.",
+      "pillars": [
+        "data-centres",
+        "cloud-infrastructure",
+        "connected-devices",
+        "managed-technology"
+      ],
+      "visual": "racks",
+      "steps": [
+        "Workload need",
+        "Capacity constraints",
+        "Engineer approval",
+        "Validated change"
+      ],
+      "sectors": [
+        "Data centres",
+        "Colocation operators",
+        "Critical digital infrastructure"
+      ]
+    },
+    {
+      "id": "software-telecommunications",
+      "title": "Software platforms & telecoms",
+      "headline": "Connect service health to customer impact.",
+      "description": "See dependencies, useful outcomes and operating costs at the level where your team can act.",
+      "pillars": [
+        "software-engineering",
+        "cloud-infrastructure",
+        "data-engineering",
+        "quality-engineering",
+        "cybersecurity"
+      ],
+      "visual": "network",
+      "steps": [
+        "Service signals",
+        "Cost and dependencies",
+        "Engineer review",
+        "Customer update"
+      ],
+      "sectors": [
+        "Software platforms",
+        "SaaS businesses",
+        "Telecommunications operations"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "case-1",
+      "industry": "agriculture-food",
+      "title": "A harvest has a buyer, but the delivery window is already at risk",
+      "problem": "Harvest planning, vehicle availability and buyer acceptance windows are handled separately, leaving a usable crop waiting between stages.",
+      "build": "A harvest-to-dispatch board connecting field availability, packing capacity, bookings and agreed delivery windows.",
+      "ai": "Rules expose missed dependencies; forecasting estimates readiness ranges from historical field and packing data.",
+      "boundary": "A farm manager confirms harvest changes. Weather and weak sensor data widen the estimate rather than produce a false exact time.",
+      "measure": "Waiting time between harvest and dispatch, rejected deliveries and forecast error.",
+      "visual": "A field-to-buyer timeline with a highlighted missed handoff."
+    },
+    {
+      "id": "case-2",
+      "industry": "agriculture-food",
+      "title": "One sensor sends the farm in the wrong direction",
+      "problem": "A drifting moisture sensor can look like a genuine irrigation need.",
+      "build": "Sensor-health checks alongside irrigation recommendations, maintenance records and manual observations.",
+      "ai": "Compare neighbouring readings and historical behaviour to flag questionable data. Apply deterministic operating limits.",
+      "boundary": "AI cannot override irrigation safety limits; uncertain readings trigger inspection. Agronomic decisions remain with the responsible team.",
+      "measure": "False alerts, faulty-sensor detection and unnecessary interventions.",
+      "visual": "Two paths from the same reading: inspect the sensor or review irrigation."
+    },
+    {
+      "id": "case-3",
+      "industry": "energy-utilities",
+      "title": "Repeated maintenance closes tickets without removing the cause",
+      "problem": "Similar failures recur under different descriptions across sites and shifts.",
+      "build": "A maintenance-history workspace linking asset identity, work orders, replaced parts and inspection evidence.",
+      "ai": "Cluster similar reports and retrieve relevant previous fixes with source links.",
+      "boundary": "Engineers confirm the cause; suggested similarity is not a diagnosis. No autonomous changes to industrial controls.",
+      "measure": "Repeat work orders, search time and proportion of suggestions accepted after review.",
+      "visual": "A recurring fault thread crossing several closed work orders."
+    },
+    {
+      "id": "case-4",
+      "industry": "energy-utilities",
+      "title": "A waste load changes hands but the evidence does not",
+      "problem": "Collection, weighbridge and treatment records disagree, making it difficult to explain where a load went.",
+      "build": "A digital handover trail with unique load IDs and reconciled source documents.",
+      "ai": "Rules compare quantities and timestamps; document extraction assists with legacy weighbridge tickets.",
+      "boundary": "Unknown destinations stay unresolved. A digital record cannot certify lawful treatment without external evidence.",
+      "measure": "Unmatched handovers, missing-document age and correction effort.",
+      "visual": "Chain-of-custody links with one incomplete handover."
+    },
+    {
+      "id": "case-5",
+      "industry": "manufacturing",
+      "title": "Engineering changes reach purchasing after parts are ordered",
+      "problem": "An approved design revision does not propagate to bills of materials, purchase orders and work instructions.",
+      "build": "A change-impact workspace linking approved revisions to affected material and production records.",
+      "ai": "Deterministic revision rules identify conflicts; document comparison summarises differences for engineers.",
+      "boundary": "AI never approves a replacement part or releases a revised instruction. Changes require the authorised reviewer.",
+      "measure": "Obsolete-version usage, review time and missed affected orders.",
+      "visual": "One drawing revision illuminating its downstream dependencies."
+    },
+    {
+      "id": "case-6",
+      "industry": "manufacturing",
+      "title": "A quality issue triggers too wide—or too narrow—a recall review",
+      "problem": "Teams cannot quickly identify which assemblies used a questionable batch.",
+      "build": "Component genealogy and containment-review tooling linking receipts, batches, assemblies and shipments.",
+      "ai": "Graph queries find known relationships; extraction helps recover missing legacy records for review.",
+      "boundary": "Quality staff decide quarantine, release or recall. Missing traceability is displayed, not filled with an invented relationship.",
+      "measure": "Trace completeness, time to identify affected stock and erroneous associations.",
+      "visual": "A selected batch spreading through a product lineage diagram."
+    },
+    {
+      "id": "case-7",
+      "industry": "construction-property",
+      "title": "A completed job cannot be handed over because evidence is missing",
+      "problem": "Installed assets lack approved test results, warranties or as-built documents at handover.",
+      "build": "An asset-level completion dossier with required-document checklists and subcontractor follow-up.",
+      "ai": "Extract document references and flag missing or inconsistent fields; rules check the approved handover requirements.",
+      "boundary": "The responsible engineer signs off compliance and acceptance. AI cannot certify a test it has not witnessed.",
+      "measure": "Missing evidence at handover, rework requests and closeout age.",
+      "visual": "A building asset opening into its document dossier."
+    },
+    {
+      "id": "case-8",
+      "industry": "construction-property",
+      "title": "A tenant complaint crosses teams without a clear owner",
+      "problem": "A recurring issue is split between property management, contractors and building operations.",
+      "build": "An issue timeline connecting work orders, access appointments, equipment and tenant updates.",
+      "ai": "Summarise the history and suggest related tickets; rules assign responsibility and escalation.",
+      "boundary": "Staff confirm fault attribution; the system does not rank tenants or infer sensitive personal characteristics.",
+      "measure": "Reopened complaints, unowned time and missed appointments.",
+      "visual": "A swimlane showing where responsibility stalled."
+    },
+    {
+      "id": "case-9",
+      "industry": "financial-services",
+      "title": "Small settlement mismatches accumulate unnoticed",
+      "problem": "Provider fees, refunds and settlement timing create differences that are difficult to reconcile across payment rails.",
+      "build": "A reconciliation workbench with source records, verified fee rules and a visible exception queue.",
+      "ai": "Deterministic matching handles normal entries; AI proposes explanations for unresolved descriptions.",
+      "boundary": "A finance user approves adjustments. No model-generated journal entry posts without validation and authorisation.",
+      "measure": "Unmatched value and count, exception age, reviewer effort and incorrect proposed matches.",
+      "visual": "Transaction, settlement and ledger lanes converging at an exception."
+    },
+    {
+      "id": "case-10",
+      "industry": "financial-services",
+      "title": "A claim is delayed by missing evidence, not a difficult decision",
+      "problem": "Customers repeatedly supply documents because requirements and case status are unclear.",
+      "build": "A claims-evidence checklist and staff review workspace connected to approved policy requirements.",
+      "ai": "Extract fields and flag missing documents. Rules manage completion and follow-up.",
+      "boundary": "No automatic denial, underwriting decision or fraud accusation. Claim decisions remain with authorised staff and existing appeal processes.",
+      "measure": "Repeat document requests, completeness at first review and false missing-document flags.",
+      "visual": "A case progressing through evidence readiness to human assessment."
+    },
+    {
+      "id": "case-11",
+      "industry": "healthcare-life-sciences",
+      "title": "A referral leaves one clinic but never becomes an appointment",
+      "problem": "Referral receipt, document completeness and booking responsibility are not visible across teams.",
+      "build": "Closed-loop referral tracking with an acknowledgement, missing-information queue and scheduling status.",
+      "ai": "Extract permitted administrative fields and summarise correspondence; deterministic rules track unresolved handoffs.",
+      "boundary": "Clinical urgency and suitability remain with clinicians. No inference that an unbooked referral is medically safe to wait.",
+      "measure": "Unacknowledged referrals, administrative turnaround and extraction errors.",
+      "visual": "A referral moving between sender, receiving team and booking, with a visible return path."
+    },
+    {
+      "id": "case-12",
+      "industry": "healthcare-life-sciences",
+      "title": "Medicine stock exists, but no one can verify its handling history",
+      "problem": "Temperature records, batch identifiers and supplier documents are disconnected when a product needs review.",
+      "build": "A batch evidence workspace joining inventory and available cold-chain records.",
+      "ai": "Rules identify missing intervals and threshold excursions; document extraction links candidate records.",
+      "boundary": "Pharmacists or quality personnel decide quarantine and release. AI cannot establish medicine safety or recommend substitution.",
+      "measure": "Missing-record rate, review time and false batch matches.",
+      "visual": "A batch timeline with an explicitly unknown temperature interval."
+    },
+    {
+      "id": "case-13",
+      "industry": "retail-distribution",
+      "title": "Inventory is technically available but cannot be sold",
+      "problem": "Returned goods, incomplete bundles and damaged stock inflate the available-to-promise count.",
+      "build": "A stock-status workflow separating saleable, awaiting inspection, incomplete and quarantined items.",
+      "ai": "Rules calculate sellable stock; image/document assistance can prepare inspection suggestions.",
+      "boundary": "A reviewer approves condition and resale eligibility. AI does not silently mark an item safe or authentic.",
+      "measure": "Orders cancelled after purchase, inventory-status errors and inspection queue age.",
+      "visual": "One inventory total unfolding into distinct usable and blocked quantities."
+    },
+    {
+      "id": "case-14",
+      "industry": "retail-distribution",
+      "title": "A promotion creates demand the replenishment process cannot meet",
+      "problem": "Marketing campaigns, lead times and store-level inventory are planned independently.",
+      "build": "A promotion-readiness workspace connecting planned campaigns, stock, supplier lead times and distribution capacity.",
+      "ai": "Forecast demand ranges and compare them with rules-based supply constraints.",
+      "boundary": "Merchandising approves orders and campaign changes. Forecasts show uncertainty; they are not purchase commitments.",
+      "measure": "Promotion stockouts, excess stock after campaigns and forecast error against a baseline.",
+      "visual": "A demand range meeting a replenishment timeline. Link marketing work to Tubblor."
+    },
+    {
+      "id": "case-15",
+      "industry": "transport-logistics",
+      "title": "A container is ready, but missing paperwork keeps it in port",
+      "problem": "Documents and release milestones are checked only after avoidable delay has started.",
+      "build": "A shipment document checklist, event integrations and an assigned exception queue.",
+      "ai": "Extract dates and references; deterministic rules calculate deadlines from validated terms.",
+      "boundary": "An operator verifies matches and approves external instructions. Unknown release conditions stay visible.",
+      "measure": "Late-document incidents, exception age and charges attributable to avoidable delays.",
+      "visual": "Port-to-warehouse path interrupted by a specific missing document."
+    },
+    {
+      "id": "case-16",
+      "industry": "transport-logistics",
+      "title": "A cold-chain dispute has data, but no shared timeline",
+      "problem": "Carrier scans, sensor logs and handover records use different identifiers and clocks.",
+      "build": "A time-normalised shipment evidence view with data-quality markers.",
+      "ai": "Rules align verified identifiers and time zones; AI suggests candidate document associations.",
+      "boundary": "The system flags evidence gaps, not legal liability. Operators verify associations before sharing an evidence pack.",
+      "measure": "Time to assemble the record, unresolved clock conflicts and wrong associations.",
+      "visual": "Parallel carrier and sensor timelines aligning at handovers."
+    },
+    {
+      "id": "case-17",
+      "industry": "hospitality-travel",
+      "title": "A room appears available while maintenance blocks its use",
+      "problem": "Booking inventory and maintenance/housekeeping status do not update each other reliably.",
+      "build": "A room-readiness board linking confirmed maintenance holds, inspections and arrival priorities.",
+      "ai": "Rules prevent conflicting availability; forecasting estimates readiness ranges from historical tasks.",
+      "boundary": "Staff release rooms after checks. AI cannot override a safety-related hold.",
+      "measure": "Arrival-time room conflicts, overdue holds and readiness estimate error.",
+      "visual": "An arrival board showing the task that blocks room release."
+    },
+    {
+      "id": "case-18",
+      "industry": "hospitality-travel",
+      "title": "A menu change leaves old ingredient information in circulation",
+      "problem": "Supplier substitutions and recipe updates do not propagate to menu and staff reference systems.",
+      "build": "A versioned ingredient and approval workflow connected to approved menu data.",
+      "ai": "Extract supplier changes for review; deterministic rules require authorised updates and sign-off.",
+      "boundary": "Never let a generative model decide that food is allergen-free. Qualified staff approve the authoritative ingredient record.",
+      "measure": "Unreviewed substitutions, outdated versions and time to distribute an approved correction.",
+      "visual": "One ingredient change reaching recipes, menus and staff references."
+    },
+    {
+      "id": "case-19",
+      "industry": "media-entertainment",
+      "title": "A licensed asset is reused outside its allowed territory or period",
+      "problem": "Rights information lives in contracts separate from publishing workflows.",
+      "build": "An asset-rights register with territory, channel and expiry checks linked to publishing approvals.",
+      "ai": "Extract candidate clauses for legal review; approved rules flag proposed reuse conflicts.",
+      "boundary": "Legal or rights staff interpret ambiguous terms. AI cannot clear a licence.",
+      "measure": "Assets lacking rights metadata, review time and incorrect conflict flags.",
+      "visual": "A publishing route crossing a rights checkpoint."
+    },
+    {
+      "id": "case-20",
+      "industry": "media-entertainment",
+      "title": "Live event changes do not reach all operational teams",
+      "problem": "A venue or programme change leaves ticketing, staff briefings and access information inconsistent.",
+      "build": "A controlled change register with affected channels and acknowledgement tracking.",
+      "ai": "Draft channel-specific notices from approved changes; rules track who must review and publish.",
+      "boundary": "A responsible person approves public announcements. Safety instructions come from authorised staff, not generated guesses.",
+      "measure": "Conflicting published information, unacknowledged changes and correction time.",
+      "visual": "A change branching to channels with explicit approval status."
+    },
+    {
+      "id": "case-21",
+      "industry": "education-training",
+      "title": "A timetable is valid on paper but fails in practice",
+      "problem": "Room equipment, accessibility needs and travel time are missing from timetable constraints.",
+      "build": "A constraint-based planning board joining courses, rooms, equipment and approved availability.",
+      "ai": "Optimisation compares valid schedules; explanations show which constraints cause conflicts.",
+      "boundary": "Administrators approve changes. Minimise sensitive student information and avoid automated opportunity allocation based on inferred traits.",
+      "measure": "Unresolved clashes, manual rescheduling and unmet documented requirements.",
+      "visual": "A room assignment revealing an equipment or accessibility conflict."
+    },
+    {
+      "id": "case-22",
+      "industry": "education-training",
+      "title": "Training completion is confused with demonstrated competence",
+      "problem": "Attendance records are treated as evidence that a learner can perform a practical task.",
+      "build": "A skills-evidence portfolio connecting practical assessments, assessor notes and required competencies.",
+      "ai": "Retrieve relevant evidence and flag missing assessment records.",
+      "boundary": "An authorised assessor decides competence. AI does not grant credentials or reject a learner.",
+      "measure": "Missing evidence at review, assessor search time and incorrect evidence associations.",
+      "visual": "A certificate requirement opening into verified evidence items."
+    },
+    {
+      "id": "case-23",
+      "industry": "government-public-services",
+      "title": "A request is sent to the wrong department repeatedly",
+      "problem": "Citizens use everyday language that does not match internal service categories.",
+      "build": "A service-intake and handoff system using approved service descriptions and routing rules.",
+      "ai": "Suggest categories, translate permitted text and summarise the request for staff.",
+      "boundary": "Ambiguous cases go to review. No automatic benefit denial or determination of eligibility from the text classifier.",
+      "measure": "Misrouting, repeat handoffs and accessibility/language performance.",
+      "visual": "A request choosing between clear service routes, with an uncertainty branch."
+    },
+    {
+      "id": "case-24",
+      "industry": "government-public-services",
+      "title": "Guidance changes, but front-line answers use an older version",
+      "problem": "Public-service staff search across circulars and instructions with conflicting effective dates.",
+      "build": "A versioned, source-linked guidance library with validity dates and ownership.",
+      "ai": "Retrieve current authorised passages and draft an answer; flag unresolved contradictions.",
+      "boundary": "No invented rule or legal determination. Conflicting guidance triggers review by its owner.",
+      "measure": "Outdated-source retrieval, unsupported statements and time to locate authoritative guidance.",
+      "visual": "Competing document versions resolving to an approved source—or no answer."
+    },
+    {
+      "id": "case-25",
+      "industry": "professional-services",
+      "title": "Reusable knowledge accidentally carries confidential client detail",
+      "problem": "Teams want to reuse previous work without crossing client confidentiality boundaries.",
+      "build": "A permission-aware knowledge library with approved reusable material and client-specific collections.",
+      "ai": "Retrieve and summarise only authorised records, with source links and access checks.",
+      "boundary": "Enforce access outside the model, test cross-client leakage and require review before external reuse.",
+      "measure": "Retrieval relevance, unsupported answers and attempted access-boundary violations.",
+      "visual": "A knowledge request reaching permitted sources while another collection remains inaccessible."
+    },
+    {
+      "id": "case-26",
+      "industry": "professional-services",
+      "title": "A signed contract commitment never becomes an operational task",
+      "problem": "Renewal, reporting and notice obligations are missed because they remain in documents.",
+      "build": "A reviewed obligations register linking clauses to owners, dates and evidence of completion.",
+      "ai": "Extract candidate obligations; rules schedule reminders after human validation.",
+      "boundary": "Legal or contract staff approve interpretation. AI does not issue a legal notice or amend a contract.",
+      "measure": "Unassigned obligations, missed deadlines and extraction accuracy after review.",
+      "visual": "A clause becoming a reviewed task with an owner and due date."
+    },
+    {
+      "id": "case-27",
+      "industry": "community-nonprofits",
+      "title": "Restricted donations are difficult to reconcile with spending",
+      "problem": "Donor restrictions and project expenses sit in separate records.",
+      "build": "A fund-allocation ledger with approved purpose rules, receipts and exception review.",
+      "ai": "Extract receipt fields and suggest categories; deterministic controls check approved allocations.",
+      "boundary": "Trustees or finance staff approve expenditure. AI cannot redirect funds or decide religious eligibility.",
+      "measure": "Unmatched spending, review backlog and incorrect category suggestions.",
+      "visual": "Donation-to-project flow with an out-of-purpose allocation stopped for review."
+    },
+    {
+      "id": "case-28",
+      "industry": "community-nonprofits",
+      "title": "A volunteer handover leaves a service uncovered",
+      "problem": "Availability, role requirements and completed checks are tracked separately from shift assignments.",
+      "build": "A rota and handover system showing authorised role eligibility and coverage gaps.",
+      "ai": "Constraint-based scheduling suggests coverage; summaries support handover of permitted operational details.",
+      "boundary": "Coordinators approve assignments. No facial recognition, inferred suitability score or automated safeguarding judgement.",
+      "measure": "Unfilled shifts, missing handovers and assignments needing correction.",
+      "visual": "A service roster with an uncovered role and valid alternatives."
+    },
+    {
+      "id": "case-29",
+      "industry": "data-centres-infrastructure",
+      "title": "There is rack space, but not enough usable resilient capacity",
+      "problem": "A workload placement fits physical space while exceeding a power, cooling or redundancy constraint.",
+      "build": "A capacity-planning model joining racks, circuits, cooling zones and agreed resilience assumptions.",
+      "ai": "Deterministic constraint checks and scenario modelling; optional forecasting of demand ranges.",
+      "boundary": "Qualified engineers approve placement. A website animation is not a thermal, electrical or safety validation.",
+      "measure": "Planning-data completeness, conflicts detected before installation and forecast error.",
+      "visual": "A workload entering a rack while its limiting resource becomes visible."
+    },
+    {
+      "id": "case-30",
+      "industry": "data-centres-infrastructure",
+      "title": "Recovery plans depend on an asset record that is no longer correct",
+      "problem": "Configuration inventories, dependencies and recovery runbooks drift apart after changes.",
+      "build": "A dependency register with change reconciliation and recovery-test evidence.",
+      "ai": "Compare available records and retrieve relevant runbook sections; rules flag unresolved discrepancies.",
+      "boundary": "Engineers validate dependencies and execute authorised tests. AI does not autonomously trigger production failover.",
+      "measure": "Stale dependencies, recovery-test exceptions and time to assemble an accurate runbook.",
+      "visual": "A failover path exposing an unverified dependency."
+    },
+    {
+      "id": "case-31",
+      "industry": "software-telecommunications",
+      "title": "An AI feature succeeds with users but loses money on each transaction",
+      "problem": "Model calls, retries and shared infrastructure costs are not allocated to useful completed tasks.",
+      "build": "A tenant-aware cost and outcome dashboard with budgets and request tracing.",
+      "ai": "Rules calculate actual unit cost; anomaly detection highlights unusual usage or repeated failed attempts.",
+      "boundary": "Do not expose another tenant's data. Cost controls must preserve an explicit user-facing failure or fallback path.",
+      "measure": "Cost per completed task, unsuccessful retries and attribution coverage.",
+      "visual": "One task unfolding into its model calls, retries and measurable cost."
+    },
+    {
+      "id": "case-32",
+      "industry": "software-telecommunications",
+      "title": "An incident is visible, but the affected customers are not",
+      "problem": "Service alarms cannot be reliably mapped to customer-facing features and dependencies.",
+      "build": "A service-impact map joining dependency records, deployments and permitted account information.",
+      "ai": "Summarise incident evidence and suggest affected components; rules manage verified status updates.",
+      "boundary": "Engineers confirm impact and approve customer communications. Unknown impact remains explicitly unknown.",
+      "measure": "Time to identify affected services, incorrect impact claims and update consistency.",
+      "visual": "A dependency failure highlighting the services that may be affected, separately from confirmed impact."
+    }
+  ]
+}

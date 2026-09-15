@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CapabilityConnections from './CapabilityConnections.astro';
+import SectorMark from './SectorMark.astro';
+import catalogue from '../data/catalogue.json';
+import '../styles/catalogue.css';
+const {id}=Astro.props;
+const p=catalogue.pillars.find(p=>p.id===id)!;
+const marks:Record<string,string>={'enterprise-systems':'building','managed-technology':'network','payments-fintech':'ledger','quality-engineering':'lineage','connected-devices':'asset','systems-integration':'routes'};
+---
+<Layout title={p.title} description={p.description}>
+<header class="catalogue-hero wrap"><div><a href="/services/">What we do</a><h1>{p.title}</h1><p>{p.description}</p><a class="button primary" href={`/contact/?service=${p.id}`}>Discuss your requirement</a></div><div class="catalogue-illustration"><SectorMark kind={marks[p.id]}/><span>{p.group}</span></div></header>
+<section class="wrap pillar-delivery"><h2>From a requirement to a working system</h2><ol>{p.scope.map((s,index)=><li><span>{index+1}</span><p>{s}</p></li>)}</ol></section>
+<section class="wrap pillar-evidence"><div><h2>What we establish together</h2><p>Start with the workflow, current systems and the people accountable for the outcome. Define a bounded first release before committing to a wider programme.</p></div><dl><div><dt>Inputs</dt><dd>Representative records, existing interfaces, access constraints and the people who own the process.</dd></div><div><dt>Deliverables</dt><dd>Agreed scope, implementation, acceptance evidence, interface documentation and operational handover.</dd></div><div><dt>Acceptance</dt><dd>Test the critical workflow, failure handling and recovery against agreed conditions.</dd></div><div><dt>Responsibilities</dt><dd>Confirm licences, provider access, support hours and any professional or regulatory responsibilities separately.</dd></div></dl></section>
+<CapabilityConnections id={p.id}/>
+</Layout>

@@ -2,7 +2,7 @@
 
 ## Implemented
 
-40 generated pages: 39 content routes plus a 404 page. The governance revision adds a policy centre, corporate contacts and eight topic pages, and replaces four brief legal pages with structured notices. Includes three dedicated product pages, an engagement-models page, and separate Web3 and exchange-development pages. Company, presence, capabilities and product layouts are subject-specific.
+65 generated pages: 64 content routes plus a 404 page. The connected catalogue adds 16 industry detail pages, industry and problem directories, six service pages and an AI guardrails page. All 15 pillars connect to relevant industries; specialist pillars route to the three products. The 32 workflows are illustrative opportunities, not customer success claims. Governance, company, presence, engagement models, Web3 and exchange-development pages remain included.
 
 Responsive design, self-hosted fonts, optimised owner-supplied photographs, service tabs with keyboard control, search with empty state, mobile navigation, native dialogs, persistent versioned cookie preferences, contact prefill and error handling. No tracking providers are installed.
 
@@ -24,13 +24,13 @@ For the complete local Worker runtime, build then run `npm run cf:dev`. The defa
 
 ## Editing content
 
-Service entries live in src/data/services.ts; articles in src/data/articles.ts. Each service provides scope, dependencies, deliverables and boundaries. Article sections are structured text with primary-source links. Edit through a Git branch, preview, check and review before merging. Nontechnical CMS integration remains a later operational choice; no hosted editor is configured.
+The shared catalogue lives in src/data/catalogue.json and controls the 15 pillars, 16 industry families, subsectors and 32 scenarios, with relationships reused in menus, search, page links and form validation. Its initial generator is planning/build-catalogue.py; update curated generator definitions before regeneration. Existing detailed service entries live in src/data/services.ts; articles in src/data/articles.ts. Enquiry context is optional and validated server-side; notification labels come from the catalogue. Run tests/catalogue.mjs against the built preview for the integrated journey. Edit through a Git branch, preview, check and review before merging. Nontechnical CMS integration remains a later operational choice; no hosted editor is configured.
 
 Add approved assets through scripts/prepare-images.mjs, retaining provenance in planning/image-register.json. The source photographs are from the owner's freeimages folder and require source/licence confirmation before public use. No competitor photos were downloaded. The hero photograph is illustrative, not a Soft Task employee claim.
 
 ## Publication blockers
 
-- Finalise the legal operator for policies. Singapore and India street addresses are owner-confirmed; the owner requested the Dover US contact address from the legacy global site. UAE and Saudi addresses remain pending. UK presence is omitted. See CONFIRMED-PUBLIC-FACTS.md.
+- The owner confirmed Soft Task Singapore Pte. Ltd. as the website operator. Singapore and India street addresses are owner-confirmed; the owner requested the Dover US contact address from the legacy global site. UAE and Saudi addresses remain pending. UK presence is omitted. See CONFIRMED-PUBLIC-FACTS.md.
 - Confirm mailboxes, service scope and actual delivery commitments. No registration numbers, ISO claims, client logos, defence/NDA information or invented metrics are published.
 - Obtain technical/editorial review of the three drafted explainers; add accountable reviewers and review dates. These are explainers, not original research studies or project evidence.
 - Finalise privacy, terms, data processing, retention and monitored contact details for the actual operator. Current policy pages explicitly identify the development state.

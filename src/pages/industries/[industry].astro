@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectorMark from '../../components/SectorMark.astro';
+import catalogue from '../../data/catalogue.json';
+import '../../styles/catalogue.css';
+export function getStaticPaths(){return catalogue.industries.map(industry=>({params:{industry:industry.id},props:{industry}}));}
+const {industry:i}=Astro.props;
+const cases=catalogue.scenarios.filter(s=>s.industry===i.id);
+const pillars=catalogue.pillars.filter(p=>i.pillars.includes(p.id));
+const physical=['manufacturing','construction-property','transport-logistics','data-centres-infrastructure','energy-utilities'].includes(i.id);
+---
+<Layout title={`${i.title}: technology solutions`} description={i.description}>
+<header class:list={['sector-hero',physical&&'sector-physical']}><div class="wrap"><div><a href="/industries/">Who we serve / {i.title}</a><h1>{i.headline}</h1><p>{i.description}</p><a class="text-link" href="#opportunities">Explore the problems we can work on</a></div><div class="sector-scene"><SectorMark kind={i.visual}/><p>{i.title}</p></div></div></header>
+<section class="wrap sector-flow" aria-label="An illustrative operating workflow"><p>Connect the work, not just the applications.</p><ol>{i.steps.map((step,index)=><li><span>{index+1}</span><strong>{step}</strong></li>)}</ol><small>Illustrative workflow. The inputs, approvals and operating boundaries are defined for your project.</small></section>
+<section id="opportunities" class="wrap scenario-explorer" data-scenarios><header><h2>Recognise the problem.<br />Explore a way forward.</h2><p>These are proposed solution opportunities, not claims of completed client results.</p></header><nav aria-label="Choose a business scenario">{cases.map(s=><a href={`#${s.id}`} data-scenario-target={s.id}>{s.title}</a>)}</nav><div>{cases.map(s=><article id={s.id} data-scenario-panel={s.id}><h3>{s.title}</h3><div class="scenario-problem"><span>The problem to explore</span><p>{s.problem}</p></div><div class="scenario-build"><span>What Soft Task could build</span><p>{s.build}</p></div><div class="scenario-boundaries"><section><h4>Where technology and AI help</h4><p>{s.ai}</p></section><section><h4>Where people stay in control</h4><p>{s.boundary}</p></section></div><div class="scenario-measure"><h4>How we would evaluate a pilot</h4><p>{s.measure} Establish a baseline and review errors as well as useful results.</p></div><a class="button primary" href={`/contact/?industry=${i.id}&scenario=${s.id}`}>Discuss this workflow</a></article>)}</div></section>
+<section class="wrap industry-connect"><div><h2>The capabilities behind the solution</h2><p>Scope the right combination of disciplines. Specialist product enquiries go to the relevant Soft Task product team.</p></div><div>{pillars.map(p=><a href={p.url}><h3>{p.title}</h3><p>{p.description}</p></a>)}</div></section>
+<section class="wrap sector-preparation"><div><h2>What we would connect</h2><p>Start with a representative process, sample records you are authorised to share, existing system interfaces and the person responsible for the decision. We establish data quality and permissions before choosing the automation.</p><a href="/services/ai-automation/responsible-ai/">How we design AI guardrails</a></div><details><summary>Related businesses in this family</summary><ul>{i.sectors.map(s=><li>{s}</li>)}</ul></details></section>
+</Layout>

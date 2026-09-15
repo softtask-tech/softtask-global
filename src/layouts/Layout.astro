@@ -5,6 +5,8 @@ import manropeFont from '@fontsource-variable/manrope/files/manrope-latin-wght-n
 import newsreaderFont from '@fontsource-variable/newsreader/files/newsreader-latin-wght-italic.woff2?url';
 import '../styles/global.css';
 import '../styles/inner.css';
+import '../styles/catalogue.css';
+import catalogue from '../data/catalogue.json';
 import Icon from '../components/Icon.astro';
 import { services } from '../data/services';
 import { articles } from '../data/articles';
@@ -27,6 +29,11 @@ const {
 } = pageSEO(path, inputTitle, inputDescription);
 const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !path.includes('404');
 const searchItems = [
+  ...catalogue.industries.map(i=>({title:i.title,description:[i.description,...i.sectors].join(' '),url:`/industries/${i.id}/`})),
+  ...catalogue.pillars.filter(p=>p.scope.length).map(p=>({title:p.title,description:p.description,url:p.url})),
+  ...catalogue.scenarios.map(s=>({title:s.title,description:s.problem,url:`/industries/${s.industry}/#${s.id}`})),
+  {title:'Who we serve',description:'Industries and business problems',url:'/industries/'},
+  {title:'Responsible AI',description:'Guardrails, evaluation and human review',url:'/services/ai-automation/responsible-ai/'},
   ...governance.map(p => ({ title: p.title, url: p.path, description: p.description })),
   ...productProfiles.map((p) => ({
     title: p.name,
@@ -125,26 +132,12 @@ const searchItems = [
             <summary class:list={[path.startsWith('/services') && 'current']}>
               What we do <Icon name="chevron" size={14} />
             </summary>
-            <div class="mega-panel">
-              <div>
-                <h2>
-                  Technology with
-                  <br />a purpose.
-                </h2>
-                <a class="text-link" href="/services/">
-                  Explore all capabilities <Icon />
-                </a>
-              </div>
-              <div class="mega-links">
-                {services.map((s) => (
-                  <a href={`/services/${s.slug}/`}>
-                    {s.name}
-                    <Icon name="diagonal" size={18} />
-                  </a>
-                ))}
-              </div>
+            <div class="mega-panel catalogue-menu">
+              {['Build & connect','Intelligence & data','Platforms & operations','Specialist products'].map(group=><div><h2>{group}</h2>{catalogue.pillars.filter(p=>p.group===group).map(p=><a href={p.url}>{p.title}</a>)}</div>)}
+              <div class="menu-overview"><a href="/services/">All 15 capability pillars</a><a href="/solutions/">Start with a business problem</a></div>
             </div>
           </details>
+          <details class="mega"><summary class:list={[path.startsWith('/industries') && 'current']}>Who we serve <Icon name="chevron" size={14}/></summary><div class="mega-panel catalogue-menu">{[{title:'Production & infrastructure',ids:['agriculture-food','energy-utilities','manufacturing','data-centres-infrastructure']},{title:'Commerce & movement',ids:['retail-distribution','transport-logistics','hospitality-travel','construction-property']},{title:'People & public services',ids:['healthcare-life-sciences','education-training','government-public-services','community-nonprofits']},{title:'Finance & digital business',ids:['financial-services','professional-services','media-entertainment','software-telecommunications']}].map(group=><div><h2>{group.title}</h2>{catalogue.industries.filter(i=>group.ids.includes(i.id)).map(i=><a href={`/industries/${i.id}/`}>{i.title}</a>)}</div>)}<div class="menu-overview"><a href="/industries/">Explore all industries</a><a href="/solutions/">Explore business problems</a></div></div></details>
           <a href="/products/" aria-current={path.startsWith('/products') ? 'page' : undefined}>
             Our products
           </a>
@@ -194,6 +187,8 @@ const searchItems = [
           <div>
             <h2>Explore</h2>
             <a href="/company/">Company</a>
+            <a href="/industries/">Who we serve</a>
+            <a href="/services/">All 15 capability pillars</a>
             <a href="/company/locations/">Our presence</a>
             <a href="/company/how-we-work/">How we work</a>
             <a href="/company/engagement-models/">Ways to work together</a>

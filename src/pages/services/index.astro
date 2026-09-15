@@ -1,11 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Photo from '../../components/Photo.astro';
-import Icon from '../../components/Icon.astro';
-import {services} from '../../data/services';
+import catalogue from '../../data/catalogue.json';
+import '../../styles/catalogue.css';
+const groups=['Build & connect','Intelligence & data','Platforms & operations','Specialist products'];
 ---
-<Layout title="Enterprise technology capabilities">
-  <section class="capabilities-atlas wrap"><div class="breadcrumb"><a href="/">Home</a><span>/ Capabilities</span></div><h1>What needs<br />to work better?</h1><div><p>Start with the business requirement. Explore the engineering disciplines that connect the experience, the information and the systems behind it.</p><a class="text-link" href="/company/engagement-models/">Choose a starting point <Icon /></a></div></section>
-  <section class="capability-directory wrap" aria-label="Technology capabilities">{services.map(s=><article><div class="directory-visual">{s.slug==='blockchain-engineering'?<div class="ledger-mark" aria-hidden="true"><span>Wallet</span><span>Application</span><span>Ledger</span></div>:<Photo name={s.image} alt={s.alt} sizes="(max-width:620px) 100vw, 30vw"/>}</div><div><h2><a href={`/services/${s.slug}/`}>{s.name}</a></h2><p>{s.intro}</p><ul>{s.scope.slice(0,2).map(item=><li>{item}</li>)}</ul>{s.image==='facility'&&<small>AI-generated infrastructure illustration</small>}</div><a href={`/services/${s.slug}/`} class="directory-arrow" aria-label={`Explore ${s.name}`}><Icon name="diagonal" size={30}/></a></article>)}</section>
-  <section class="portfolio-connection wrap"><h2>Some questions need<br />a specialist conversation.</h2><div><p>Digital marketing and growth belong with <a href="/products/tubblor/">Tubblor</a>. AML and KYC workflows have a home in <a href="/products/regulix-one/">Regulix One</a>. Cybersecurity and STRID crypto investigation enquiries sit with <a href="/products/kytheos/">Kytheos</a>.</p><a class="button" href="/products/">Explore our products <Icon /></a></div></section>
+<Layout title="What we do: 15 connected capability pillars" description="Explore Soft Task's 15 capability pillars, organised across software, AI, data, infrastructure, enterprise systems and specialist products.">
+<header class="catalogue-hero wrap"><div><span>What we do</span><h1>Different disciplines.<br />One connected outcome.</h1><p>Our 15 capability pillars are organised around the work they make possible. Start with a discipline, or explore your industry's challenges first.</p><a class="button" href="/industries/">Find your industry</a></div><div class="catalogue-illustration"><h2>Start with the requirement.</h2><p>Build the systems.<br />Connect the information.<br />Operate with clear responsibilities.</p><a href="/solutions/">Explore business problems</a></div></header>
+<div class="wrap pillar-groups">{groups.map(group=><section class="pillar-group"><header><h2>{group}</h2><p>{group==='Specialist products'?'Focused product teams within the Soft Task portfolio.':'Connected disciplines, selected to fit the requirement.'}</p></header><div>{catalogue.pillars.filter(p=>p.group===group).map(p=><article class="pillar-item"><h3><a href={p.url}>{p.title}</a></h3><p>{p.description}</p><small>{p.categories.slice(0,3).join(' · ')}</small><a href={p.url}>Explore this capability</a></article>)}</div></section>)}</div>
+<section class="wrap catalogue-bottom"><h2>Not sure where your requirement fits?</h2><p>Tell us about the process, the people using it and what needs to work better. We can shape the combination of engineering disciplines with you.</p><a class="button" href="/contact/">Discuss your requirement</a></section>
 </Layout>
