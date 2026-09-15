@@ -1,6 +1,6 @@
 {
   "date": "2026-09-15",
-  "stage": "Search, analytics and contact revision; local checks complete, live verification follows push",
+  "stage": "Search revision deployed and verified at softtask.co",
   "pages_built": 98,
   "content_pages": 97,
   "browser_failures": 0,
@@ -44,5 +44,8 @@
   "catalogue_browser_checks": 312,
   "worker_dry_run": "Cloudflare packaging passed without deployment",
   "search_readiness": "98 pages; production directives, unique metadata, HTML reachability, visible questions and sitemap coverage passed",
-  "analytics_consent": "Opt-in, no duplicate tag, sanitized URL, conversion payload, withdrawal and persisted rejection passed with mocked provider"
+  "analytics_consent": "Opt-in, no duplicate tag, sanitized URL, conversion payload, withdrawal and persisted rejection passed with mocked provider",
+  "live_content_urls": 97,
+  "live_search_failures": 0,
+  "indexnow": "97 URLs submitted; HTTP 202 received, key validation pending; not confirmation of indexing"
 }

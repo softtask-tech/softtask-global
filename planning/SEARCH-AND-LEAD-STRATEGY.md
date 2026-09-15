@@ -78,3 +78,9 @@ In GA4, mark `generate_lead` as a key event; link Search Console; verify a conse
 - [Claude crawlers](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)
 - [Perplexity crawlers](https://docs.perplexity.ai/docs/resources/perplexity-crawlers)
 - [Business Profile representation rules](https://support.google.com/business/answer/3038177)
+
+## Verified deployment result
+
+The code revision passed GitHub verification and deployed at softtask.co. All 97 public content URLs returned HTTP 200 with matching canonical URLs and indexable directives. The public sitemap contained all 97 URLs. The www contact URL returned a permanent 308 redirect to softtask.co; the workers.dev preview returned noindex. IndexNow received 97 URLs with HTTP 202 (key verification pending). This confirms delivery of the notification, not search-engine indexing.
+
+Final local checks: 98-page static search audit, 20 backend tests, 35 responsive checks, 21 accessibility scans, five-width contact checks and analytics-consent tests passed. Lighthouse mobile lab: performance 88, accessibility 100, best practices 100, SEO 100. These are local measurements, not production field Core Web Vitals.
