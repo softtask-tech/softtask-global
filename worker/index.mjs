@@ -76,7 +76,7 @@ const token = () =>
   ).join('');
 const ready = (env) =>
   env.MAIL_API_KEY && env.MAIL_FROM && env.TURNSTILE_SECRET && env.PUBLIC_TURNSTILE_SITE_KEY;
-async function mail(env, to, subject, text, key) {
+async function mail(env, to, subject, text, key, replyTo = env.MAIL_REPLY_TO) {
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
@@ -84,10 +84,15 @@ async function mail(env, to, subject, text, key) {
       'Content-Type': 'application/json',
       'Idempotency-Key': key,
     },
-    body: JSON.stringify({ from: env.MAIL_FROM, to, subject, text }),
+    body: JSON.stringify({
+      from: env.MAIL_FROM, to, subject, text,
+      ...(replyTo ? { reply_to: replyTo } : {}),
+    }),
   });
   if (!r.ok) throw new Error('mail');
-  return r.json();
+  const result = await r.json();
+  if (typeof result.id !== 'string' || !result.id) throw new Error('mail');
+  return result;
 }
 async function botCheck(env, data, request, kind) {
   if (
@@ -255,7 +260,7 @@ export default {
       data.email = data.email.trim().toLowerCase();
       if (kind === 'contact') {
         const fingerprint = await digest(
-          JSON.stringify([data.email, data.company, data.message, Math.floor(Date.now() / 300000)]),
+          JSON.stringify([data.name, data.email, data.company, data.country, data.service, data.message, Math.floor(Date.now() / 300000)]),
         );
         await mail(
           env,
@@ -263,6 +268,7 @@ export default {
           `Soft Task website enquiry: ${data.service}`,
           `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nMarket: ${data.country}\nCapability: ${data.service}\n\n${data.message}`,
           `contact-${fingerprint}`,
+          data.email,
         );
         return json(
           {

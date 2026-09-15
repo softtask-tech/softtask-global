@@ -16,4 +16,4 @@ Owner direction confirmed September 15, 2026:
 - Kytheos: cybersecurity and STRID crypto investigation/recovery enquiries.
 - Blockchain scope: Web3, crypto/token development, wallets, smart contracts and centralised/decentralised exchange development, explicitly expanded by the owner.
 
-Corporate email choices remain planned until mailbox provisioning and monitoring are confirmed. The website uses the project enquiry route rather than publishing unverified new inboxes.
+The owner confirmed that the softtask.co addresses in Soft-Task-Corporate-Email-Structure-v2.xlsx are active on Google Workspace. This supersedes the workbook's Planned labels; mailbox delivery has not yet been independently tested. The owner reported abuse@softtask.tech could not be created; it is not used by this website. General enquiries route to contact@softtask.co; automated notifications use notifications@softtask.co. Country-domain mailbox activation is not inferred from this confirmation. A Resend account exists; API credentials and sender verification are still required for website delivery.

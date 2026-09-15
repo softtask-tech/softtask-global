@@ -144,6 +144,41 @@ test('provider acceptance returns a precise delivery message', async (t) => {
   assert.equal(r.status, 202);
   assert.match((await r.json()).message, /accepted for email delivery/);
   assert.equal(calls[1].body.to, 'test@example.com');
+  assert.equal(calls[1].body.reply_to, valid.email);
+  assert.equal(calls[1].body.from, configured.MAIL_FROM);
+  for (const value of [valid.name, valid.email, valid.company, valid.country, valid.service, valid.message])
+    assert.ok(calls[1].body.text.includes(value));
+});
+
+test('mailbox readiness enables contact without enabling unconfigured newsletter storage', async () => {
+  const r = await worker.fetch(new Request('https://softtask.co/api/config'), configured);
+  assert.deepEqual(await r.json(), { active: true, newsletterActive: false, siteKey: 'test-public' });
+});
+
+test('a malformed successful provider response does not claim acceptance', async (t) => {
+  t.mock.method(globalThis, 'fetch', async (url) =>
+    String(url).includes('siteverify')
+      ? Response.json({ success: true, action: 'contact', hostname: 'softtask.co' })
+      : Response.json({}),
+  );
+  const r = await worker.fetch(request({ ...valid, 'cf-turnstile-response': 'test-token' }), configured);
+  assert.equal(r.status, 503);
+});
+
+test('recipient cannot be overridden by submitted fields and different services have different delivery keys', async (t) => {
+  const sent = [];
+  t.mock.method(globalThis, 'fetch', async (url, options) => {
+    if (String(url).includes('siteverify'))
+      return Response.json({ success: true, action: 'contact', hostname: 'softtask.co' });
+    sent.push({ body: JSON.parse(options.body), key: options.headers['Idempotency-Key'] });
+    return Response.json({ id: 'mock-email' });
+  });
+  for (const service of ['cloud-infrastructure', 'software-engineering']) {
+    const r = await worker.fetch(request({ ...valid, service, to: 'attacker@example.com', 'cf-turnstile-response': 'test-token' }), configured);
+    assert.equal(r.status, 202);
+  }
+  assert.equal(sent[0].body.to, configured.NOTIFY_TO);
+  assert.notEqual(sent[0].key, sent[1].key);
 });
 test('a valid challenge from the wrong hostname is rejected', async (t) => {
   let calls = 0;
@@ -205,7 +240,7 @@ test('newsletter is pending until explicit POST confirmation, with hashed tokens
     sent.push(JSON.parse(options.body));
     return Response.json({ id: 'mock-email' });
   });
-  const env = { ...configured, DB };
+  const env = { ...configured, MAIL_REPLY_TO: 'contact@softtask.co', DB };
   const signup = new Request('https://softtask.co/api/subscribe', {
     method: 'POST',
     headers: { Origin: 'https://softtask.co', 'Content-Type': 'application/json' },
@@ -219,6 +254,7 @@ test('newsletter is pending until explicit POST confirmation, with hashed tokens
   const result = await worker.fetch(signup, env);
   assert.equal(result.status, 202);
   assert.equal(row.status, 'pending');
+  assert.equal(sent[0].reply_to, 'contact@softtask.co');
   const raw = sent[0].text.match(/token=([a-f0-9]{64})/)[1];
   assert.notEqual(row.confirm_hash, raw);
   const confirmUrl = `https://softtask.co/api/confirm?token=${raw}`;
