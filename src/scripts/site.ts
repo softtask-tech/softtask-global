@@ -216,6 +216,10 @@ document.querySelectorAll('.search-open').forEach((b) =>
 search?.addEventListener('input', renderSearch);
 
 document.querySelectorAll<HTMLFormElement>('form[data-endpoint]').forEach((form) => {
+  const phone = form.querySelector<HTMLInputElement>('[name=phone]');
+  const phoneCountry = form.querySelector<HTMLSelectElement>('[name=phoneCountry]');
+  phone?.addEventListener('input', () => { if (phoneCountry) phoneCountry.required = !!phone.value.trim(); });
+  form.addEventListener('reset', () => { if (phoneCountry) phoneCountry.required = false; });
   const service = form.querySelector<HTMLSelectElement>('[name=service]');
   const requested = new URLSearchParams(location.search).get('service');
   if (service && requested && Array.from(service.options).some((o) => o.value === requested))
@@ -293,6 +297,7 @@ if (document.querySelector('.turnstile-mount')) {
             sitekey: config.siteKey,
             action: el.dataset.action,
             theme: 'light',
+            size: matchMedia('(max-width: 400px)').matches ? 'compact' : 'flexible',
           });
           const note = el.closest('form')?.querySelector('.form-note');
           if (note) note.textContent = 'Your request is processed only when you submit this form.';

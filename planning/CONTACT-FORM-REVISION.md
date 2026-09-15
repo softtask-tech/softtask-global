@@ -1,0 +1,9 @@
+# Contact form revision — 15 September 2026
+
+The owner reported a successful Turnstile challenge followed by an invalid-origin error. The previous handler compared Origin only with the canonical domain; the known www and workers.dev addresses could therefore fail. Allowed origins are now explicit in wrangler.jsonc. Both the request URL and Origin must match an allowed address. Turnstile's returned hostname must match that request URL. Unrelated origins and challenges for other hosts remain rejected.
+
+The contact form now separates contact and project details, groups consent clearly, and uses full-width submission controls. Optional phone fields include a country/dialling-code selector covering libphonenumber-js's supported regions and a national number input. Server-side parsing checks plausibility and normalizes accepted numbers to international format before email delivery. This does not verify ownership or reachability. The privacy notice includes optional phone collection. Phone metadata is used on the server and at build time, not shipped as an added browser library.
+
+Checks: 19 backend tests passed; build and type checks passed; 65-page SEO checks passed; contact layout checked at 320, 390, 768, 1024 and 1440 pixels with zero horizontal overflow or automated accessibility violations. Optional phone requirements and 200+ country choices verified. Cloudflare dry-run packaging passed. Mobile screenshot visually reviewed. Live delivery needs a new submission after deployment; no test email was sent by the agent.
+
+Deployment: use the existing softtaskglobalwebsite Worker. Preserve runtime secrets. The configured ADDITIONAL_SITE_ORIGINS must be present in the deployed version. Confirm the widget allows the workers.dev hostname if testing there; softtask.co is preferred for the final delivery check.

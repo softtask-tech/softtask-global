@@ -18,6 +18,8 @@ for(const file of pages){
     const url=new URL(match[1].replaceAll('&amp;','&'),'https://softtask.co');const target=path.join(root,url.pathname.endsWith('/')?url.pathname+'index.html':url.pathname);
     try{await access(target);}catch{failures.push(`Broken local link ${match[1]} from ${path.relative(root,file)}`);}
   }
-  check(!/United Kingdom|London|Tallinn/.test(html),`Inactive/unapproved presence: ${file}`);
+  // A visitor's international dialling-code option is not a company-office claim.
+  const presenceCopy=html.replace(/<select\b[^>]*name="phoneCountry"[^>]*>[\s\S]*?<\/select>/g,'');
+  check(!/United Kingdom|London|Tallinn/.test(presenceCopy),`Inactive/unapproved presence: ${file}`);
 }
 console.log(JSON.stringify({pages:pages.length,failures},null,2));if(failures.length)process.exitCode=1;

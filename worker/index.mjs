@@ -1,4 +1,18 @@
 import catalogue from '../src/data/catalogue.json' with { type: 'json' };
+import { parsePhoneNumberFromString, isSupportedCountry } from 'libphonenumber-js/min';
+function phoneNumber(data) {
+  if (!data.phone) return null;
+  if (typeof data.phone !== 'string' || data.phone.length > 40 || !/^[\d\s().-]+$/.test(data.phone) || !isSupportedCountry(data.phoneCountry)) return false;
+  const number = parsePhoneNumberFromString(data.phone, data.phoneCountry);
+  return number?.isPossible() ? number.number : false;
+}
+function permittedRequest(request, env) {
+  const allowed = new Set([env.SITE_ORIGIN || 'https://softtask.co', ...(env.ADDITIONAL_SITE_ORIGINS || '').split(',')].filter(Boolean).map(value => {
+    try { return new URL(value.trim()).origin; } catch { return ''; }
+  }));
+  const actual = new URL(request.url).origin;
+  return allowed.has(actual) && request.headers.get('Origin') === actual;
+}
 const json = (data, status = 200) =>
   new Response(JSON.stringify(data), {
     status,
@@ -19,6 +33,7 @@ export function validate(data, kind) {
   if (data.consent !== true && data.consent !== 'true') return 'Please confirm the consent choice.';
   if (data.website) return 'The request could not be accepted.';
   if (kind === 'contact') {
+    if (phoneNumber(data) === false) return 'Check your phone number and country code, or leave the phone number blank.';
     if (data.noticeVersion !== '2026-09-15') return 'Please refresh the page and review the current privacy agreement.';
     for (const [key, min, max] of [
       ['name', 1, 120],
@@ -112,7 +127,7 @@ async function botCheck(env, data, request, kind) {
     return (
       result?.success === true &&
       result.action === kind &&
-      result.hostname === new URL(env.SITE_ORIGIN || 'https://softtask.co').hostname
+      result.hostname === new URL(request.url).hostname
     );
   } catch {
     return false;
@@ -157,7 +172,7 @@ export default {
         return json({ message: 'Method not allowed.' }, 405);
       let raw = url.searchParams.get('token');
       if (request.method === 'POST') {
-        if (request.headers.get('Origin') !== origin)
+        if (!permittedRequest(request, env))
           return json({ message: 'Invalid request origin.' }, 403);
         if (Number(request.headers.get('Content-Length') || 0) > 1000)
           return json({ message: 'Request too large.' }, 413);
@@ -236,8 +251,8 @@ export default {
       return json({ message: 'Endpoint not found.' }, 404);
     if (request.method !== 'POST')
       return json({ message: 'Use the website form to submit a request.' }, 405);
-    if (request.headers.get('Origin') !== origin)
-      return json({ message: 'Invalid request origin.' }, 403);
+    if (!permittedRequest(request, env))
+      return json({ message: 'Please open the contact form at https://softtask.co/contact/ and submit it there.' }, 403);
     if (!request.headers.get('Content-Type')?.includes('application/json'))
       return json({ message: 'Use the website form to submit a request.' }, 415);
     let data;
@@ -263,13 +278,13 @@ export default {
       data.email = data.email.trim().toLowerCase();
       if (kind === 'contact') {
         const fingerprint = await digest(
-          JSON.stringify([data.name, data.email, data.company, data.country, data.service, data.industry, data.scenario, data.message, Math.floor(Date.now() / 300000)]),
+          JSON.stringify([data.name, data.email, phoneNumber(data), data.company, data.country, data.service, data.industry, data.scenario, data.message, Math.floor(Date.now() / 300000)]),
         );
         await mail(
           env,
           env.NOTIFY_TO,
           `Soft Task website enquiry: ${data.service}`,
-          `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nMarket: ${data.country}\nCapability: ${data.service}\nIndustry: ${catalogue.industries.find(i=>i.id===data.industry)?.title || 'Not selected'}\nWorkflow: ${catalogue.scenarios.find(s=>s.id===data.scenario)?.title || 'Not selected'}\n\n${data.message}\n\nAgreement recorded: ${new Date().toISOString()}\nNotice version: ${data.noticeVersion}\nVisitor agreed to website terms and use of submitted details to assess and contact them about this enquiry and related project discussions. Marketing subscription: not requested by this form.`,
+          `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${phoneNumber(data) || 'Not provided'}\nCompany: ${data.company}\nMarket: ${data.country}\nCapability: ${data.service}\nIndustry: ${catalogue.industries.find(i=>i.id===data.industry)?.title || 'Not selected'}\nWorkflow: ${catalogue.scenarios.find(s=>s.id===data.scenario)?.title || 'Not selected'}\n\n${data.message}\n\nAgreement recorded: ${new Date().toISOString()}\nNotice version: ${data.noticeVersion}\nVisitor agreed to website terms and use of submitted details to assess and contact them about this enquiry and related project discussions. Marketing subscription: not requested by this form.`,
           `contact-${fingerprint}`,
           data.email,
         );

@@ -63,6 +63,29 @@ test('valid request is unavailable without delivery configuration, never success
   assert.equal(r.status, 503);
   assert.match((await r.json()).message, /not active/);
 });
+test('optional phone accepts international numbers and rejects incomplete selections', () => {
+  assert.equal(validate({...valid,phoneCountry:'SG',phone:'8123 4567'},'contact'),null);
+  assert.equal(validate({...valid,phoneCountry:'US',phone:'202-555-0123'},'contact'),null);
+  for(const phone of [{phone:'81234567'},{phone:'81234567',phoneCountry:'XX'},{phone:'bad',phoneCountry:'SG'},{phone:'1',phoneCountry:'SG'}])assert.ok(validate({...valid,...phone},'contact'));
+});
+test('known alternate origins work only with matching request and challenge hosts', async (t) => {
+  let host='www.softtask.co';
+  let sent;
+  t.mock.method(globalThis,'fetch',async(url,options)=>{
+    if(String(url).includes('siteverify'))return Response.json({success:true,action:'contact',hostname:host});
+    sent=JSON.parse(options.body);return Response.json({id:'test-origin-mail'});
+  });
+  const make=(origin,requestOrigin=origin)=>new Request(`${origin}/api/contact`,{method:'POST',headers:{Origin:requestOrigin,'Content-Type':'application/json'},body:JSON.stringify({...valid,phoneCountry:'SG',phone:'8123 4567','cf-turnstile-response':'test-token'})});
+  const env={...configured,ADDITIONAL_SITE_ORIGINS:'https://www.softtask.co,https://softtaskglobalwebsite.softtask-tech.workers.dev'};
+  assert.equal((await worker.fetch(make('https://www.softtask.co'),env)).status,202);
+  assert.match(sent.text,/Phone: \+6581234567/);
+  assert.equal((await worker.fetch(make('https://www.softtask.co','https://evil.example'),env)).status,403);
+  assert.equal((await worker.fetch(make('https://evil.example'),env)).status,403);
+  host='softtask.co';
+  assert.equal((await worker.fetch(make('https://www.softtask.co'),env)).status,422);
+  host='softtaskglobalwebsite.softtask-tech.workers.dev';
+  assert.equal((await worker.fetch(make(`https://${host}`),env)).status,202);
+});
 test('rejects malformed fields and missing consent', () => {
   assert.equal(validate(valid, 'contact'), null);
   for (const change of [

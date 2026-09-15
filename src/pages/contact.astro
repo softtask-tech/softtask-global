@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import { policyVersion } from '../data/governance';
 import catalogue from '../data/catalogue.json';
+import { getCountries, getCountryCallingCode } from 'libphonenumber-js/min';
+const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
+const phoneCountries = getCountries().map(code => ({code, name:countryNames.of(code) || code, dial:getCountryCallingCode(code)})).sort((a,b)=>a.name.localeCompare(b.name));
 ---
 
 <Layout
@@ -57,8 +60,9 @@ import catalogue from '../data/catalogue.json';
         Looking for a local conversation? <Icon />
       </a>
     </aside>
-    <form class="form-grid" data-endpoint="/api/contact" method="post" action="/api/contact">
+    <form class="form-grid enquiry-form" data-endpoint="/api/contact" method="post" action="/api/contact">
       <input type="hidden" name="noticeVersion" value={policyVersion} />
+      <div class="form-heading full"><h2>Your contact details</h2><p>Fields are required unless marked optional.</p></div>
       <label class="field">
         Your name
         <input name="name" required maxlength="120" autocomplete="name" />
@@ -84,6 +88,15 @@ import catalogue from '../data/catalogue.json';
           <option>Other</option>
         </select>
       </label>
+      <div class="field full phone-field">
+        <span>Phone number <span class="optional">(optional)</span></span>
+        <div class="phone-fields">
+          <select name="phoneCountry" aria-label="Phone country code" autocomplete="tel-country-code"><option value="">Country code</option>{phoneCountries.map(c=><option value={c.code}>{c.name} (+{c.dial})</option>)}</select>
+          <input name="phone" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="40" aria-label="Phone number without country code" aria-describedby="phone-hint" placeholder="Number without country code" />
+        </div>
+        <span id="phone-hint" class="field-hint">Include the area code where needed. We will use this number only for your enquiry.</span>
+      </div>
+      <div class="form-heading full project-heading"><h2>Tell us about the project</h2><p>Start with the outcome you need. We can help define the technical scope.</p></div>
       <label class="field full">
         What would you like to discuss?
         <select name="service" required>
@@ -105,7 +118,7 @@ import catalogue from '../data/catalogue.json';
           placeholder="What needs to change? Include any useful context, without confidential or sensitive information."
         ></textarea>
       </label>
-      <label class="checkbox-field">
+      <label class="checkbox-field consent-panel">
         <input type="checkbox" name="consent" required />
         <span>
           I agree to the <a href="/terms/">website terms</a> and have read the
@@ -120,7 +133,7 @@ import catalogue from '../data/catalogue.json';
           <input name="website" tabindex="-1" autocomplete="off" />
         </label>
       </div>
-      <div class="turnstile-mount" data-action="contact"></div>
+      <div class="verification-area"><div class="turnstile-mount" data-action="contact"></div></div>
       <p class="form-status" role="status" tabindex="-1" hidden></p>
       <button type="submit" class="button primary form-submit">
         Send your enquiry <Icon />
@@ -132,3 +145,25 @@ import catalogue from '../data/catalogue.json';
     </form>
   </section>
 </Layout>
+
+<style>
+  .form-layout{grid-template-columns:minmax(240px,.7fr) minmax(0,1.3fr);gap:clamp(32px,5vw,80px);align-items:start}
+  .enquiry-form{background:#fff;padding:clamp(20px,3vw,40px);border:1px solid #d5ded4;border-top:4px solid var(--forest);gap:24px;min-width:0}
+  .full,.verification-area{grid-column:1/-1;min-width:0}
+  .form-heading h2{font-size:24px;line-height:1.25;margin:0 0 8px}
+  .form-heading p,.field-hint{font-size:13px;color:var(--muted);line-height:1.6;margin:0;font-weight:400}
+  .project-heading{padding-top:26px;border-top:1px solid #d5ded4;margin-top:6px}
+  .enquiry-form .field{font-size:14px;min-width:0}
+  .enquiry-form input,.enquiry-form select,.enquiry-form textarea{font-size:16px;min-height:50px;min-width:0;background:#fafbf8;border-color:#a9b7ad;border-radius:4px}
+  .enquiry-form textarea{min-height:160px;line-height:1.6}
+  .enquiry-form input:focus,.enquiry-form select:focus,.enquiry-form textarea:focus{outline:2px solid var(--forest);outline-offset:2px;background:white}
+  .phone-fields{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:12px}
+  .optional{font-weight:400;color:var(--muted)}
+  .consent-panel{padding:18px;background:#f0f4ed;font-size:13px;border-radius:4px;line-height:1.7}
+  .consent-panel input{min-height:20px;width:20px;height:20px;margin-top:2px}
+  .verification-area{min-width:0;max-width:100%}
+  .form-note{font-size:12px;line-height:1.6;margin:0}
+  .form-submit{width:100%;justify-content:space-between;min-height:54px;border-radius:4px}
+  @media(max-width:1000px){.form-layout{grid-template-columns:1fr}.form-context{max-width:680px}.form-context ul{display:none}}
+  @media(max-width:600px){.enquiry-form{grid-template-columns:minmax(0,1fr);padding:20px 16px;gap:20px}.phone-fields{grid-template-columns:minmax(0,1fr)}.form-heading h2{font-size:22px}.consent-panel{padding:14px}.form-layout{padding-top:32px}.form-context h2{font-size:28px}.enquiry-form .field{grid-column:1/-1}}
+</style>
