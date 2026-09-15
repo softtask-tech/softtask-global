@@ -1,5 +1,11 @@
 # Website completion audit — 15 September 2026
 
+## Latest follow-up: country pages and newsletter
+
+Commit `afeb554` is live; GitHub verification passed. The five country overview pages use internal footer/location links. The USA is restored to the footer, Singapore/UAE/USA use the owner-provided office addresses, and Saudi Arabia is marked launching soon. The US postal address remains labelled as a contact address. Country pages and footer passed 32 responsive checks and eight accessibility scans. The live sitemap now contains 103 public URLs; all passed the live page audit.
+
+Newsletter collection is now active. The owner approved the private D1 database with an Asia Pacific placement preference. The database schema and production binding are installed, and `/api/config` reports `newsletterActive: true`. Email confirmation, active-only export and unsubscribe are implemented. Real inbox delivery/confirmation remains to be tested. See `NEWSLETTER-OPERATIONS.md` for the private subscriber view and CSV export; marketing campaign sending is a separate operational workflow.
+
 ## Implemented in this revision
 
 - Neutral, practical solution language replaces the repeated disclaimers in 32 solution briefs, 16 industry pages and their visible search answers. Interface captions and responsible-AI examples use concise descriptive language. Product availability, investigation constraints and human approval boundaries remain accurate.
@@ -27,7 +33,7 @@
 | High | GA4 account verification | Open the live site in Google Tag Assistant, confirm the new tag is detected, and verify a consenting visit in GA4 Realtime. Mark `generate_lead` as a key event. Review Enhanced Measurement settings so form interactions or site-search queries do not introduce information outside the tracking code reviewed here. |
 | High | End-to-end enquiry receipt | Submit an agreed test enquiry, verify the notification reaches contact@softtask.co and check the reply address. Provider acceptance and configuration readiness alone do not establish inbox delivery. |
 | High | Data retention operations | Approve or amend the proposed 12-month unsuccessful-enquiry / 6-month unsuccessful-recruitment schedule; assign mailbox owners and implement review/deletion processes. |
-| Medium | Newsletter | Service remains inactive until storage/migrations and the confirmation/unsubscribe delivery path are configured and verified. Decide whether to activate it now. |
+| Medium | Newsletter | Collection is active. Complete an owner-approved real inbox confirmation/unsubscribe check, then assign campaign ownership and provider suppression handling before sending bulk campaigns. |
 | Medium | Address completion | Supply UAE and Saudi publication addresses when ready. Keep the US location labelled as a contact address. |
 | Medium | Trust evidence | Confirm image usage rights and approve any named clients, testimonials or publishable outcomes before adding them. Maintain current product availability statements. |
 | Ongoing | Search and reliability | Review Search Console and Bing Webmaster Tools, field performance, genuine crawl access, uptime, mailbox delivery failures and security dependencies. Indexing and ranking depend on search engines. |

@@ -1,5 +1,7 @@
 # Newsletter operations
 
+Activation status (15 September 2026): owner-approved Asia Pacific placement preference; database and subscriber table created; binding published in commit `afeb554`. Live `/api/config` reports `newsletterActive: true`. The confirmation/unsubscribe logic passes backend tests. A real inbox confirmation is still pending; no test message has been sent without the owner's answer to the test-mail question.
+
 ## How addresses are collected
 
 The public `/newsletter/` form asks for an email, topic and explicit subscription consent, protected by Turnstile. Resend delivers a 24-hour confirmation link. Opening the link shows a confirmation button; only pressing it activates the subscription, which also avoids activation by email-link scanners. The welcome message contains an unsubscribe link. Unsubscribe requires a confirmation action and removes the record. Unconfirmed expired requests are cleaned up by the scheduled worker.
